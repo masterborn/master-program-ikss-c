@@ -45,7 +45,7 @@ Create a .env.development file based on .env.template file.
 Update `sentry.properties` file with appropriate project variables.
 
 ### Installation
-Install all the dependencies - `npm install`
+Install all the dependencies - `npm install`.
 
 ### Running the project
 Run `npm run dev` command.
