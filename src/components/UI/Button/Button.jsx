@@ -1,20 +1,65 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const btn = styled.button`
-    background: ${props=>(props.primary ? '#1889E9':'#FFFFFF')};
+const BIG_BUTTON= {
+    width: '134px',
+    height: '48px',
+    fontSize: '16px'
+};
+const SMALL_BUTTON= {
+    width: '108px',
+    height: '36px',
+    fontSize: '14px'
+};
+
+const PRIMARY_BUTTON = {
+    backgroundColor: '#1889E9'
+};
+const SECONDARY_BUTTON = {
+    backgroundColor: '#ffffff'
+};
+
+export const PrimaryButton = styled.button`
+    background: ${PRIMARY_BUTTON.backgroundColor};
     color: white;
-    width: 134px;
-    height: 48px;
+    width: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.width}`:`${BIG_BUTTON.width}` };
+    height:${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.height}`:`${BIG_BUTTON.height}` };
     left: 59px;
     top: 43px;
-    border: ${(props)=>(props.primary ? '': '2px solid #1A2847')}
     border-radius: 26px;
-    text: Button;
+    border: none;
+    font-size: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.fontSize}`:`${BIG_BUTTON.fontSize}` };
+    &:hover {
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), ${PRIMARY_BUTTON.backgroundColor};
+        box-shadow: 0px 4px 8px rgba(24, 137, 233, 0.15);
+    }
+    &:disabled {
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), ${PRIMARY_BUTTON.backgroundColor};
+    }
+    &:focus {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), ${PRIMARY_BUTTON.backgroundColor};
+    }
 `;
 
-
-function Button(){
-    return <btn primary={"test" ? 1:0}/>
+export const SecondaryButton= styled.button`
+background: #FFFFFF;
+color: black;
+width: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.width}`:`${BIG_BUTTON.width}` };
+height:${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.height}`:`${BIG_BUTTON.height}` };
+left: 59px;
+top: 43px;
+font-size: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.fontSize}`:`${BIG_BUTTON.fontSize}` };
+border: 2px solid #1A2847;
+border-radius: 26px;
+&:hover {
+    border: 2px solid rgba(0,0,0,0.85);
+    color: rgba(0,0,0,0.85);
 }
-export default Button;
+&:disabled {
+    border: 2px solid rgba(0,0,0,0.75);
+    color: rgba(0,0,0,0.75);
+}
+&:focus {
+    border: 2px solid rgba(0,0,0,0.3);
+    color: rgba(0,0,0,0.3);
+}
+`;
