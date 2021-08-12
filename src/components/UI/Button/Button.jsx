@@ -41,7 +41,7 @@ export const PrimaryButton = styled.button`
 `;
 
 export const SecondaryButton= styled.button`
-background: #FFFFFF;
+background: ${SECONDARY_BUTTON.backgroundColor};
 color: black;
 width: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.width}`:`${BIG_BUTTON.width}` };
 height:${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.height}`:`${BIG_BUTTON.height}` };
