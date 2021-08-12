@@ -63,4 +63,14 @@ const GlobalStyles = createGlobalStyle`
   };
 `;
 
+export const BodySmall = {
+  fontFamily: 'Mulish',
+  fontStyle: 'normal',
+  fontWeight: '400',
+  fontSize: '14px',
+  lineHeight: '28px', 
+  letterSpacing: '-0.015em',
+  color: '#61798B'
+}
+
 export default GlobalStyles;
