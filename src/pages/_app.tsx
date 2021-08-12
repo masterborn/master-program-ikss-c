@@ -25,7 +25,7 @@ const App: FunctionComponent<AppProps> = (props) => {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Component {...pageProps} />
+            <Component {...pageProps} />            
           </Hydrate>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
