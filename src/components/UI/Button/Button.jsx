@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import {BodySmall} from '../../../styles/GlobalStyles';
 
 const BIG_BUTTON= {
     width: '134px',
     height: '48px',
-    fontSize: '16px'
+    fontSize: '16px',
 };
 const SMALL_BUTTON= {
     width: '108px',
@@ -27,6 +28,7 @@ export const PrimaryButton = styled.button`
     top: 43px;
     border-radius: 26px;
     border: none;
+    font-family: ${BodySmall.fontFamily};
     font-size: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.fontSize}`:`${BIG_BUTTON.fontSize}` };
     &:hover {
         background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), ${PRIMARY_BUTTON.backgroundColor};
@@ -41,25 +43,26 @@ export const PrimaryButton = styled.button`
 `;
 
 export const SecondaryButton= styled.button`
-background: ${SECONDARY_BUTTON.backgroundColor};
-color: black;
-width: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.width}`:`${BIG_BUTTON.width}` };
-height:${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.height}`:`${BIG_BUTTON.height}` };
-left: 59px;
-top: 43px;
-font-size: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.fontSize}`:`${BIG_BUTTON.fontSize}` };
-border: 2px solid #1A2847;
-border-radius: 26px;
-&:hover {
-    border: 2px solid rgba(0,0,0,0.85);
-    color: rgba(0,0,0,0.85);
-}
-&:disabled {
-    border: 2px solid rgba(0,0,0,0.75);
-    color: rgba(0,0,0,0.75);
-}
-&:focus {
-    border: 2px solid rgba(0,0,0,0.3);
-    color: rgba(0,0,0,0.3);
-}
+    background: ${SECONDARY_BUTTON.backgroundColor};
+    color: black;
+    width: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.width}`:`${BIG_BUTTON.width}` };
+    height:${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.height}`:`${BIG_BUTTON.height}` };
+    left: 59px;
+    top: 43px;
+    font-family: ${BodySmall.fontFamily};
+    font-size: ${props=>props.size?.includes('s') ?  `${SMALL_BUTTON.fontSize}`:`${BIG_BUTTON.fontSize}` };
+    border: 2px solid #1A2847;
+    border-radius: 26px;
+    &:hover {
+        border: 2px solid rgba(0,0,0,0.85);
+        color: rgba(0,0,0,0.85);
+    }
+    &:disabled {
+        border: 2px solid rgba(0,0,0,0.3);
+        color: rgba(0,0,0,0.3);
+    }
+    &:focus {
+        border: 2px solid rgba(0,0,0,0.75);
+        color: rgba(0,0,0,0.75);
+    }
 `;
