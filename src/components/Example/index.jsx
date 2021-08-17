@@ -18,18 +18,19 @@ function Example() {
       <h1 style={{ textAlign: 'center' }}>Example</h1>
       <FaPrimaryButton />
       <FaSecondaryButton />
-      <Input type="textarea" icon error placeholder="Lorem ipsum dorum" labelText="Pierwszy input" id="email" />
-
-      <Input icon placeholder="Lorem ipsum dorum" labelText="Pierwszy input" id="email" />
-
       <Input
+        type="textarea"
         icon
-        disabled
+        error
         placeholder="Lorem ipsum dorum"
         labelText="Pierwszy input"
         id="email"
       />
-      <input type="checkbox"></input>
+
+      <Input icon placeholder="Lorem ipsum dorum" labelText="Pierwszy input" id="email" />
+
+      <Input icon disabled placeholder="Lorem ipsum dorum" labelText="Pierwszy input" id="email" />
+      <input type="checkbox" />
     </Div>
   );
 }
