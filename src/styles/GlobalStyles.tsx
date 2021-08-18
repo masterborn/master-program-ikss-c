@@ -166,26 +166,38 @@ const GlobalStyles = createGlobalStyle`
     align-items: center;
     box-shadow: 0px 16px 31px rgba(26, 40, 71, 0.1), 0px 6.16296px 9.87407px rgba(26, 40, 71, 0.0607407), 0px 1.3037px 2.52593px rgba(26, 40, 71, 0.0392593);
   };
-  input[type="checkbox"] {
-    height: 24px;
-    width: 24px;
+input, textarea {
+    font-family: Mulish;
     border: 1.5px solid #C0C9D1;
     box-sizing: border-box;
     border-radius: 4px;
+    transition: box-shadow 200ms;
     -webkit-border-radius:4px;
     -webkit-appearance: none;
     -webkit-transition: box-shadow 200ms;
+    font-size: 14px;
+    line-height: 28px;
+    padding: 12px 10px;
+  };
+
+
+input[type="checkbox"] {
+    height: 24px;
+    width: 24px;
+    padding: 0;
   }
 input[type="checkbox"]:not(:disabled):hover {
     border-color:#1889E9;
 }
 
 input[type="checkbox"]:active:not(:disabled) {
-    border-color:#1889E9;
+    border-color:#1889E9; 
 }
-input[type="checkbox"]:focus {
-    outline:none;
+input:focus {
+  border-color:#1889E9;
+  outline: none;
 }
+
 input[type="checkbox"]:checked {
     border-color: #1889E9;
     background-color: #1889E9;
@@ -202,7 +214,16 @@ border-width: 0 2px 2px 0;
 transform: rotate(45deg);
 margin: 1px 5px 6px 6px;
 }
+label{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 28px;
+  letter-spacing: -0.015em;
+  color: #1A2847;
+}
 `;
+
 export const color = {
   blue: '#1889E9',
   white: '#ffffff',
@@ -210,8 +231,7 @@ export const color = {
   steel: '#61798B',
   error: '#E01A4F',
   success: '#18D4A7',
-
-}
+};
 export const blueTints = {
   blue_50: '#8CC4F4',
   blue_40: '#A3D0F6',
@@ -219,24 +239,24 @@ export const blueTints = {
   blue_20: '#D1E7FB',
   blue_10: '#E8F3FD',
   blue_05: '#F5FAFF',
-}
+};
 export const steelTints = {
-  blue_70: '#90A1AE',
-  blue_60: '#A0AFB9',
-  blue_50: '#B0BCC5',
-  blue_40: '#C0C9D1',
-  blue_30: '#D0D7DC',
-  blue_20: '#DFE4E8',
-}
+  steel_70: '#90A1AE',
+  steel_60: '#A0AFB9',
+  steel_50: '#B0BCC5',
+  steel_40: '#C0C9D1',
+  steel_30: '#D0D7DC',
+  steel_20: '#DFE4E8',
+};
 
 export const BodySmall = {
   fontFamily: 'Mulish',
   fontStyle: 'normal',
   fontWeight: '400',
   fontSize: '14px',
-  lineHeight: '28px', 
+  lineHeight: '28px',
   letterSpacing: '-0.015em',
-  color: '#61798B'
-}
+  color: '#61798B',
+};
 
 export default GlobalStyles;
