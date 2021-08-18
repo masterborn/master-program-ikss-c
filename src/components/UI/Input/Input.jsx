@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { color, blueTints, steelTints } from '../../../styles/GlobalStyles';
 import Info from './icons/Info';
 import AlertTriangle from './icons/alert-triangle';
@@ -44,6 +45,16 @@ function InfoIcon({ disabled }) {
 }
 
 function Input({ id, type, labelText, placeholder, disabled, error, icon }) {
+  Input.PropTypes = {
+    id: PropTypes.string,
+    type: PropTypes.string,
+    labelText: PropTypes.string,
+    placeholder: PropTypes.string,
+    disabled: PropTypes.bool,
+    error: PropTypes.bool,
+    icon: PropTypes.bool,
+  };
+
   return (
     <Containter>
       <Label for={id}>{labelText}</Label>
