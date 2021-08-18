@@ -1,5 +1,6 @@
-import styled from 'styled-components';
 import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { color, blueTints, steelTints } from '../../../styles/GlobalStyles';
 import Info from './icons/Info';
 import AlertTriangle from './icons/alert-triangle';
@@ -39,7 +40,17 @@ const Label = styled.label`
   display: block;
 `;
 
-export function Input({ id, type, labelText, placeholder, disabled, error, icon }) {
+function InfoIcon({ disabled }) {
+  return <div> {disabled ? <InfoGray /> : <Info />}</div>;
+}
+InfoIcon.propTypes = {
+  disabled: PropTypes.bool,
+};
+InfoIcon.defaultProps = {
+  disabled: false,
+};
+
+function Input({ id, type, labelText, placeholder, disabled, error, icon }) {
   return (
     <Containter>
       <Label for={id}>{labelText}</Label>
@@ -50,7 +61,26 @@ export function Input({ id, type, labelText, placeholder, disabled, error, icon 
         disabled={disabled}
         error={error}
       />
-      {icon && (error ? <AlertTriangle /> : disabled ? <InfoGray /> : <Info />)}
+      {icon && (error ? <AlertTriangle /> : <InfoIcon disabled={disabled} />)}
     </Containter>
   );
 }
+Input.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  labelText: PropTypes.string,
+  placeholder: PropTypes.string,
+  disabled: PropTypes.bool,
+  error: PropTypes.bool,
+  icon: PropTypes.bool,
+};
+Input.defaultProps = {
+  type: 'text',
+  labelText: '',
+  placeholder: '',
+  disabled: false,
+  error: false,
+  icon: false,
+};
+
+export default Input;
