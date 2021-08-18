@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import React from 'react';
+import styled from 'styled-components';
 import { color, blueTints, steelTints } from '../../../styles/GlobalStyles';
 import Info from './icons/Info';
 import AlertTriangle from './icons/alert-triangle';
@@ -39,7 +39,11 @@ const Label = styled.label`
   display: block;
 `;
 
-export function Input({ id, type, labelText, placeholder, disabled, error, icon }) {
+function InfoIcon({ disabled }) {
+  return <div> {disabled ? <InfoGray /> : <Info />}</div>;
+}
+
+function Input({ id, type, labelText, placeholder, disabled, error, icon }) {
   return (
     <Containter>
       <Label for={id}>{labelText}</Label>
@@ -50,7 +54,9 @@ export function Input({ id, type, labelText, placeholder, disabled, error, icon 
         disabled={disabled}
         error={error}
       />
-      {icon && (error ? <AlertTriangle /> : disabled ? <InfoGray /> : <Info />)}
+      {icon && (error ? <AlertTriangle /> : <InfoIcon disabled={disabled} />)}
     </Containter>
   );
 }
+
+export default Input;

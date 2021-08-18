@@ -1,7 +1,7 @@
 import React from 'react';
-import { FaPrimaryButton, FaSecondaryButton } from '../UI/Button/FaButton';
-import { Input } from '../UI/Input/Input';
 import styled from 'styled-components';
+import { FaPrimaryButton, FaSecondaryButton } from '../UI/Button/FaButton';
+import Input from '../UI/Input/Input';
 
 const Div = styled.div`
   display: flex;
