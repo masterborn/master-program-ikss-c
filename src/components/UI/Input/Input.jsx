@@ -60,13 +60,21 @@ function Input({ id, type, labelText, placeholder, disabled, error, icon }) {
   );
 }
 Input.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   type: PropTypes.string,
   labelText: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.bool,
   icon: PropTypes.bool,
+};
+Input.defaultProps = {
+  type: 'text',
+  labelText: '',
+  placeholder: '',
+  disabled: false,
+  error: false,
+  icon: false,
 };
 
 export default Input;
