@@ -43,6 +43,12 @@ const Label = styled.label`
 function InfoIcon({ disabled }) {
   return <div> {disabled ? <InfoGray /> : <Info />}</div>;
 }
+InfoIcon.propTypes = {
+  disabled: PropTypes.bool,
+};
+InfoIcon.defaultProps = {
+  disabled: false,
+};
 
 function Input({ id, type, labelText, placeholder, disabled, error, icon }) {
   return (
