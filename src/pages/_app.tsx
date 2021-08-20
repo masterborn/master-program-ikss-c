@@ -7,6 +7,7 @@ import Meta from '@root/components/Meta';
 import { AppProps } from 'next/app';
 import GlobalStyles from '@styles/GlobalStyles';
 import theme from '@styles/theme';
+import Layout from '@root/components/Layout/Layout';
 
 const App: FunctionComponent<AppProps> = (props) => {
   const queryClientRef = useRef<QueryClient>();
@@ -21,7 +22,9 @@ const App: FunctionComponent<AppProps> = (props) => {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Component {...pageProps} />            
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </Hydrate>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
