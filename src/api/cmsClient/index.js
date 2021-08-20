@@ -1,23 +1,10 @@
 import axios from 'axios';
+import config from '../../../config';
 
 async function getCollection() {
-  let response;
-  try {
-    response = await axios.get(
-      `https://cdn.contentful.com/spaces/${process.env.SPACE}/environments/master/entries?access_token=${process.env.TOKEN}`,
-    );
-  } catch (error) {
-    if (error.response) {
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
-    } else if (error.request) {
-      console.log(error.request);
-    } else {
-      console.log('Error', error.message);
-    }
-    console.log(error);
-  }
+  const response = await axios.get(
+    `https://cdn.contentful.com/spaces/${config.CONTENTFUL_API_SPACE}/environments/master/entrie?access_token=${config.CONTENTFUL_API_TOKEN}`,
+  );
   const result = response.data.items;
   return result;
 }
