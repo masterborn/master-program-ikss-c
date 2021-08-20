@@ -27,3 +27,8 @@ export async function getBasicContent() {
   });
   return response.data.items;
 }
+
+export async function getAllEntries() {
+  const response = await axios.get('');
+  return response.data.items;
+}

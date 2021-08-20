@@ -3,7 +3,7 @@ function MainPageProjectList(props) {
   return (
     <ul>
       {projects.map((project) => (
-        <li key={project.fields.title}>{project.fields.title}</li>
+        <li key={Math.random()}>{project.fields.title}</li>
       ))}
     </ul>
   );
