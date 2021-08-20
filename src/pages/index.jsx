@@ -12,15 +12,11 @@ function HomePage(props) {
 export default HomePage;
 
 export async function getStaticProps() {
-  try {
-    const projects = await getProjects();
-    const showOnMainPage = projects.filter((p) => p.fields.showOnHomepage);
-    return {
-      props: {
-        projects: showOnMainPage,
-      },
-    };
-  } catch (err) {
-    return { notFound: true };
-  }
+  const projects = await getProjects();
+  const showOnMainPage = projects.filter((p) => p.fields.showOnHomepage);
+  return {
+    props: {
+      projects: showOnMainPage,
+    },
+  };
 }
