@@ -7,7 +7,6 @@ import Meta from '@root/components/Meta';
 import GlobalStyles from '@styles/GlobalStyles';
 import theme from '@styles/theme';
 import Layout from '@root/components/Layout/Layout';
-import { getAllEntries, getBasicContent } from '../api/cmsClient/index';
 
 const App = (props) => {
   const queryClientRef = useRef();
@@ -35,13 +34,3 @@ const App = (props) => {
 };
 
 export default App;
-
-export async function getStaticProps() {
-  const basicContent = await getBasicContent();
-  // const showOnMainPage = projects.filter((p) => p.fields.showOnHomepage);
-  return {
-    props: {
-      basicContent,
-    },
-  };
-}
