@@ -1,22 +1,20 @@
-import MainPageProjectList from '@root/components/main/projects/MainPageProjectList';
-import { getAllEntries } from '../api/cmsClient/index';
+import Banner from '@root/components/main/projects/Banner/banner';
+import { getBasicContent } from '../api/cmsClient/index';
 
 function HomePage(props) {
-  const { projects } = props;
   return (
     <>
-      <MainPageProjectList projects={projects} />
+      <Banner context={props} />
     </>
   );
 }
 export default HomePage;
 
 export async function getStaticProps() {
-  const projects = await getAllEntries();
-  // const showOnMainPage = projects.filter((p) => p.fields.showOnHomepage);
+  const basicContent = await getBasicContent();
   return {
     props: {
-      projects,
+      basicContent,
     },
   };
 }

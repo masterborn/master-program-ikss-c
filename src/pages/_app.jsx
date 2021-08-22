@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import Meta from '@root/components/Meta';
 import GlobalStyles from '@styles/GlobalStyles';
 import theme from '@styles/theme';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 const App = (props) => {
   const queryClientRef = useRef();
