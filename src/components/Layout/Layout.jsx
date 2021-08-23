@@ -1,5 +1,5 @@
 import Footer from './Footer/Footer';
-import Navbar from './Navbar/Navbar';git 
+import Navbar from './Navbar/Navbar'; 
 
 function Layout({ children, props }) {
   const navAndFooterData = props.content;
