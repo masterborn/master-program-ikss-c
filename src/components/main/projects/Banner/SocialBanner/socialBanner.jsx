@@ -1,8 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 import YoutubeCircleIcon from '../../../../YoutubeCircleIcon';
 import InstagramCircleIcon from '../../../../InstagramCircleIcon';
 import FacebookCircleIcon from '../../../../FacebookCircleIcon';
+import LinkedinCircleIcon from '../../../../LinkedinCircleIcon';
 import { steelTints } from '../../../../../styles/GlobalStyles';
+
+const Div = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+  max-width: auto;
+  margin: 0;
+  padding: 0;
+`;
 
 function SocialBanner() {
   const onClickHandler = () => {
@@ -23,24 +36,22 @@ function SocialBanner() {
         boxShadow: `13px 15px 22px ${steelTints.steel_20}`,
       }}
     >
-      <div
-        style={{ display: 'flex', justifyContent: 'space-between', cursor: 'pointer' }}
-        onClick={onClickHandler}
-        onKeyPress={keyDownHandler}
-        role="button"
-        tabIndex={0}
-      >
-        <YoutubeCircleIcon />
-        YouTube
-      </div>
-      <div style={{ display: 'inline-flex' }}>
-        <InstagramCircleIcon />
-        Instagram
-      </div>
-      <div style={{ display: 'inline-flex' }}>
-        <FacebookCircleIcon />
-        Facebook
-      </div>
+      <Div onClick={onClickHandler} onKeyPress={keyDownHandler} role="button" tabIndex={0}>
+        <YoutubeCircleIcon size="20px" />
+        <h5>YouTube</h5>
+      </Div>
+      <Div>
+        <InstagramCircleIcon size="20px" />
+        <h5>Instagram</h5>
+      </Div>
+      <Div>
+        <FacebookCircleIcon size="20px" />
+        <h5>Facebook</h5>
+      </Div>
+      <Div>
+        <LinkedinCircleIcon size="20px" />
+        <h5>LinkedIn</h5>
+      </Div>
     </div>
   );
 }
