@@ -21,7 +21,7 @@ const App = (props) => {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Layout>
+            <Layout props={pageProps}>
               <Component {...pageProps} />
             </Layout>
           </Hydrate>

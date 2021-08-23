@@ -25,7 +25,7 @@ function Footer({ navAndFooterData }) {
           </li>
         ))}
       </ul>
-      <p>{footerText.fields.title}</p>
+      <p>{footerText?.fields.title}</p>
     </StyledFooter>
   );
 }
