@@ -5,11 +5,15 @@ import YoutubeEmbed from './YoutubeEmbed/youtubeEmbed';
 import Headline from './Headline/headline';
 import SocialBanner from './SocialBanner/socialBanner';
 
-function Banner({ context }) {
-  console.log(context);
-  const video = context.basicContent.find((v) => v.fields.identifier === 'social-youtube');
-  const videoUrl = video.fields.linkUrl;
-  const banner = context.basicContent.find((v) => v.fields.identifier === 'homepage-top-section');
+function Banner({ content, asset }) {
+  const socialYt = content.find((v) => v.fields.identifier === 'social-youtube').fields.linkUrl;
+  const socialInsta = content.find((v) => v.fields.identifier === 'social-instagram').fields
+    .linkUrl;
+  const socialLin = content.find((v) => v.fields.identifier === 'social-linkedin').fields.linkUrl;
+  const socialFb = content.find((v) => v.fields.identifier === 'social-facebook').fields.linkUrl;
+  const banner = content.find((v) => v.fields.identifier === 'homepage-top-section');
+  const video = asset.find((a) => a.fields.title === 'na strone ikss');
+  const videoUrl = video.fields.file.url;
   return (
     <>
       <div
@@ -23,7 +27,7 @@ function Banner({ context }) {
         <YoutubeEmbed url={videoUrl} />
       </div>
       <div>
-        <SocialBanner />
+        <SocialBanner yt={socialYt} insta={socialInsta} lin={socialLin} fb={socialFb} />
         <div>
           <FontAwesomeIcon
             icon={faInstagram}

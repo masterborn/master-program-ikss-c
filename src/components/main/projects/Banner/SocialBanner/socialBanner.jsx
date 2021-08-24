@@ -15,44 +15,44 @@ const Div = styled.div`
   max-width: auto;
   margin: 0;
   padding: 0;
+  role: button;
 `;
 
-function SocialBanner() {
-  const onClickHandler = () => {
-    window.open('https://onet.pl', '_blank');
+const BannerDiv = styled.div`
+  width: 1300px !important;
+  height: 137px;
+  float: right;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 13px 15px 22px ${steelTints.steel_20};
+`;
+function SocialBanner({ yt, insta, lin, fb }) {
+  const onClickHandler = (url) => {
+    window.open(`${url}`, '_blank');
   };
   const keyDownHandler = () => {};
   return (
-    <div
-      style={{
-        width: '1032px!important',
-        height: 137,
-        float: 'right',
-        display: 'flex',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        borderTopLeftRadius: '20px',
-        borderBottomLeftRadius: '20px',
-        boxShadow: `13px 15px 22px ${steelTints.steel_20}`,
-      }}
-    >
-      <Div onClick={onClickHandler} onKeyPress={keyDownHandler} role="button" tabIndex={0}>
+    <BannerDiv>
+      <Div onClick={() => onClickHandler(yt)} onKeyPress={keyDownHandler} tabIndex={0}>
         <YoutubeCircleIcon size="20px" />
         <h5>YouTube</h5>
       </Div>
-      <Div>
+      <Div onClick={() => onClickHandler(insta)} onKeyPress={keyDownHandler} tabIndex={0}>
         <InstagramCircleIcon size="20px" />
         <h5>Instagram</h5>
       </Div>
-      <Div>
+      <Div onClick={() => onClickHandler(fb)} onKeyPress={keyDownHandler} tabIndex={0}>
         <FacebookCircleIcon size="20px" />
         <h5>Facebook</h5>
       </Div>
-      <Div>
+      <Div onClick={() => onClickHandler(lin)} onKeyPress={keyDownHandler} tabIndex={-1}>
         <LinkedinCircleIcon size="20px" />
         <h5>LinkedIn</h5>
       </Div>
-    </div>
+    </BannerDiv>
   );
 }
 
