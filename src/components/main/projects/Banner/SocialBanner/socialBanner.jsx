@@ -1,9 +1,9 @@
 import React from 'react';
+import YoutubeCircleIcon from '@root/components/UI/Icons/YoutubeCircleIcon';
+import InstagramCircleIcon from '@root/components/UI/Icons/InstagramCircleIcon';
+import FacebookCircleIcon from '@root/components/UI/Icons/FacebookCircleIcon';
+import LinkedinCircleIcon from '@root/components/UI/Icons/LinkedinCircleIcon';
 import styled from 'styled-components';
-import YoutubeCircleIcon from '../../../../YoutubeCircleIcon';
-import InstagramCircleIcon from '../../../../InstagramCircleIcon';
-import FacebookCircleIcon from '../../../../FacebookCircleIcon';
-import LinkedinCircleIcon from '../../../../LinkedinCircleIcon';
 import { steelTints } from '../../../../../styles/GlobalStyles';
 
 const ICON_SIZE = '30px';

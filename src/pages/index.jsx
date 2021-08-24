@@ -1,6 +1,7 @@
 import getAllAssets from '@root/api/assetClient';
 import MainPageSponsorsList from '@root/components/main/partners/MainPagePartnersList';
 import Banner from '@root/components/main/projects/Banner/banner';
+import Highlights from '@root/components/main/Values/highlights';
 import { getBasicContent, getPartnerLogos, getProjects } from '../api/cmsClient/index';
 
 function HomePage(props) {
@@ -8,6 +9,7 @@ function HomePage(props) {
   return (
     <>
       <Banner content={content} asset={assets} />
+      <Highlights content={content} assets={assets} />
       <MainPageSponsorsList partners={partners} assets={assets} />
     </>
   );
