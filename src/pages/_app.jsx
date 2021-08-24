@@ -1,15 +1,15 @@
-import { FunctionComponent, useRef } from 'react';
+import { useRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import Meta from '@root/components/Meta';
-import { AppProps } from 'next/app';
 import GlobalStyles from '@styles/GlobalStyles';
 import theme from '@styles/theme';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
-const App: FunctionComponent<AppProps> = (props) => {
-  const queryClientRef = useRef<QueryClient>();
+const App = (props) => {
+  const queryClientRef = useRef();
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient();
   }
@@ -21,7 +21,7 @@ const App: FunctionComponent<AppProps> = (props) => {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Component {...pageProps} />            
+            <Component {...pageProps} />
           </Hydrate>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
