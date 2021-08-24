@@ -3,16 +3,15 @@ import { SecondaryButton } from '../../../../UI/Button/Button';
 
 function Headline({ content }) {
   const { title } = content.fields;
-  const description = content.fields.text1.content[0].content[0].value;
+  const description = content.fields.text1.content
+    .find((d) => d.content)
+    .content.find((v) => v.value).value;
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
-        // alignItems: 'flex-start',
-        // marginTop: '50px',
-        // // marginLeft: '300px',
         textAlign: 'left',
         justifySelf: 'center',
       }}
