@@ -17,8 +17,6 @@ export async function getBasicContent() {
   return result;
 }
 
-export async function getVideoAssetUrl() {}
-
 export async function getAllEntries() {
   const result = await getResource();
   return result;
