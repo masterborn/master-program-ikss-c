@@ -10,9 +10,11 @@ function Headline({ content }) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-evenly',
-        alignItems: 'flex-start',
-        marginTop: '50px',
-        marginLeft: '300px',
+        // alignItems: 'flex-start',
+        // marginTop: '50px',
+        // // marginLeft: '300px',
+        textAlign: 'left',
+        justifySelf: 'center',
       }}
     >
       <h1 style={{ maxWidth: '490px' }}>{title}</h1>

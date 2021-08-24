@@ -6,6 +6,9 @@ const Div = styled.div`
   overflow: hidden;
   height: 0;
   float: right;
+  justify-self: end;
+  align-self: start;
+  height: 505px;
 `;
 
 const YoutubeEmbed = ({ url }) => (

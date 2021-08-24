@@ -6,6 +6,8 @@ import FacebookCircleIcon from '../../../../FacebookCircleIcon';
 import LinkedinCircleIcon from '../../../../LinkedinCircleIcon';
 import { steelTints } from '../../../../../styles/GlobalStyles';
 
+const ICON_SIZE = '30px';
+
 const Div = styled.div`
   display: flex;
   justify-content: space-between;
@@ -16,10 +18,11 @@ const Div = styled.div`
   margin: 0;
   padding: 0;
   role: button;
+  z-index: 10;
 `;
 
 const BannerDiv = styled.div`
-  width: 1300px !important;
+  width: 65%;
   height: 137px;
   float: right;
   display: flex;
@@ -29,28 +32,34 @@ const BannerDiv = styled.div`
   border-bottom-left-radius: 20px;
   box-shadow: 13px 15px 22px ${steelTints.steel_20};
 `;
+
+const H5 = styled.h5`
+  margin-left: 15px;
+`;
 function SocialBanner({ yt, insta, lin, fb }) {
   const onClickHandler = (url) => {
     window.open(`${url}`, '_blank');
   };
+
   const keyDownHandler = () => {};
+
   return (
     <BannerDiv>
       <Div onClick={() => onClickHandler(yt)} onKeyPress={keyDownHandler} tabIndex={0}>
-        <YoutubeCircleIcon size="20px" />
-        <h5>YouTube</h5>
+        <YoutubeCircleIcon size={ICON_SIZE} />
+        <H5>YouTube</H5>
       </Div>
       <Div onClick={() => onClickHandler(insta)} onKeyPress={keyDownHandler} tabIndex={0}>
-        <InstagramCircleIcon size="20px" />
-        <h5>Instagram</h5>
+        <InstagramCircleIcon size={ICON_SIZE} />
+        <H5>Instagram</H5>
       </Div>
       <Div onClick={() => onClickHandler(fb)} onKeyPress={keyDownHandler} tabIndex={0}>
-        <FacebookCircleIcon size="20px" />
-        <h5>Facebook</h5>
+        <FacebookCircleIcon size={ICON_SIZE} />
+        <H5>Facebook</H5>
       </Div>
       <Div onClick={() => onClickHandler(lin)} onKeyPress={keyDownHandler} tabIndex={-1}>
-        <LinkedinCircleIcon size="20px" />
-        <h5>LinkedIn</h5>
+        <LinkedinCircleIcon size={ICON_SIZE} />
+        <H5>LinkedIn</H5>
       </Div>
     </BannerDiv>
   );
