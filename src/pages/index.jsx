@@ -1,15 +1,13 @@
 import getAllAssets from '@root/api/assetClient';
-import MainPageProjectList from '@root/components/main/projects/MainPageProjectList';
 import MainPageSponsorsList from '@root/components/main/partners/MainPagePartnersList';
 import Banner from '@root/components/main/projects/Banner/banner';
 import { getBasicContent, getPartnerLogos, getProjects } from '../api/cmsClient/index';
 
 function HomePage(props) {
-  const { projects, partners, assets, content } = props;
+  const { partners, assets, content } = props;
   return (
     <>
       <Banner content={content} asset={assets} />
-      <MainPageProjectList projects={projects} />
       <MainPageSponsorsList partners={partners} assets={assets} />
     </>
   );
