@@ -1,15 +1,29 @@
 import React from 'react';
-import classes from './youtubeEmbed.module.css';
+import styled from 'styled-components';
+
+const Div = styled.div`
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  display: flex;
+  justify-self: start;
+  align-self: stretch;
+  width: 100%;
+  min-height: 100%;
+`;
 
 const YoutubeEmbed = ({ url }) => (
-  <div className={classes.videoResponsive}>
+  <Div>
     <iframe
-      src={`https://www.youtube.com/embed/${url}`}
+      style={{ objectFit: 'fill', with: '100%', aspectRatio: '16/9' }}
+      src={`${url}`}
       frameBorder="0"
-      allow="autoplay; encrypted-media;"
+      allow="autoplay; encrypted-media; "
       title="Embedded youtube"
+      controls
+      width="1200"
+      height="505"
     />
-  </div>
+  </Div>
 );
 
 export default YoutubeEmbed;

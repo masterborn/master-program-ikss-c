@@ -15,6 +15,8 @@ const GlobalStyles = createGlobalStyle`
     line-height: 32px;
     letter-spacing: -0.015em;
     color: #61798B;
+    width: 100vw;
+    height: 100vh;
   };
   h1 {
     font-family: Mulish;

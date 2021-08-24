@@ -1,26 +1,28 @@
 import React from 'react';
+import styled from 'styled-components';
 import { SecondaryButton } from '../../../../UI/Button/Button';
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: left;
+  justify-self: center;
+`;
 
 function Headline({ content }) {
   const { title } = content.fields;
-  const description = content.fields.text1.content[0].content[0].value;
+  const description = content.fields.text1.content
+    .find((d) => d.content)
+    .content.find((v) => v.value).value;
+
+  const clickHandler = () => {};
   return (
-    <div>
-      <h1
-        style={{
-          marginRight: 90,
-          marginLeft: 120,
-          marginTop: 77,
-          marginBottom: 32,
-          maxWidth: 416,
-          maxHeight: 505,
-        }}
-      >
-        {title}
-      </h1>
-      <p style={{ maxWidth: '384px', marginLeft: 120 }}>{description}</p>
-      <SecondaryButton style={{ marginLeft: 120, marginTop: 40 }}>Skontaktuj sie</SecondaryButton>
-    </div>
+    <Div>
+      <h1 style={{ maxWidth: '490px' }}>{title}</h1>
+      <p style={{ maxWidth: '384px' }}>{description}</p>
+      <SecondaryButton onClick={clickHandler}>Skontaktuj sie</SecondaryButton>
+    </Div>
   );
 }
 

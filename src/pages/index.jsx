@@ -1,25 +1,33 @@
+import getAllAssets from '@root/api/assetClient';
+import MainPageSponsorsList from '@root/components/main/partners/MainPagePartnersList';
 import Banner from '@root/components/main/projects/Banner/banner';
 import Highlights from '@root/components/main/Values/highlights';
-import getAllAssets from '@root/api/asssetClient';
-import { getBasicContent } from '../api/cmsClient/index';
+import { getBasicContent, getPartnerLogos, getProjects } from '../api/cmsClient/index';
 
 function HomePage(props) {
+  const { partners, assets, content } = props;
   return (
     <>
-      <Banner context={props} />
+      <Banner content={content} asset={assets} />
       <Highlights context={props} />
+      <MainPageSponsorsList partners={partners} assets={assets} />
     </>
   );
 }
 export default HomePage;
 
 export async function getStaticProps() {
-  const basicContent = await getBasicContent();
+  const projects = await getProjects();
+  const content = await getBasicContent();
   const assets = await getAllAssets();
+  const partners = await getPartnerLogos();
+
   return {
     props: {
-      basicContent,
-      assets
+      projects,
+      content,
+      assets,
+      partners,
     },
   };
 }

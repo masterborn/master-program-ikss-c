@@ -2,46 +2,65 @@ import React from 'react';
 import YoutubeCircleIcon from '@root/components/UI/Icons/YoutubeCircleIcon';
 import InstagramCircleIcon from '@root/components/UI/Icons/InstagramCircleIcon';
 import FacebookCircleIcon from '@root/components/UI/Icons/FacebookCircleIcon';
+import LinkedinCircleIcon from '@root/components/UI/Icons/LinkedinCircleIcon';
+import styled from 'styled-components';
 import { steelTints } from '../../../../../styles/GlobalStyles';
 
-function SocialBanner() {
-  const onClickHandler = () => {
-    window.open('https://onet.pl', '_blank');
+const ICON_SIZE = '30px';
+
+const Div = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+  max-width: auto;
+  margin: 0;
+  padding: 0;
+  role: button;
+  z-index: 10;
+`;
+
+const BannerDiv = styled.div`
+  width: 65%;
+  height: 137px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 13px 15px 22px ${steelTints.steel_20};
+`;
+
+const H5 = styled.h5`
+  margin-left: 15px;
+`;
+function SocialBanner({ yt, insta, lin, fb }) {
+  const onClickHandler = (url) => {
+    window.open(`${url}`, '_blank');
   };
+
   const keyDownHandler = () => {};
+
   return (
-    <div
-      style={{
-        width: '1032px!important',
-        height: 137,
-        float: 'right',
-        display: 'flex',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        borderTopLeftRadius: '20px',
-        borderBottomLeftRadius: '20px',
-        boxShadow: `13px 15px 22px ${steelTints.steel_20}`,
-      }}
-    >
-      <div
-        style={{ display: 'flex', justifyContent: 'space-between', cursor: 'pointer' }}
-        onClick={onClickHandler}
-        onKeyPress={keyDownHandler}
-        role="button"
-        tabIndex={0}
-      >
-        <YoutubeCircleIcon />
-        YouTube
-      </div>
-      <div style={{ display: 'inline-flex' }}>
-        <InstagramCircleIcon />
-        Instagram
-      </div>
-      <div style={{ display: 'inline-flex' }}>
-        <FacebookCircleIcon />
-        Facebook
-      </div>
-    </div>
+    <BannerDiv>
+      <Div onClick={() => onClickHandler(yt)} onKeyPress={keyDownHandler} tabIndex={0}>
+        <YoutubeCircleIcon size={ICON_SIZE} />
+        <H5>YouTube</H5>
+      </Div>
+      <Div onClick={() => onClickHandler(insta)} onKeyPress={keyDownHandler} tabIndex={0}>
+        <InstagramCircleIcon size={ICON_SIZE} />
+        <H5>Instagram</H5>
+      </Div>
+      <Div onClick={() => onClickHandler(fb)} onKeyPress={keyDownHandler} tabIndex={0}>
+        <FacebookCircleIcon size={ICON_SIZE} />
+        <H5>Facebook</H5>
+      </Div>
+      <Div onClick={() => onClickHandler(lin)} onKeyPress={keyDownHandler} tabIndex={-1}>
+        <LinkedinCircleIcon size={ICON_SIZE} />
+        <H5>LinkedIn</H5>
+      </Div>
+    </BannerDiv>
   );
 }
 

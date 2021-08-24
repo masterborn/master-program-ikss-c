@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import Meta from '@root/components/Meta';
 import GlobalStyles from '@styles/GlobalStyles';
 import theme from '@styles/theme';
+import Layout from '@root/components/Layout/Layout';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 const App = (props) => {
@@ -21,7 +22,9 @@ const App = (props) => {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Component {...pageProps} />
+            <Layout props={pageProps}>
+              <Component {...pageProps} />
+            </Layout>
           </Hydrate>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
