@@ -3,14 +3,13 @@ import Tile1 from './Tiles/tile1';
 import Tile2 from './Tiles/tile2';
 import Tile3 from './Tiles/tile3';
 
-function Highlights({ context }) {
+function Highlights({ content, assets }) {
 
-  const headline = context.basicContent.find((v) => v.fields.identifier === 'homepage-values');
+  const headline = content.find((v) => v.fields.identifier === 'homepage-values');
   const headlineTitle = headline.fields.title;
   const headlineDescription = headline.fields.text1.content.find((v) => v.nodeType === 'paragraph');
   const headlineDescription1 = headlineDescription.content.find((v) => v.nodeType === 'text');
   const headlineParagraph = headlineDescription1.value;
-
   return (
     <>
       <div
@@ -22,16 +21,18 @@ function Highlights({ context }) {
       >
         <h3>{headlineTitle}</h3>
         <p>{headlineParagraph}</p>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'nowrap',
-          justifyContent: 'space-between',
-          width: '100%'
-        }}>
-          <Tile1 context={context} />
-          <Tile2 context={context} />
-          <Tile3 context={context} />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'nowrap',
+            justifyContent: 'space-between',
+            width: '100%',
+          }}
+        >
+          <Tile1 context={content} assets={assets} />
+          <Tile2 context={content} assets={assets} />
+          <Tile3 context={content} assets={assets} />
         </div>
       </div>
     </>

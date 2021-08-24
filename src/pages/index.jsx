@@ -9,7 +9,7 @@ function HomePage(props) {
   return (
     <>
       <Banner content={content} asset={assets} />
-      <Highlights context={props} />
+      <Highlights content={content} assets={assets} />
       <MainPageSponsorsList partners={partners} assets={assets} />
     </>
   );

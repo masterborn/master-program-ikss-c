@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Tile2({ context }) {
-  const tile2 = context.basicContent.find((v) => v.fields.identifier === 'homepage-tile-2');
+function Tile2({ context, assets }) {
+  const tile2 = context.find((v) => v.fields.identifier === 'homepage-tile-2');
   const tile2Title = tile2.fields.title;
   const tile2Description = tile2.fields.text1.content
     .find((v) => v.nodeType === 'paragraph')
     .content.find((v) => v.nodeType === 'text').value;
-  const tile2Asset = context.assets.find((v) => v.fields.title === 'Frame 170');
+  const tile2Asset = assets.find((v) => v.fields.title === 'Frame 170');
   const tile2Img = tile2Asset.fields.file.url;
 
   return (
