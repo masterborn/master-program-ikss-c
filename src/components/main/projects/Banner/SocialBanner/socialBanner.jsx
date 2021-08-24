@@ -24,7 +24,6 @@ const Div = styled.div`
 const BannerDiv = styled.div`
   width: 65%;
   height: 137px;
-  float: right;
   display: flex;
   justify-content: space-around;
   align-items: center;
