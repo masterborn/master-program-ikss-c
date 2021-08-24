@@ -1,7 +1,7 @@
 import React from 'react';
-import YoutubeCircleIcon from '../../../../YoutubeCircleIcon';
-import InstagramCircleIcon from '../../../../InstagramCircleIcon';
-import FacebookCircleIcon from '../../../../FacebookCircleIcon';
+import YoutubeCircleIcon from '@root/components/UI/Icons/YoutubeCircleIcon';
+import InstagramCircleIcon from '@root/components/UI/Icons/InstagramCircleIcon';
+import FacebookCircleIcon from '@root/components/UI/Icons/FacebookCircleIcon';
 import { steelTints } from '../../../../../styles/GlobalStyles';
 
 function SocialBanner() {
