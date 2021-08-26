@@ -31,7 +31,7 @@ function Footer({ socialLinks, footerText, pageName }) {
   return (
     <StyledFooter style={{ height: `${pageName === 'HomePage' ? '728px' : '404px'}` }}>
       <ul>
-        {socialLinks.map((link) => (
+        {socialLinks?.map((link) => (
           <li key={link.fields.identifier}>
             <a href={link.fields.linkUrl}>{link.fields.linkCaption}</a>
           </li>
