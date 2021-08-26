@@ -1,6 +1,6 @@
 import Error404 from '@root/components/UI/404/error404';
 
-function NotFound() {
+function Error() {
   return (
     <div
       style={{
@@ -13,4 +13,4 @@ function NotFound() {
     </div>
   );
 }
-export default NotFound;
+export default Error;

@@ -22,9 +22,9 @@ const App = (props) => {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Layout props={pageProps}>
-              <Component {...pageProps} />
-            </Layout>
+            {/* <Layout props={pageProps}> */}
+            <Component {...pageProps} />
+            {/* </Layout> */}
           </Hydrate>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>

@@ -6,7 +6,6 @@ import Highlights from '@root/components/main/Values/highlights';
 const ENTRIES = ['basicContent', 'projects', 'partnerLogos', 'boardMembers'];
 
 function HomePage(props) {
-  console.log(props);
   const { partners, assets, content } = props;
   return (
     <>
@@ -27,17 +26,21 @@ const getCollection = (array) => {
 };
 
 export async function getStaticProps() {
-  const entries = await entriesCollection.getData();
-  const assets = await assetsCollection.getData();
-  const collections = getCollection(entries.data.items);
-  return {
-    props: {
-      content: collections.basicContent,
-      projects: collections.projects,
-      partners: collections.partnerLogos,
-      members: collections.boardMembers,
-      assets: assets.data.items,
-    },
-    revalidate: 10,
-  };
+  try {
+    const entries = await entriesCollection.getData();
+    const assets = await assetsCollection.getData();
+    const collections = getCollection(entries.data.items);
+    return {
+      props: {
+        content: collections.basicContent,
+        projects: collections.projects,
+        partners: collections.partnerLogos,
+        members: collections.boardMembers,
+        assets: assets.data.items,
+      },
+      revalidate: 10,
+    };
+  } catch (e) {
+    return { notFound: true };
+  }
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '../../../config';
 
-const entryUrl = `https://cdn.contentful.com/spaces/${config.CONTENTFUL_API_SPACE}/environments/master/entries?access_token=${config.CONTENTFUL_API_TOKEN}`;
+const entryUrl = `https://cdn.contentful.com/spaces/${config.CONTENTFUL_API_SPACE}/environments/master/entries?access_toke=${config.CONTENTFUL_API_TOKEN}`;
 const assetUrl = `https://cdn.contentful.com/spaces/${config.CONTENTFUL_API_SPACE}/environments/master/assets?access_token=${config.CONTENTFUL_API_TOKEN}`;
 
 class ApiCLient {
@@ -14,7 +14,8 @@ class ApiCLient {
       try {
         return await axios.get(`${this.url}`);
       } catch (e) {
-        return Promise.reject(e);
+        throw Error('something went wrong');
+        // return Promise.reject(e.message);
       }
     };
   }
