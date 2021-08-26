@@ -1,19 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import { color } from '@root/styles/GlobalStyles';
+import LogoIkss from '@root/components/logoIkss';
 
-const StyledFooter = styled.footer`
-  background-color: lightblue;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-`;
 
-function Footer({ socialLinks, footerText }) {
+function Footer({ socialLinks, footerText, pageName}) {
 
+  const StyledFooter = styled.footer`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: ${color.blue};
+    height: ${pageName === 'HomePage' ? '728px' : '404px'};
+    width: 100%;
+    & p {
+      color: ${color.white}
+    }
+  `;
 
   return (
     <StyledFooter>
-      <h3>Hello Footer</h3>
       <ul>
         {socialLinks.map((link) => (
           <li key={link.fields.identifier}>
@@ -21,6 +27,7 @@ function Footer({ socialLinks, footerText }) {
           </li>
         ))}
       </ul>
+      <LogoIkss />
       <p>{footerText?.fields.title}</p>
     </StyledFooter>
   );
