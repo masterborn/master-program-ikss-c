@@ -6,13 +6,13 @@ import Highlights from '@root/components/main/Values/highlights';
 const ENTRIES = ['basicContent', 'projects', 'partnerLogos', 'boardMembers'];
 
 function HomePage(props) {
-  const { partners, assets, content, banner } = props;
-  console.log(content);
+  // const { partners, assets, content, banner } = props;
+  console.log(props);
   return (
     <>
-      <Banner content={content} asset={assets} />
+      {/* <Banner content={content} asset={assets} />
       <Highlights content={content} assets={assets} />
-      <MainPageSponsorsList partners={partners} assets={assets} />
+      <MainPageSponsorsList partners={partners} assets={assets} /> */}
     </>
   );
 }
@@ -28,40 +28,33 @@ const groupByCollection = (itemsArray) => {
 
 function transformBanerData(entries, assets) {
   const { basicContent } = groupByCollection(entries);
-  // const socialYt = basicContent.find((v) => v.fields.identifier === 'social-youtube').fields.linkUrl;
-  // const socialInsta = basicContent.find((v) => v.fields.identifier === 'social-instagram').fields
-  //   .linkUrl;
-  // const socialLin = basicContent.find((v) => v.fields.identifier === 'social-linkedin').fields.linkUrl;
-  // const socialFb = basicContent.find((v) => v.fields.identifier === 'social-facebook').fields.linkUrl;
-  // const banner = basicContent.find((v) => v.fields.identifier === 'homepage-top-section');
-  const videoUrl = assets.find((a) => a.fields.title === 'na strone ikss').fields.file.url;
-
-  const test = basicContent.filter(
+  const videoUrl = assets.data.items.find((a) => a.fields.title === 'na strone ikss');
+  const bannerData = basicContent.filter(
     (v) =>
       v.fields.identifier === 'social-youtube' ||
       v.fields.identifier === 'social-instagram' ||
       v.fields.identifier === 'social-linkedin' ||
       v.fields.identifier === 'social-facebook',
   );
+  bannerData.push(videoUrl);
+  return bannerData;
+}
 
-  //  return [socialYt, socialInsta, socialLin, socialFb, banner, videoUrl];
-  return test;
+async function getProps() {
+  const entries = await cmsClient.getAllEntries();
+  const assets = await cmsClient.getAllAssets();
+  const banner = transformBanerData(entries, assets);
+  const projects = {};
+  const props = [banner, projects];
+  return props;
 }
 
 export async function getStaticProps() {
   try {
-    const entries = await cmsClient.getAllEntries();
-    const assets = await cmsClient.getAllAssets();
-    const collections = groupByCollection(entries);
-    const banner = transformBanerData(entries, assets);
+    const props = await getProps();
     return {
       props: {
-        banner,
-        content: collections.basicContent,
-        projects: collections.projects,
-        partners: collections.partnerLogos,
-        members: collections.boardMembers,
-        assets: assets.data.items,
+        props,
       },
       revalidate: 10,
     };
