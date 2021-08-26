@@ -1,10 +1,12 @@
-import getAllAssets from '@root/api/assetClient';
+import { entriesCollection, assetsCollection } from '@root/api/apiClient';
 import MainPageSponsorsList from '@root/components/main/partners/MainPagePartnersList';
 import Banner from '@root/components/main/projects/Banner/banner';
 import Highlights from '@root/components/main/Values/highlights';
-import { getBasicContent, getPartnerLogos, getProjects } from '../api/cmsClient/index';
+
+const ENTRIES = ['basicContent', 'projects', 'partnerLogos', 'boardMembers'];
 
 function HomePage(props) {
+  console.log(props);
   const { partners, assets, content } = props;
   return (
     <>
@@ -16,18 +18,26 @@ function HomePage(props) {
 }
 export default HomePage;
 
-export async function getStaticProps() {
-  const projects = await getProjects();
-  const content = await getBasicContent();
-  const assets = await getAllAssets();
-  const partners = await getPartnerLogos();
+const getCollection = (array) => {
+  const obj = {};
+  for (const entry of ENTRIES) {
+    obj[entry] = array.filter((x) => x.sys.contentType.sys.id === entry);
+  }
+  return obj;
+};
 
+export async function getStaticProps() {
+  const entries = await entriesCollection.getData();
+  const assets = await assetsCollection.getData();
+  const collections = getCollection(entries.data.items);
   return {
     props: {
-      projects,
-      content,
-      assets,
-      partners,
+      content: collections.basicContent,
+      projects: collections.projects,
+      partners: collections.partnerLogos,
+      members: collections.boardMembers,
+      assets: assets.data.items,
     },
+    revalidate: 10,
   };
 }
