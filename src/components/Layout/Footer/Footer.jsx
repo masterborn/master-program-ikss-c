@@ -8,12 +8,8 @@ const StyledFooter = styled.footer`
   bottom: 0;
 `;
 
-function Footer({ navAndFooterData }) {
-  const socialLinks = navAndFooterData.filter((position) => position.fields.linkUrl !== undefined);
-  // console.log('navbar', navAndFooterData);
-  const footerText = navAndFooterData.find(
-    (position) => position.fields.identifier === 'footer-text',
-  );
+function Footer({ socialLinks, footerText }) {
+
 
   return (
     <StyledFooter>

@@ -3,12 +3,17 @@ import Navbar from './Navbar/Navbar';
 
 function Layout({ children, props }) {
   const navAndFooterData = props.content;
+  const socialLinks = navAndFooterData?.filter((position) => position.fields.linkUrl !== undefined);
+  // console.log('navbar', navAndFooterData);
+  const footerText = navAndFooterData.find(
+    (position) => position.fields.identifier === 'footer-text',
+  );
 
   return (
     <div>
-      <Navbar navAndFooterData={navAndFooterData} />
+      <Navbar socialLinks={socialLinks} />
       <main>{children}</main>
-      <Footer navAndFooterData={navAndFooterData} />
+      <Footer socialLinks={socialLinks} footerText={footerText}/>
     </div>
   );
 }
