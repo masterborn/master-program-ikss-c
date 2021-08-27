@@ -1,15 +1,19 @@
-import Footer from './Footer/Footer';
-import Navbar from './Navbar/Navbar'; 
+// import Footer from './Footer/Footer';
+// import Navbar from './Navbar/Navbar';
 
-function Layout({ children, props }) {
-  const navAndFooterData = props.content;
+function Layout({ children }) {
+  // const socialLinks = props.content?.filter((position) => position.fields.linkUrl !== undefined);
+  // const footerText = props.content?.find(
+  //   (position) => position.fields.identifier === 'footer-text',
+  // );
+  // const pageName = { props };
 
   return (
-    <div>
-      <Navbar navAndFooterData={navAndFooterData} />
+    <>
+      {/* <Navbar socialLinks={socialLinks} /> */}
       <main>{children}</main>
-      <Footer navAndFooterData={navAndFooterData} />
-    </div>
+      {/* <Footer socialLinks={socialLinks} footerText={footerText} pageName={pageName} /> */}
+    </>
   );
 }
 

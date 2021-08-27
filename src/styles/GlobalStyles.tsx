@@ -63,6 +63,10 @@ const GlobalStyles = createGlobalStyle`
     letter-spacing: -0.015em;
     color: #1A2847;    
   };
+  a{
+    text-decoration: none;
+  };
+
   .iconBody {
     width: 24px;
     height: 24px;
