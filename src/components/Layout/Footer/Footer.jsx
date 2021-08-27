@@ -4,8 +4,12 @@ import LogoIkss from '@root/components/logoIkss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { color } from '@root/styles/GlobalStyles';
+import FacebookIcon from '@root/components/UI/Icons/FacebookIcon';
+import { useRouter } from 'next/dist/client/router';
 
-function Footer({ socialLinks, footerText, pageName }) {
+function Footer({ socialLinks, footerText }) {
+  const { pathName } = useRouter();
+
   const StyledFooter = styled.footer`
     display: flex;
     flex-direction: column;
@@ -13,6 +17,7 @@ function Footer({ socialLinks, footerText, pageName }) {
     justify-content: flex-end;
     background-color: ${color.blue};
     width: 100%;
+    height: ${pathName === '/' ? '728px' : '404px'};
     padding: 0 0 56px 0;
     & a,
     p {
@@ -33,28 +38,32 @@ function Footer({ socialLinks, footerText, pageName }) {
       justify-content: space-between;
     }
   `;
-  const LogoConteinter = styled.div`
+  const LogoConteinter = styled.a`
     margin-bottom: 56px;
-    line-height:0px  `;
+    line-height: 0px;
+  `;
 
   return (
-    <StyledFooter style={{ height: `${pageName === 'HomePage' ? '728px' : '404px'}` }}>
+    <StyledFooter>
       <ul>
         {socialLinks?.map((link) => (
           <li key={link.fields.identifier}>
-            <a href={link.fields.linkUrl}>{link.fields.linkCaption}</a>
+            <a href={link.fields.linkUrl}>
+              <FacebookIcon />
+              {link.fields.linkCaption}
+            </a>
           </li>
         ))}
       </ul>
-      <LogoConteinter>
+      <LogoConteinter href="/">
         <LogoIkss />
       </LogoConteinter>
+
       <p>
         {footerText?.fields.title}
-        <p>
-          Made with <FontAwesomeIcon icon={faHeart} /> by{' '}
-          <a href="https://masterborn.com/">MasterBorn Software</a>
-        </p>
+        <br />
+        Made with <FontAwesomeIcon icon={faHeart} /> by{' '}
+        <a href="https://masterborn.com/">MasterBorn Software</a>
       </p>
     </StyledFooter>
   );

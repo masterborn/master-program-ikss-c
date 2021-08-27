@@ -6,13 +6,12 @@ function Layout({ children, props }) {
   const footerText = props.content?.find(
     (position) => position.fields.identifier === 'footer-text',
   );
-  const pageName = { props };
 
   return (
     <>
       <Navbar socialLinks={socialLinks} />
       <main>{children}</main>
-      <Footer socialLinks={socialLinks} footerText={footerText} pageName={pageName} />
+      <Footer socialLinks={socialLinks} footerText={footerText} />
     </>
   );
 }
