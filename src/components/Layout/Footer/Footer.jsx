@@ -33,6 +33,9 @@ function Footer({ socialLinks, footerText, pageName }) {
       justify-content: space-between;
     }
   `;
+  const LogoConteinter = styled.div`
+    margin-bottom: 56px;
+    line-height:0px  `;
 
   return (
     <StyledFooter style={{ height: `${pageName === 'HomePage' ? '728px' : '404px'}` }}>
@@ -43,7 +46,9 @@ function Footer({ socialLinks, footerText, pageName }) {
           </li>
         ))}
       </ul>
-      <LogoIkss />
+      <LogoConteinter>
+        <LogoIkss />
+      </LogoConteinter>
       <p>
         {footerText?.fields.title}
         <p>

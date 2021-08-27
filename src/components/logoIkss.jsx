@@ -1,5 +1,4 @@
 import React from 'react';
-// import logo from '../assets/logos/ikss.svg';
 
 function LogoIkss() {
   return (
