@@ -1,5 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 import Tiles from './tiles';
+
+const StyledValues = styled.div`
+  text-align: center;
+  margin-top: 233px;
+`;
 
 function Highlights({ content, assets }) {
 
@@ -8,23 +14,11 @@ function Highlights({ content, assets }) {
   const headlineDescription = headline.fields.text1.content.find((v) => v.nodeType === 'paragraph').content.find((v) => v.nodeType === 'text').value;
 
   return (
-    <>
-      <div
-        style={{
-          textAlign: 'center',
-          marginTop: '233px'
-        }}
-      >
-        <h3>{headlineTitle}</h3>
-        <p style={{ width: '551px', height: '64px', margin: '40px auto 40px auto' }} >{headlineDescription}</p>
-        <div
-          style={{
-            width: '100%',
-          }}>
-          <Tiles context={content} assets={assets} />
-        </div>
-      </div>
-    </>
+    <StyledValues>
+      <h3>{headlineTitle}</h3>
+      <p style={{ width: '551px', height: '64px', margin: '40px auto' }} >{headlineDescription}</p>
+      <Tiles content={content} assets={assets} />
+    </StyledValues>
   );
 }
 
