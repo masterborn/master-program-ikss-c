@@ -1,51 +1,30 @@
 import cmsClient from '@root/api/cmsApi';
+import MainPageProjectList from '@root/components/main/projects/MainPageProjectList';
 import MainPageSponsorsList from '@root/components/main/partners/MainPagePartnersList';
 import Banner from '@root/components/main/projects/Banner/banner';
 import Highlights from '@root/components/main/Values/highlights';
-
-const ENTRIES = ['basicContent', 'projects', 'partnerLogos', 'boardMembers'];
+import { extractBanerData, extractHomeProjectData } from '../utils/index';
 
 function HomePage(props) {
-  // const { partners, assets, content, banner } = props;
-  console.log(props);
+  const { partners, assets, content } = props;
+  const { homeProjects } = props.props;
   return (
     <>
       {/* <Banner content={content} asset={assets} />
       <Highlights content={content} assets={assets} />
       <MainPageSponsorsList partners={partners} assets={assets} /> */}
+      <MainPageProjectList projects={homeProjects} />
     </>
   );
 }
 export default HomePage;
 
-const groupByCollection = (itemsArray) => {
-  const obj = {};
-  for (const entry of ENTRIES) {
-    obj[entry] = itemsArray.data.items.filter((x) => x.sys.contentType.sys.id === entry);
-  }
-  return obj;
-};
-
-function transformBanerData(entries, assets) {
-  const { basicContent } = groupByCollection(entries);
-  const videoUrl = assets.data.items.find((a) => a.fields.title === 'na strone ikss');
-  const bannerData = basicContent.filter(
-    (v) =>
-      v.fields.identifier === 'social-youtube' ||
-      v.fields.identifier === 'social-instagram' ||
-      v.fields.identifier === 'social-linkedin' ||
-      v.fields.identifier === 'social-facebook',
-  );
-  bannerData.push(videoUrl);
-  return bannerData;
-}
-
 async function getProps() {
   const entries = await cmsClient.getAllEntries();
   const assets = await cmsClient.getAllAssets();
-  const banner = transformBanerData(entries, assets);
-  const projects = {};
-  const props = [banner, projects];
+  const banner = extractBanerData(entries, assets);
+  const homeProjects = extractHomeProjectData(entries, assets);
+  const props = { banner, homeProjects };
   return props;
 }
 

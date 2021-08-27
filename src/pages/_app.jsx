@@ -15,6 +15,7 @@ const App = (props) => {
     queryClientRef.current = new QueryClient();
   }
   const { Component, pageProps } = props;
+  const name = { Component };
 
   return (
     <>

@@ -1,31 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
+import { color } from '@root/styles/GlobalStyles';
+import LogoIkss from '@root/components/logoIkss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-const StyledFooter = styled.footer`
-  background-color: lightblue;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-`;
-
-function Footer({ navAndFooterData }) {
-  const socialLinks = navAndFooterData.filter((position) => position.fields.linkUrl !== undefined);
-  // console.log('navbar', navAndFooterData);
-  const footerText = navAndFooterData.find(
-    (position) => position.fields.identifier === 'footer-text',
-  );
+function Footer({ socialLinks, footerText, pageName }) {
+  const StyledFooter = styled.footer`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: ${color.blue};
+    width: 100%;
+    & a,
+    p {
+      color: ${color.white};
+      text-align: center;
+    }
+    & ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      width: 300px;
+      justify-content: space-between;
+    }
+  `;
 
   return (
-    <StyledFooter>
-      <h3>Hello Footer</h3>
+    <StyledFooter style={{ height: `${pageName === 'HomePage' ? '728px' : '404px'}` }}>
       <ul>
-        {socialLinks.map((link) => (
+        {socialLinks?.map((link) => (
           <li key={link.fields.identifier}>
-            <a href={link.fields.linkUrl}>{link.fields.identifier}</a>
+            <a href={link.fields.linkUrl}>{link.fields.linkCaption}</a>
           </li>
         ))}
       </ul>
-      <p>{footerText?.fields.title}</p>
+      <LogoIkss />
+      <p>
+        {footerText?.fields.title}
+        <p>
+          Made with <FontAwesomeIcon icon={faHeart} /> by{' '}
+          <a href="https://masterborn.com/" target="blank">
+            MasterBorn Software
+          </a>
+        </p>
+      </p>
     </StyledFooter>
   );
 }
