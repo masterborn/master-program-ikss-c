@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function YoutubeIcon() {
   return (
     <div className="iconBody">
-      <FontAwesomeIcon icon={faYoutube} />
+      <FontAwesomeIcon icon={faYoutube} style={{ color: 'white' }} />
     </div>
   );
 }

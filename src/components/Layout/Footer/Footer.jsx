@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { color } from '@root/styles/GlobalStyles';
 import FacebookIcon from '@root/components/UI/Icons/FacebookIcon';
+import InstagramIcon from '@root/components/UI/Icons/InstagramIcon';
+import LinkedinIcon from '@root/components/UI/Icons/LinkedinIcon';
+import YoutubeIcon from '@root/components/UI/Icons/YoutubeIcon';
 import { useRouter } from 'next/dist/client/router';
 
 function Footer({ socialLinks, footerText }) {
@@ -31,26 +34,43 @@ function Footer({ socialLinks, footerText }) {
     }
     & ul {
       list-style-type: none;
-      margin: 0;
+      margin-bottom: 48px;
       padding: 0;
       display: flex;
-      width: 300px;
+      width: 185px;
       justify-content: space-between;
     }
+    & .iconBody {
+      font-size: 24px
+    }
   `;
+
   const LogoConteinter = styled.a`
     margin-bottom: 56px;
     line-height: 0px;
   `;
 
+  const addSocialIcon = (url) => {
+    let icon;
+    if (url.includes('facebook')) {
+      icon = <FacebookIcon />;
+    } else if (url.includes('instagram')) {
+      icon = <InstagramIcon />;
+    } else if (url.includes('lin')) {
+      icon = <LinkedinIcon />;
+    } else if (url.includes('youtu')) {
+      icon = <YoutubeIcon />;
+    }
+    return icon;
+  };
+
   return (
     <StyledFooter>
       <ul>
-        {socialLinks?.map((link) => (
+        {socialLinks?.reverse().map((link) => (
           <li key={link.fields.identifier}>
-            <a href={link.fields.linkUrl}>
-              <FacebookIcon />
-              {link.fields.linkCaption}
+            <a href={link.fields.linkUrl} target="_self">
+              {addSocialIcon(link.fields.linkUrl)}
             </a>
           </li>
         ))}
@@ -58,7 +78,6 @@ function Footer({ socialLinks, footerText }) {
       <LogoConteinter href="/">
         <LogoIkss />
       </LogoConteinter>
-
       <p>
         {footerText?.fields.title}
         <br />
