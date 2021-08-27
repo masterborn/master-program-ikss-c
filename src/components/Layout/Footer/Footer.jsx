@@ -10,45 +10,45 @@ import LinkedinIcon from '@root/components/UI/Icons/LinkedinIcon';
 import YoutubeIcon from '@root/components/UI/Icons/YoutubeIcon';
 import { useRouter } from 'next/dist/client/router';
 
-function Footer({ socialLinks, footerText }) {
-  const { pathName } = useRouter();
+const StyledFooter = styled.footer`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: ${color.blue};
+  width: 100%;
 
-  const StyledFooter = styled.footer`
+  padding: 0 0 56px 0;
+  & a,
+  p {
+    color: ${color.white};
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: -0.015em;
+  }
+  & ul {
+    list-style-type: none;
+    margin-bottom: 48px;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: ${color.blue};
-    width: 100%;
-    height: ${pathName === '/' ? '728px' : '404px'};
-    padding: 0 0 56px 0;
-    & a,
-    p {
-      color: ${color.white};
-      text-align: center;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 28px;
-      letter-spacing: -0.015em;
-    }
-    & ul {
-      list-style-type: none;
-      margin-bottom: 48px;
-      padding: 0;
-      display: flex;
-      width: 185px;
-      justify-content: space-between;
-    }
-    & .iconBody {
-      font-size: 24px
-    }
-  `;
+    width: 185px;
+    justify-content: space-between;
+  }
+  & .iconBody {
+    font-size: 24px;
+  }
+`;
 
-  const LogoConteinter = styled.a`
-    margin-bottom: 56px;
-    line-height: 0px;
-  `;
+const LogoConteinter = styled.a`
+  margin-bottom: 56px;
+  line-height: 0px;
+`;
+
+function Footer({ socialLinks, footerText }) {
+  const { pathname } = useRouter();
 
   const addSocialIcon = (url) => {
     let icon;
@@ -65,7 +65,7 @@ function Footer({ socialLinks, footerText }) {
   };
 
   return (
-    <StyledFooter>
+    <StyledFooter style={{ height: `${pathname === '/' ? '728px' : '404px'}` }}>
       <ul>
         {socialLinks?.reverse().map((link) => (
           <li key={link.fields.identifier}>
