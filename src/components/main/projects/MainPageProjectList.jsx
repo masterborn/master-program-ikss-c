@@ -10,7 +10,6 @@ const Div = styled.div`
 
 function MainPageProjectList({ projects }) {
   const { homepageProjects, imagesUrl } = projects;
-  console.log(homepageProjects, imagesUrl);
   const titles = homepageProjects.map((t) => t.fields.title);
   const dates = homepageProjects.map((d) => d.fields.date);
   const [d1, d2, d3] = homepageProjects.map((d) => d.fields.description.content);
