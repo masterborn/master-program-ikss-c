@@ -8,11 +8,12 @@ const Div = styled.div`
   align-items: center;
 `;
 
-function MainPageProjectList(props) {
-  const { projects } = props;
-  const titles = projects.map((t) => t.fields.title);
-  const dates = projects.map((d) => d.fields.date);
-  const [d1, d2, d3] = projects.map((d) => d.fields.description.content);
+function MainPageProjectList({ projects }) {
+  const { homepageProjects, imagesUrl } = projects;
+  console.log(homepageProjects, imagesUrl);
+  const titles = homepageProjects.map((t) => t.fields.title);
+  const dates = homepageProjects.map((d) => d.fields.date);
+  const [d1, d2, d3] = homepageProjects.map((d) => d.fields.description.content);
   return (
     <Div>
       <h3>Najnowsze projekty</h3>

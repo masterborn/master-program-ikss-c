@@ -8,6 +8,7 @@ import { extractBanerData, extractHomeProjectData } from '../utils/index';
 function HomePage(props) {
   const { partners, assets, content } = props;
   const { homeProjects } = props.props;
+  console.log(homeProjects);
   return (
     <>
       {/* <Banner content={content} asset={assets} />

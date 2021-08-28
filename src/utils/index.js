@@ -34,5 +34,5 @@ export function extractHomeProjectData(entries, assets) {
   const imagesAsset = homepageProjects.filter((i) => i.fields);
   const imageAssetId = imagesAsset.map((el) => el.fields.image.sys.id);
   const imagesUrl = extractHomeProjectImage(imageAssetId, assets);
-  return homepageProjects;
+  return { homepageProjects, imagesUrl };
 }
