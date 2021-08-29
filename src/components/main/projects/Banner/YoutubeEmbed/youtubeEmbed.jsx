@@ -14,14 +14,12 @@ const Div = styled.div`
 const YoutubeEmbed = ({ url }) => (
   <Div>
     <iframe
-      style={{ objectFit: 'fill', with: '100%', aspectRatio: '16/9' }}
+      style={{ maxWidth: 1200, with: '100%', height: 535, aspectRatio: '16/9' }}
       src={`${url}`}
+      title="YouTube video player"
       frameBorder="0"
-      allow="autoplay; encrypted-media; "
-      title="Embedded youtube"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       controls
-      width="1200"
-      height="505"
     />
   </Div>
 );

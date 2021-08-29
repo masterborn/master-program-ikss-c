@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { blueTints, color } from '../../../styles/GlobalStyles';
 
@@ -19,6 +19,8 @@ const Button = styled.button`
   min-width: auto;
   &:focus {
     background-color: ${color.blue};
+    border: transparent;
+    outline: none;
   }
 `;
 
@@ -26,8 +28,24 @@ const ButtonGroup = ({ titles, parentCallback }) => {
   const clickHandler = (index) => {
     parentCallback(index);
   };
+  const onLoadHandler = (index) => {
+    document.getElementById(index).focus();
+  };
+  const btnRef = useRef();
+  useEffect(() => {
+    btnRef.current.id = 0;
+    onLoadHandler(btnRef.current.id);
+  }, []);
+
   const btnGroup = titles.map((title, index) => (
-    <Button key={title} type="button" onClick={() => clickHandler(index)}>
+    <Button
+      key={title}
+      type="button"
+      onClick={() => clickHandler(index)}
+      id={index}
+      onLoad={() => onLoadHandler(index)}
+      ref={btnRef}
+    >
       {title}
     </Button>
   ));
