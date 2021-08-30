@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const StyledTiles = styled.div`
   width: 100%;
   display: flex;
-  justifyContent: center;
-  alignItems: center;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledTile = styled.div`

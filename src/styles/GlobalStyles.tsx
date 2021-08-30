@@ -18,6 +18,10 @@ const GlobalStyles = createGlobalStyle`
     width: 100vw;
     height: 100vh;
   };
+  main {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
   h1 {
     font-family: Mulish;
     font-style: normal;

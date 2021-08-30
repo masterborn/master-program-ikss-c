@@ -33,8 +33,8 @@ function MainPageProjectList(props) {
   const [projectShow, setProjectShow] = useState(0);
   const { projects, assets } = props;
   const homepageProjects = projects.filter((p) => p.fields.showOnHomepage);
-  console.log(homepageProjects);
-  const imagesAsset = homepageProjects.filter((i) => i.fields);
+  const homepageProjectsSorted = homepageProjects.sort((a, b) => (b.fields.order) - (a.fields.order));
+  const imagesAsset = homepageProjectsSorted.filter((i) => i.fields);
   const imageAssetId = imagesAsset.map((el) => el.fields.image.sys.id);
   const imagesUrl = extractHomeProjectImage(imageAssetId, assets);
   const projectsWithImages = mapProjectsWithImageUrl(homepageProjects, imagesUrl);
