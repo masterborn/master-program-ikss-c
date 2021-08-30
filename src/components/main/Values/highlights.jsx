@@ -4,7 +4,7 @@ import Tiles from './tiles';
 
 const StyledValues = styled.div`
   text-align: center;
-  margin-top: 233px;
+  margin-top: 157px;
 `;
 
 function Highlights({ content, assets }) {

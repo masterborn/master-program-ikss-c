@@ -25,27 +25,26 @@ const Container = styled.div`
 `;
 
 const ContentDiv = styled.div`
-position: absolute;
-          top: 550px;
-          left: 50px;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          margin: 20px 0 20px 0;
+    position: absolute;
+    top: 550px;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px 0 20px 0;
 `;
 const TitleDiv = styled.div`
-display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: baseline;
-            margin: 20px 0 20px 0;
-`;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin: 20px 0 20px 0;
+  `;
 const DescriptionDiv = styled.div`
-
-            margin: 20px 0 30px 0;
+    margin: 20px 0 30px 0;
 `;
 const H5 = styled.h5`
-margin-left: 30px;
+    margin-left: 30px;
 `;
 
 function extractEmbededId(project) {
