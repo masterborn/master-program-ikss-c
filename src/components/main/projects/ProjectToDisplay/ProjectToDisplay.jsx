@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import YoutubeEmbed from '../Banner/YoutubeEmbed/youtubeEmbed';
+import {FaPrimaryButton} from '../../../UI/Button/FaButton';
 
 const Div = styled.div`
   position: relative;
@@ -23,6 +24,30 @@ const Container = styled.div`
   padding-bottom: 45%;
 `;
 
+const ContentDiv = styled.div`
+position: absolute;
+          top: 550px;
+          left: 50px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          margin: 20px 0 20px 0;
+`;
+const TitleDiv = styled.div`
+display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: baseline;
+            margin: 20px 0 20px 0;
+`;
+const DescriptionDiv = styled.div`
+
+            margin: 20px 0 30px 0;
+`;
+const H5 = styled.h5`
+margin-left: 30px;
+`;
+
 function extractEmbededId(project) {
   const { imageUrl } = project;
   if (project.isVideo) {
@@ -34,8 +59,7 @@ function extractEmbededId(project) {
 
 function ProjectToDisplay({ project }) {
   const { imageUrl, fields } = project;
-  const { title } = fields;
-  const { date } = fields;
+  const { title, linkCaption, linkUrl, date } = fields;
   const description = fields.description.content
     .map((x) => x.content.find((y) => y.value).value)
     .toString();
@@ -49,25 +73,13 @@ function ProjectToDisplay({ project }) {
   return (
     <Div>
       <Container>{renderVideoOrImage}</Container>
-      <div
-        style={{
-          position: 'absolute',
-          top: '550px',
-          left: 50,
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'flex-start',
-            alignItems: 'baseline',
-          }}
-        >
-          <h4>{title}</h4> <h5 style={{ marginLeft: 30 }}>{date}</h5>
-        </div>
-        <div>{description}</div>
-      </div>
+      <ContentDiv>
+        <TitleDiv>
+          <h4>{title}</h4> <H5 >{date}</H5>
+        </TitleDiv>
+        <DescriptionDiv>{description}</DescriptionDiv>
+        <FaPrimaryButton content={linkCaption} link={linkUrl}/>
+      </ContentDiv>
     </Div>
   );
 }

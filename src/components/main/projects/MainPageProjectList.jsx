@@ -32,8 +32,8 @@ function mapProjectsWithImageUrl(projects, urls) {
 function MainPageProjectList(props) {
   const [projectShow, setProjectShow] = useState(0);
   const { projects, assets } = props;
-  console.log(projects);
   const homepageProjects = projects.filter((p) => p.fields.showOnHomepage);
+  console.log(homepageProjects);
   const imagesAsset = homepageProjects.filter((i) => i.fields);
   const imageAssetId = imagesAsset.map((el) => el.fields.image.sys.id);
   const imagesUrl = extractHomeProjectImage(imageAssetId, assets);

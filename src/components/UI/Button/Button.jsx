@@ -3,7 +3,7 @@ import { BodySmall } from '../../../styles/GlobalStyles';
 
 const BIG_BUTTON = {
   width: '134px',
-  height: '48px',
+  height: '40px',
   fontSize: '16px',
 };
 const SMALL_BUTTON = {
@@ -23,13 +23,14 @@ export const PrimaryButton = styled.button`
   background: ${PRIMARY_BUTTON.backgroundColor};
   color: white;
   width: ${(props) =>
-    props.size?.includes('s') ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width}`};
+    props.size?.includes('s') ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width*2}`};
   height: ${(props) =>
     props.size?.includes('s') ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
   left: 59px;
   cursor: pointer;
   top: 43px;
   border-radius: 26px;
+  padding: 0 20px 0 20px;
   border: none;
   font-family: ${BodySmall.fontFamily};
   font-size: ${(props) =>

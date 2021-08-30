@@ -8,6 +8,7 @@ const GroupDiv = styled.div`
   justify-content: center;
   background-color: ${blueTints.blue_20};
   border-radius: 26px;
+  margin: 20px 0 30px 0;
 `;
 
 const Button = styled.button`
