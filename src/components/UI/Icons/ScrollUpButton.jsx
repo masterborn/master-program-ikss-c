@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function ScrollUpButton() {
   return (
-    <div className="ScrollUpButtonBody">
+    <button type="button" className="ScrollUpButtonBody">
       <FontAwesomeIcon icon={faChevronUp} />
-    </div>
+    </button>
   );
 }

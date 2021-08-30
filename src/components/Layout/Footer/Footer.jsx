@@ -70,10 +70,13 @@ const StyledFooter = styled.footer`
     }
     & .ScrollUpButtonBody {
       position: absolute;
+      margin-right: 20px;
       top: -32px;
       right: 0;
       background-color: #fff;
       font-size: 22px;
+      border: none;
+      cursor: pointer;
     }
   }
 `;
@@ -102,7 +105,7 @@ function Footer({ socialLinks, footerText }) {
 
   return (
     <StyledFooter pathname={pathname}>
-      <wrapper className="wrapper">
+      <wrapper className="wrapper">gi
         <ScrollUpButton />
         <div className="links-container">
           <Link href="/">
