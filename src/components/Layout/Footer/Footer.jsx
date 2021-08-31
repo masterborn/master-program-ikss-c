@@ -85,7 +85,7 @@ const LogoContainer = styled.a`
 function Footer({ socialLinks, footerText, pathname }) {
   return (
     <StyledFooter pathname={pathname}>
-      <wrapper className="wrapper">
+      <div className="wrapper">
         <ScrollUpButton />
         <div className="links-container">
           <Link href="/">
@@ -117,7 +117,7 @@ function Footer({ socialLinks, footerText, pathname }) {
           Made with <FontAwesomeIcon icon={faHeart} /> by{' '}
           <a href="https://masterborn.com/">MasterBorn Software</a>
         </p>
-      </wrapper>
+      </div>
     </StyledFooter>
   );
 }
