@@ -13,6 +13,7 @@ const NavMenu = styled.div`
   width: 413px;
   line-height: 20px;
   font-weight: 700;
+  margin-left: 20px;
 `;
 
 function NavigationMenu({ pathname }) {

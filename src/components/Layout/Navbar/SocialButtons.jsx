@@ -10,6 +10,10 @@ const SocialBar = styled.div`
   justify-content: space-between;
   width: 168px;
   margin-left: 135px;
+  margin-right: 20px;
+  @media (max-width: 1250px) {
+    margin-left: 40px;
+  }
 `;
 
 const addSocialIcon = (url, size, body) => {
