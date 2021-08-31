@@ -23,7 +23,7 @@ function Banner({ content, asset }) {
 
   return (
     <>
-      <Div>
+      <Div id="hero">
         <Headline content={banner} />
         <YoutubeEmbed url={videoUrl} />
       </Div>

@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   };
   body {
+ 
     font-family: Mulish;
     font-style: normal;
     font-weight: 400;
@@ -17,10 +18,11 @@ const GlobalStyles = createGlobalStyle`
     color: #61798B;
     width: 100vw;
     height: 100vh;
+    text-align: center;
   };
   main {
     max-width: 1440px;
-    margin: 0 auto;
+    margin: 88px auto 0;
   }
   h1 {
     font-family: Mulish;
