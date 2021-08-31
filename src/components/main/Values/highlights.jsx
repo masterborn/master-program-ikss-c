@@ -7,6 +7,12 @@ const StyledValues = styled.div`
   margin-top: 233px;
 `;
 
+const StyledValuesParagraph = styled.p`
+  width: 551px;
+  height: 64px;
+  margin: 40px auto;
+`;
+
 function Highlights({ content, assets }) {
 
   const headline = content.find((v) => v.fields.identifier === 'homepage-values');
@@ -16,7 +22,7 @@ function Highlights({ content, assets }) {
   return (
     <StyledValues>
       <h3>{headlineTitle}</h3>
-      <p style={{ width: '551px', height: '64px', margin: '40px auto' }} >{headlineDescription}</p>
+      <StyledValuesParagraph>{headlineDescription}</StyledValuesParagraph>
       <Tiles content={content} assets={assets} />
     </StyledValues>
   );
