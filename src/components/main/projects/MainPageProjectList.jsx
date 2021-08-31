@@ -29,9 +29,8 @@ function mapProjectsWithImageUrl(projects, urls) {
   });
   return projects;
 }
-function MainPageProjectList(props) {
+function MainPageProjectList({ projects, assets }) {
   const [projectShow, setProjectShow] = useState(0);
-  const { projects, assets } = props;
   const homepageProjects = projects.filter((p) => p.fields.showOnHomepage);
   const homepageProjectsSorted = homepageProjects.sort((a, b) => (b.fields.order) - (a.fields.order));
   const imagesAsset = homepageProjectsSorted.filter((i) => i.fields);
