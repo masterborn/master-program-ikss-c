@@ -86,7 +86,6 @@ function Footer({ socialLinks, footerText, pathname }) {
   return (
     <StyledFooter pathname={pathname}>
       <wrapper className="wrapper">
-        gi
         <ScrollUpButton />
         <div className="links-container">
           <Link href="/">

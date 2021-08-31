@@ -11,13 +11,28 @@ const SocialBar = styled.div`
   width: 168px;
 `;
 
-function SocialButtons({ size, body }) {
+const addSocialIcon = (url, size, body) => {
+  let icon;
+  if (url.includes('facebook')) {
+    icon = <FacebookCircleIcon size={size} body={body} />;
+  } else if (url.includes('instagram')) {
+    icon = <InstagramCircleIcon size={size} body={body} />;
+  } else if (url.includes('lin')) {
+    icon = <LinkedinCircleIcon size={size} body={body} />;
+  } else if (url.includes('youtu')) {
+    icon = <YoutubeCircleIcon size={size} body={body} />;
+  }
+  return icon;
+};
+
+function SocialButtons({ socialLinks, size, body }) {
   return (
     <SocialBar>
-      <InstagramCircleIcon size={size} body={body} />
-      <FacebookCircleIcon size={size} body={body} />
-      <YoutubeCircleIcon size={size} body={body} />
-      <LinkedinCircleIcon size={size} body={body} />
+      {socialLinks?.reverse().map((link) => (
+        <div key={link.fields.identifier}>
+          <a href={link.fields.linkUrl}>{addSocialIcon(link.fields.linkUrl, size, body)}</a>
+        </div>
+      ))}
     </SocialBar>
   );
 }

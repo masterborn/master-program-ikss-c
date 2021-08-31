@@ -1,4 +1,5 @@
 import React from 'react';
+import { PrimaryButton } from '@root/components/UI/Button/Button';
 import styled from 'styled-components';
 import LogoIkssFrame from '@root/components/logoIkssFrame';
 import SocialButtons from './SocialButtons';
@@ -22,16 +23,18 @@ const StyledNav = styled.nav`
     width: 100%;
     max-width: 1440px;
     padding-left: 124px;
+    padding-right: 120px;
   }
 `;
 
-function Navbar({ pathname }) {
+function Navbar({ socialLinks, pathname }) {
   return (
     <StyledNav>
       <div className="wrapper">
         <LogoIkssFrame />
         <NavigationMenu pathname={pathname} />
-        <SocialButtons size="12px" body="24px" />
+        <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />
+        <PrimaryButton size="small">Skontaktuj się</PrimaryButton>
       </div>
     </StyledNav>
   );
