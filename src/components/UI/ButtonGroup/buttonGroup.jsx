@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { blueTints, color } from '../../../styles/GlobalStyles';
 
@@ -13,39 +13,24 @@ const GroupDiv = styled.div`
 
 const Button = styled.button`
   padding: 0 30px 0 30px;
-  background-color: ${blueTints.blue_20};
+  color: ${(props) => (props.isActive ? 'white' :  'black')};
   height: 48px;
   border-radius: 26px;
   border: transparent;
   min-width: auto;
-  &:focus {
-    background-color: ${color.blue};
-    border: transparent;
-    outline: none;
-  }
+  background-color: ${(props) => (props.isActive ? `${color.blue}` :  `${blueTints.blue_20}`)};
 `;
 
-const ButtonGroup = ({ titles, parentCallback }) => {
+const ButtonGroup = ({ titles, parentCallback, activeProjectId }) => {
   const clickHandler = (index) => {
     parentCallback(index);
   };
-  const onLoadHandler = (index) => {
-    document.getElementById(index).focus();
-  };
-  const btnRef = useRef();
-  useEffect(() => {
-    btnRef.current.id = 0;
-    onLoadHandler(btnRef.current.id);
-  }, []);
-
   const btnGroup = titles.map((title, index) => (
     <Button
       key={title}
       type="button"
-      onClick={(e) => clickHandler(e,index)}
-      id={index}
-      onLoad={() => onLoadHandler(index)}
-      ref={btnRef}
+      isActive={index === activeProjectId}
+      onClick={()=>{clickHandler(index)}}
     >
       {title}
     </Button>

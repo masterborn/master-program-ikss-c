@@ -46,8 +46,8 @@ function MainPageProjectList(props) {
   return (
     <Div>
       <h3>Najnowsze projekty</h3>
-      <ButtonGroup titles={titles} parentCallback={callbackToChild} />
-      <ProjectToDisplay project={projectsWithImages[projectShow]} />
+      <ButtonGroup titles={titles} parentCallback={callbackToChild} activeProjectId={projectShow}/>
+      <ProjectToDisplay project={projectsWithImages[projectShow]} activeProject={projectShow}/>
     </Div>
   );
 }
