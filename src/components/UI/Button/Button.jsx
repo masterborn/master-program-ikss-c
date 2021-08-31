@@ -7,9 +7,9 @@ const BIG_BUTTON = {
   fontSize: '16px',
 };
 const SMALL_BUTTON = {
-  width: '108px',
   height: '36px',
   fontSize: '14px',
+  lineHeight: '17,5px',
 };
 
 const PRIMARY_BUTTON = {
@@ -20,6 +20,7 @@ const SECONDARY_BUTTON = {
 };
 
 export const PrimaryButton = styled.button`
+  padding: 0px 16px;
   background: ${PRIMARY_BUTTON.backgroundColor};
   color: white;
   width: ${(props) =>
@@ -34,6 +35,7 @@ export const PrimaryButton = styled.button`
   font-family: ${BodySmall.fontFamily};
   font-size: ${(props) =>
     props.size?.includes('s') ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
+  font-weight: 700;
   &:hover {
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
       ${PRIMARY_BUTTON.backgroundColor};

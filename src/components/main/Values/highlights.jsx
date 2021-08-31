@@ -4,7 +4,7 @@ import Tiles from './tiles';
 
 const StyledValues = styled.div`
   text-align: center;
-  margin-top: 233px;
+  margin-top: 157px;
 `;
 
 const StyledValuesParagraph = styled.p`
@@ -14,10 +14,11 @@ const StyledValuesParagraph = styled.p`
 `;
 
 function Highlights({ content, assets }) {
-
   const headline = content.find((v) => v.fields.identifier === 'homepage-values');
   const headlineTitle = headline.fields.title;
-  const headlineDescription = headline.fields.text1.content.find((v) => v.nodeType === 'paragraph').content.find((v) => v.nodeType === 'text').value;
+  const headlineDescription = headline.fields.text1.content
+    .find((v) => v.nodeType === 'paragraph')
+    .content.find((v) => v.nodeType === 'text').value;
 
   return (
     <StyledValues>

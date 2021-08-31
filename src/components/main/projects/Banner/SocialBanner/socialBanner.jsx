@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { steelTints } from '../../../../../styles/GlobalStyles';
 
 const ICON_SIZE = '30px';
+const BODY_SIZE = ' 55px';
 
 const Div = styled.div`
   display: flex;
@@ -45,19 +46,19 @@ function SocialBanner({ yt, insta, lin, fb }) {
   return (
     <BannerDiv>
       <Div onClick={() => onClickHandler(yt)} onKeyPress={keyDownHandler} tabIndex={0}>
-        <YoutubeCircleIcon size={ICON_SIZE} />
+        <YoutubeCircleIcon size={ICON_SIZE} body={BODY_SIZE} />
         <H5>YouTube</H5>
       </Div>
       <Div onClick={() => onClickHandler(insta)} onKeyPress={keyDownHandler} tabIndex={0}>
-        <InstagramCircleIcon size={ICON_SIZE} />
+        <InstagramCircleIcon size={ICON_SIZE} body={BODY_SIZE} />
         <H5>Instagram</H5>
       </Div>
       <Div onClick={() => onClickHandler(fb)} onKeyPress={keyDownHandler} tabIndex={0}>
-        <FacebookCircleIcon size={ICON_SIZE} />
+        <FacebookCircleIcon size={ICON_SIZE} body={BODY_SIZE} />
         <H5>Facebook</H5>
       </Div>
       <Div onClick={() => onClickHandler(lin)} onKeyPress={keyDownHandler} tabIndex={-1}>
-        <LinkedinCircleIcon size={ICON_SIZE} />
+        <LinkedinCircleIcon size={ICON_SIZE} body={BODY_SIZE} />
         <H5>LinkedIn</H5>
       </Div>
     </BannerDiv>
