@@ -4,13 +4,10 @@ import LogoIkss from '@root/components/logoIkss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { color } from '@root/styles/GlobalStyles';
-import FacebookIcon from '@root/components/UI/Icons/FacebookIcon';
-import InstagramIcon from '@root/components/UI/Icons/InstagramIcon';
-import LinkedinIcon from '@root/components/UI/Icons/LinkedinIcon';
-import YoutubeIcon from '@root/components/UI/Icons/YoutubeIcon';
 import ScrollUpButton from '@root/components/UI/Icons/ScrollUpButton';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
+import SocialLink from './SocialLink';
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -89,23 +86,24 @@ const LogoContainer = styled.a`
 function Footer({ socialLinks, footerText }) {
   const { pathname } = useRouter();
 
-  const addSocialIcon = (url) => {
-    let icon;
-    if (url.includes('facebook')) {
-      icon = <FacebookIcon />;
-    } else if (url.includes('instagram')) {
-      icon = <InstagramIcon />;
-    } else if (url.includes('lin')) {
-      icon = <LinkedinIcon />;
-    } else if (url.includes('youtu')) {
-      icon = <YoutubeIcon />;
-    }
-    return icon;
-  };
+  // const addSocialIcon = (url) => {
+  //   let icon;
+  //   if (url.includes('facebook')) {
+  //     icon = <FacebookIcon />;
+  //   } else if (url.includes('instagram')) {
+  //     icon = <InstagramIcon />;
+  //   } else if (url.includes('lin')) {
+  //     icon = <LinkedinIcon />;
+  //   } else if (url.includes('youtu')) {
+  //     icon = <YoutubeIcon />;
+  //   }
+  //   return icon;
+  // };
 
   return (
     <StyledFooter pathname={pathname}>
-      <wrapper className="wrapper">gi
+      <wrapper className="wrapper">
+        gi
         <ScrollUpButton />
         <div className="links-container">
           <Link href="/">
@@ -121,13 +119,10 @@ function Footer({ socialLinks, footerText }) {
             <a>Współpraca</a>
           </Link>
         </div>
-
         <ul>
           {socialLinks?.reverse().map((link) => (
             <li key={link.fields.identifier}>
-              <a href={link.fields.linkUrl} target="_self">
-                {addSocialIcon(link.fields.linkUrl)}
-              </a>
+              <SocialLink socialUrl={link.fields.linkUrl} />
             </li>
           ))}
         </ul>
