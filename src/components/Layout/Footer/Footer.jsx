@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { color } from '@root/styles/GlobalStyles';
 import ScrollUpButton from '@root/components/UI/Icons/ScrollUpButton';
-import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import SocialLink from './SocialLink';
 
@@ -83,9 +82,7 @@ const LogoContainer = styled.a`
   line-height: 0px;
 `;
 
-function Footer({ socialLinks, footerText }) {
-  const { pathname } = useRouter();
-
+function Footer({ socialLinks, footerText, pathname }) {
   return (
     <StyledFooter pathname={pathname}>
       <wrapper className="wrapper">
