@@ -36,27 +36,23 @@ const H5 = styled.h5`
   margin-left: 15px;
 `;
 function SocialBanner({ yt, insta, lin, fb }) {
-  const onClickHandler = (url) => {
-    window.open(`${url}`, '_blank');
-  };
-
   const keyDownHandler = () => {};
 
   return (
     <BannerDiv>
-      <Div onClick={() => onClickHandler(yt)} onKeyPress={keyDownHandler} tabIndex={0}>
+      <Div onKeyPress={keyDownHandler} tabIndex={0} as='a' href={yt} target="_blank">
         <YoutubeCircleIcon size={ICON_SIZE} />
         <H5>YouTube</H5>
       </Div>
-      <Div onClick={() => onClickHandler(insta)} onKeyPress={keyDownHandler} tabIndex={0}>
+      <Div onKeyPress={keyDownHandler} tabIndex={0} as='a' href={insta} target="_blank">
         <InstagramCircleIcon size={ICON_SIZE} />
         <H5>Instagram</H5>
       </Div>
-      <Div onClick={() => onClickHandler(fb)} onKeyPress={keyDownHandler} tabIndex={0}>
+      <Div onKeyPress={keyDownHandler} tabIndex={0} as='a' href={fb} target="_blank">
         <FacebookCircleIcon size={ICON_SIZE} />
         <H5>Facebook</H5>
       </Div>
-      <Div onClick={() => onClickHandler(lin)} onKeyPress={keyDownHandler} tabIndex={-1}>
+      <Div onKeyPress={keyDownHandler} tabIndex={0} as='a' href={lin} target="_blank">
         <LinkedinCircleIcon size={ICON_SIZE} />
         <H5>LinkedIn</H5>
       </Div>
