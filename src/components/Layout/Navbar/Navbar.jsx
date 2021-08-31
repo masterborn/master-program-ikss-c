@@ -2,9 +2,17 @@ import React from 'react';
 
 function Navbar() {
   return (
-    <div style={{ border: '3px solid navy' }}>
+    <nav
+      style={{
+        border: '3px solid navy',
+        position: 'fixed',
+        top: '0px',
+        width: '100%',
+        display: 'block',
+      }}
+    >
       <h2>Hello Navbar</h2>
-    </div>
+    </nav>
   );
 }
 

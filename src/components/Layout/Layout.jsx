@@ -1,15 +1,18 @@
 import Footer from './Footer/Footer';
-import Navbar from './Navbar/Navbar'; 
+import Navbar from './Navbar/Navbar';
 
 function Layout({ children, props }) {
-  const navAndFooterData = props.content;
+  const socialLinks = props.content?.filter((position) => position.fields.linkUrl !== undefined);
+  const footerText = props.content?.find(
+    (position) => position.fields.identifier === 'footer-text',
+  );
 
   return (
-    <div>
-      <Navbar navAndFooterData={navAndFooterData} />
+    <>
+      <Navbar socialLinks={socialLinks} />
       <main>{children}</main>
-      <Footer navAndFooterData={navAndFooterData} />
-    </div>
+      <Footer socialLinks={socialLinks} footerText={footerText} />
+    </>
   );
 }
 
