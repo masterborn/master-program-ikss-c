@@ -31,6 +31,9 @@ export const PrimaryButton = styled.button`
   top: 43px;
   border-radius: 26px;
   padding: 0 20px 0 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   border: none;
   font-family: ${BodySmall.fontFamily};
   font-size: ${(props) =>
