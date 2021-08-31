@@ -9,6 +9,7 @@ const SocialBar = styled.div`
   display: flex;
   justify-content: space-between;
   width: 168px;
+  margin-left: 135px;
 `;
 
 const addSocialIcon = (url, size, body) => {
