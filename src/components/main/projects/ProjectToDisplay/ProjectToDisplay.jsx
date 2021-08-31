@@ -42,6 +42,7 @@ const TitleDiv = styled.div`
   `;
 const DescriptionDiv = styled.div`
     margin: 20px 0 30px 0;
+    text-align: left;
 `;
 const H5 = styled.h5`
     margin-left: 30px;
