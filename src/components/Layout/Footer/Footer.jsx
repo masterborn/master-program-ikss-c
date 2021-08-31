@@ -86,20 +86,6 @@ const LogoContainer = styled.a`
 function Footer({ socialLinks, footerText }) {
   const { pathname } = useRouter();
 
-  // const addSocialIcon = (url) => {
-  //   let icon;
-  //   if (url.includes('facebook')) {
-  //     icon = <FacebookIcon />;
-  //   } else if (url.includes('instagram')) {
-  //     icon = <InstagramIcon />;
-  //   } else if (url.includes('lin')) {
-  //     icon = <LinkedinIcon />;
-  //   } else if (url.includes('youtu')) {
-  //     icon = <YoutubeIcon />;
-  //   }
-  //   return icon;
-  // };
-
   return (
     <StyledFooter pathname={pathname}>
       <wrapper className="wrapper">
