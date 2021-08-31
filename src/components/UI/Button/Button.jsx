@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BodySmall } from '../../../styles/GlobalStyles';
+import { BodySmall} from '../../../styles/GlobalStyles';
 
 const BIG_BUTTON = {
   width: '134px',

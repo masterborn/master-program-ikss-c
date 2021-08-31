@@ -42,7 +42,7 @@ const ButtonGroup = ({ titles, parentCallback }) => {
     <Button
       key={title}
       type="button"
-      onClick={() => clickHandler(index)}
+      onClick={(e) => clickHandler(e,index)}
       id={index}
       onLoad={() => onLoadHandler(index)}
       ref={btnRef}
@@ -52,5 +52,4 @@ const ButtonGroup = ({ titles, parentCallback }) => {
   ));
   return <GroupDiv>{btnGroup}</GroupDiv>;
 };
-
 export default ButtonGroup;
