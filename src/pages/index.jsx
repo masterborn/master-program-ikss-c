@@ -6,6 +6,8 @@ import { getBasicContent, getPartnerLogos, getProjects } from '../api/cmsClient/
 
 function HomePage(props) {
   const { partners, assets, content } = props;
+  
+
   return (
     <>
       <Banner content={content} asset={assets} />

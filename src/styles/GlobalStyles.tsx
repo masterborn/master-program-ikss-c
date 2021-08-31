@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   };
   body {
+ 
     font-family: Mulish;
     font-style: normal;
     font-weight: 400;
@@ -17,7 +18,12 @@ const GlobalStyles = createGlobalStyle`
     color: #61798B;
     width: 100vw;
     height: 100vh;
+    text-align: center;
   };
+  main {
+    max-width: 1440px;
+    margin: 88px auto 0;
+  }
   h1 {
     font-family: Mulish;
     font-style: normal;
@@ -63,6 +69,10 @@ const GlobalStyles = createGlobalStyle`
     letter-spacing: -0.015em;
     color: #1A2847;    
   };
+  a{
+    text-decoration: none;
+  };
+
   .iconBody {
     width: 24px;
     height: 24px;

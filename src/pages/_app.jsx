@@ -15,6 +15,7 @@ const App = (props) => {
     queryClientRef.current = new QueryClient();
   }
   const { Component, pageProps } = props;
+  const name = { Component };
 
   return (
     <>
@@ -22,7 +23,7 @@ const App = (props) => {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClientRef.current}>
           <Hydrate state={pageProps.dehydratedState}>
-            <Layout props={pageProps}>
+            <Layout props={pageProps} pageName={name}>
               <Component {...pageProps} />
             </Layout>
           </Hydrate>
