@@ -19,25 +19,17 @@ const NavMenu = styled.div`
 function NavigationMenu({ pathname }) {
   return (
     <NavMenu>
-      <Link href="/">
-        <StyledA pathname={pathname} href="/">
-          Strona główna
-        </StyledA>
+      <Link href="/" passHref>
+        <StyledA pathname={pathname}>Strona główna</StyledA>
       </Link>
-      <Link href="/projekty">
-        <StyledA pathname={pathname} href="/projekty">
-          Projekty
-        </StyledA>
+      <Link href="/projekty" passHref>
+        <StyledA pathname={pathname}>Projekty</StyledA>
       </Link>
-      <Link href="/o-nas">
-        <StyledA pathname={pathname} href="/o-nas">
-          O nas
-        </StyledA>
+      <Link href="/o-nas" passHref>
+        <StyledA pathname={pathname}>O nas</StyledA>
       </Link>
-      <Link href="/wspolpraca">
-        <StyledA pathname={pathname} href="/wspolpraca">
-          Współpraca
-        </StyledA>
+      <Link href="/wspolpraca" passHref>
+        <StyledA pathname={pathname}>Współpraca</StyledA>
       </Link>
     </NavMenu>
   );
