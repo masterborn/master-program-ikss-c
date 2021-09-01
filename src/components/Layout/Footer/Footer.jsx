@@ -17,63 +17,60 @@ const StyledFooter = styled.footer`
   width: 100vw;
   height: ${(props) => (props.pathname === '/' ? '728px' : '404px')};
   padding: 0 0 56px 0;
-  & .wrapper {
+`;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+  max-width: 1440px;
+  position: relative;
+  & a,
+  p {
+    color: ${color.white};
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: -0.015em;
+  }
+  & ul {
+    list-style-type: none;
+    margin-bottom: 48px;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100%;
-    width: 100%;
-    max-width: 1440px;
-    position: relative;
-    & a,
-    p {
-      color: ${color.white};
-      text-align: center;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 28px;
-      letter-spacing: -0.015em;
-    }
-    & ul {
-      list-style-type: none;
-      margin-bottom: 48px;
-      padding: 0;
-      display: flex;
-      width: 185px;
-      justify-content: space-between;
-    }
-    & .iconBody {
-      font-size: 24px;
-    }
-    & .links-container {
-      display: flex;
-      justify-content: space-between;
-      width: 413px;
-      margin-bottom: 50px;
-      & a {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 20px;
-        letter-spacing: 0em;
-      }
-    }
-    & .upBtn {
-      position: absolute;
-      top: -30px;
-    }
-    & .ScrollUpButtonBody {
-      position: absolute;
-      margin-right: 20px;
-      top: -32px;
-      right: 0;
-      background-color: #fff;
-      font-size: 22px;
-      border: none;
-      cursor: pointer;
-    }
+    width: 185px;
+    justify-content: space-between;
+  }
+  & .iconBody {
+    font-size: 24px;
+  }
+  & .ScrollUpButtonBody {
+    position: absolute;
+    margin-right: 20px;
+    top: -32px;
+    right: 0;
+    background-color: #fff;
+    font-size: 22px;
+    border: none;
+    cursor: pointer;
+  }
+`;
+
+const LinksContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 413px;
+  margin-bottom: 50px;
+  & a {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
   }
 `;
 
@@ -85,9 +82,9 @@ const LogoContainer = styled.a`
 function Footer({ socialLinks, footerText, pathname }) {
   return (
     <StyledFooter pathname={pathname}>
-      <div className="wrapper">
+      <Wrapper>
         <ScrollUpButton />
-        <div className="links-container">
+        <LinksContainer>
           <Link href="/">
             <a>Strona główna</a>
           </Link>
@@ -100,7 +97,7 @@ function Footer({ socialLinks, footerText, pathname }) {
           <Link href="/wspolpraca">
             <a>Współpraca</a>
           </Link>
-        </div>
+        </LinksContainer>
         <ul>
           {socialLinks?.map((link) => (
             <li key={link.fields.identifier}>
@@ -117,7 +114,7 @@ function Footer({ socialLinks, footerText, pathname }) {
           Made with <FontAwesomeIcon icon={faHeart} /> by{' '}
           <a href="https://masterborn.com/">MasterBorn Software</a>
         </p>
-      </div>
+      </Wrapper>
     </StyledFooter>
   );
 }
