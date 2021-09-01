@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import Footer from './Footer/Footer';
 import Navbar from './Navbar/Navbar';
 
@@ -7,11 +8,15 @@ function Layout({ children, props }) {
     (position) => position.fields.identifier === 'footer-text',
   );
 
+  const { pathname } = useRouter();
+
   return (
     <>
-      <Navbar socialLinks={socialLinks} />
+      {pathname !== '/404' && <Navbar socialLinks={socialLinks} pathname={pathname} />}
       <main>{children}</main>
-      <Footer socialLinks={socialLinks} footerText={footerText} />
+      {pathname !== '/404' && (
+        <Footer socialLinks={socialLinks} footerText={footerText} pathname={pathname} />
+      )}
     </>
   );
 }

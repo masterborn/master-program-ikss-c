@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { steelTints } from '../../../../../styles/GlobalStyles';
 
 const ICON_SIZE = '30px';
+const BODY_SIZE = ' 55px';
 
 const StyledAnchor = styled.a`
   display: flex;

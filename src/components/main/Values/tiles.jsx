@@ -13,6 +13,12 @@ const StyledTile = styled.div`
   height: 456px;
   width: 384px;
   position: relative;
+  & h5 {
+    margin: 20px 24px 0 24px;
+  }
+  & p {
+    margin: 16px 24px 48px;
+  }
 `;
 
 const StyledTileShadow = styled.div`
@@ -34,7 +40,8 @@ function Tiles({ content, assets }) {
       tile.fields.identifier === 'homepage-tile-2' ||
       tile.fields.identifier === 'homepage-tile-3',
   );
-  
+  tilesToDisplay.sort((a, b) => (a.fields.identifier > b.fields.identifier ? 1 : -1));
+
   const partnersImgAndName = tilesToDisplay.map((tile) => {
   const tileImg = assets.find((asset) => tile.fields.image1.sys.id === asset.sys.id);
   const tileDescription = tile.fields.text1.content
@@ -53,8 +60,8 @@ function Tiles({ content, assets }) {
       {partnersImgAndName.map((tile) => (
         <StyledTile key={tile.key}>
           <img src={tile.imgUrl} alt={tile.title} />
-          <h5 style={{ marginTop: '20px' }}>{tile.title}</h5>
-          <p style={{ margin: '16px 24px 48px' }}>{tile.description}</p>
+          <h5>{tile.title}</h5>
+          <p>{tile.description}</p>
           <StyledTileShadow> </StyledTileShadow>
         </StyledTile>
       ))}

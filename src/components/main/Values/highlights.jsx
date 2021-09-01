@@ -7,16 +7,23 @@ const StyledValues = styled.div`
   margin-top: 157px;
 `;
 
-function Highlights({ content, assets }) {
+const StyledValuesParagraph = styled.p`
+  width: 551px;
+  height: 64px;
+  margin: 40px auto;
+`;
 
+function Highlights({ content, assets }) {
   const headline = content.find((v) => v.fields.identifier === 'homepage-values');
   const headlineTitle = headline.fields.title;
-  const headlineDescription = headline.fields.text1.content.find((v) => v.nodeType === 'paragraph').content.find((v) => v.nodeType === 'text').value;
+  const headlineDescription = headline.fields.text1.content
+    .find((v) => v.nodeType === 'paragraph')
+    .content.find((v) => v.nodeType === 'text').value;
 
   return (
     <StyledValues>
       <h3>{headlineTitle}</h3>
-      <p style={{ width: '551px', height: '64px', margin: '40px auto' }} >{headlineDescription}</p>
+      <StyledValuesParagraph>{headlineDescription}</StyledValuesParagraph>
       <Tiles content={content} assets={assets} />
     </StyledValues>
   );
