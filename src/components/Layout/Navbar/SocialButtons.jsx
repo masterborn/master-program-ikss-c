@@ -30,10 +30,11 @@ const addSocialIcon = (url, size, body) => {
   return icon;
 };
 
-function SocialButtons({ socialLinks, size, body }) {
+function SocialButtons({ reversedSocialLinks, size, body }) {
   return (
     <SocialBar>
-      {socialLinks?.reverse().map((link) => (
+      {/* logo ma przenosić na stronę głowną/scroll up */}
+      {reversedSocialLinks?.map((link) => (
         <div key={link.fields.identifier}>
           <a href={link.fields.linkUrl}>{addSocialIcon(link.fields.linkUrl, size, body)}</a>
         </div>

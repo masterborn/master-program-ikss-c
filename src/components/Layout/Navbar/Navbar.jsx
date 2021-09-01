@@ -28,7 +28,7 @@ const StyledNav = styled.nav`
   }
 `;
 
-function Navbar({ socialLinks, pathname }) {
+function Navbar({ reversedSocialLinks, pathname }) {
   const [isVisible, setIsVisible] = useState(false);
 
   const showAfterScroll = () => {
@@ -52,7 +52,9 @@ function Navbar({ socialLinks, pathname }) {
       <div className="wrapper">
         <LogoIkssFrame />
         <NavigationMenu pathname={pathname} />
-        {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
+        {isVisible && (
+          <SocialButtons reversedSocialLinks={reversedSocialLinks} size="12px" body="24px" />
+        )}
         <PrimaryButton size="small">Skontaktuj się</PrimaryButton>
       </div>
     </StyledNav>

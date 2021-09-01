@@ -3,7 +3,9 @@ import Footer from './Footer/Footer';
 import Navbar from './Navbar/Navbar';
 
 function Layout({ children, props }) {
-  const socialLinks = props.content?.filter((position) => position.fields.linkUrl !== undefined);
+  const reversedSocialLinks = props.content
+    ?.filter((position) => position.fields.linkUrl !== undefined)
+    .reverse();
   const footerText = props.content?.find(
     (position) => position.fields.identifier === 'footer-text',
   );
@@ -12,10 +14,16 @@ function Layout({ children, props }) {
 
   return (
     <>
-      {pathname !== '/404' && <Navbar socialLinks={socialLinks} pathname={pathname} />}
+      {pathname !== '/404' && (
+        <Navbar reversedSocialLinks={reversedSocialLinks} pathname={pathname} />
+      )}
       <main>{children}</main>
       {pathname !== '/404' && (
-        <Footer socialLinks={socialLinks} footerText={footerText} pathname={pathname} />
+        <Footer
+          reversedSocialLinks={reversedSocialLinks}
+          footerText={footerText}
+          pathname={pathname}
+        />
       )}
     </>
   );
