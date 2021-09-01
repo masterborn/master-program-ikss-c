@@ -13,10 +13,11 @@ const StyledNav = styled.nav`
   width: 100%;
   background-color: #fff;
   box-shadow: 0px 4px 16px rgba(97, 121, 139, 0.1);
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 100;
-  & .wrapper {
+`;
+const Wrapper = styled.div`
     display: flex;
     height: 100%;
     align-items: center;
@@ -25,7 +26,9 @@ const StyledNav = styled.nav`
     max-width: 1440px;
     padding-left: 124px;
     padding-right: 120px;
-  }
+`;
+const StaticWidth = styled.div`
+  width: 325px;
 `;
 
 function Navbar({ socialLinks, pathname }) {
@@ -49,12 +52,14 @@ function Navbar({ socialLinks, pathname }) {
 
   return (
     <StyledNav>
-      <div className="wrapper">
+      <Wrapper>
         <LogoIkssFrame />
         <NavigationMenu pathname={pathname} />
-        {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
+        <StaticWidth>
+          {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
+        </StaticWidth>
         <PrimaryButton size="small">Skontaktuj się</PrimaryButton>
-      </div>
+      </Wrapper>
     </StyledNav>
   );
 }
