@@ -8,6 +8,7 @@ const Div = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 180px;
 `;
 
 function extractHomeProjectImage(imagesId, assets) {

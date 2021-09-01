@@ -33,7 +33,7 @@ const addSocialIcon = (url, size, body) => {
 function SocialButtons({ socialLinks, size, body }) {
   return (
     <SocialBar>
-      {socialLinks?.reverse().map((link) => (
+      {socialLinks?.map((link) => (
         <div key={link.fields.identifier}>
           <a href={link.fields.linkUrl}>{addSocialIcon(link.fields.linkUrl, size, body)}</a>
         </div>

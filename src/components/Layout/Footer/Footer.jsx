@@ -14,7 +14,7 @@ const StyledFooter = styled.footer`
   align-items: center;
   justify-content: flex-end;
   background-color: ${color.blue};
-  width: 100vw;
+  width: 100%;
   height: ${(props) => (props.pathname === '/' ? '728px' : '404px')};
   padding: 0 0 56px 0;
   & .wrapper {
