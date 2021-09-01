@@ -13,24 +13,23 @@ const GroupDiv = styled.div`
 
 const Button = styled.button`
   padding: 0 30px 0 30px;
-  color: ${(props) => (props.isActive ? 'white' :  'black')};
+  color: ${(props) => (props.isActive ? 'white' : 'black')};
   height: 48px;
   border-radius: 26px;
   border: transparent;
   min-width: auto;
-  background-color: ${(props) => (props.isActive ? `${color.blue}` :  `${blueTints.blue_20}`)};
+  background-color: ${(props) => (props.isActive ? `${color.blue}` : `${blueTints.blue_20}`)};
 `;
 
 const ButtonGroup = ({ titles, parentCallback, activeProjectId }) => {
-  const clickHandler = (index) => {
-    parentCallback(index);
-  };
   const btnGroup = titles.map((title, index) => (
     <Button
       key={title}
       type="button"
       isActive={index === activeProjectId}
-      onClick={()=>{clickHandler(index)}}
+      onClick={() => {
+        parentCallback(index);
+      }}
     >
       {title}
     </Button>

@@ -8,7 +8,7 @@ import { steelTints } from '../../../../../styles/GlobalStyles';
 
 const ICON_SIZE = '30px';
 
-const Div = styled.div`
+const StyledAnchor = styled.a`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,22 +40,22 @@ function SocialBanner({ yt, insta, lin, fb }) {
 
   return (
     <BannerDiv>
-      <Div onKeyPress={keyDownHandler} tabIndex={0} as='a' href={fb} target="_blank">
+      <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={fb} target="_blank">
         <FacebookCircleIcon size={ICON_SIZE} />
         <H5>Facebook</H5>
-      </Div>
-      <Div onKeyPress={keyDownHandler} tabIndex={0} as='a' href={insta} target="_blank">
+      </StyledAnchor>
+      <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={insta} target="_blank">
         <InstagramCircleIcon size={ICON_SIZE} />
         <H5>Instagram</H5>
-      </Div>      
-      <Div onKeyPress={keyDownHandler} tabIndex={0} as='a' href={yt} target="_blank">
+      </StyledAnchor>
+      <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={yt} target="_blank">
         <YoutubeCircleIcon size={ICON_SIZE} />
         <H5>YouTube</H5>
-      </Div>
-      <Div onKeyPress={keyDownHandler} tabIndex={0} as='a' href={lin} target="_blank">
+      </StyledAnchor>
+      <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={lin} target="_blank">
         <LinkedinCircleIcon size={ICON_SIZE} />
         <H5>LinkedIn</H5>
-      </Div>
+      </StyledAnchor>
     </BannerDiv>
   );
 }

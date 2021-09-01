@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BodySmall} from '../../../styles/GlobalStyles';
+import { BodySmall } from '../../../styles/GlobalStyles';
 
 const BIG_BUTTON = {
   width: '134px',
@@ -23,9 +23,9 @@ export const PrimaryButton = styled.button`
   background: ${PRIMARY_BUTTON.backgroundColor};
   color: white;
   width: ${(props) =>
-    props.size?.includes('small') ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width*2}`};
+    props.size === 'small' ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width * 2}`};
   height: ${(props) =>
-    props.size?.includes('small') ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
+    props.size === 'small' ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
   left: 59px;
   cursor: pointer;
   top: 43px;
@@ -37,7 +37,7 @@ export const PrimaryButton = styled.button`
   border: none;
   font-family: ${BodySmall.fontFamily};
   font-size: ${(props) =>
-    props.size?.includes('small') ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
+    props.size === 'small' ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
   &:hover {
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
       ${PRIMARY_BUTTON.backgroundColor};
@@ -56,16 +56,15 @@ export const PrimaryButton = styled.button`
 export const SecondaryButton = styled.button`
   background: ${SECONDARY_BUTTON.backgroundColor};
   color: black;
-  width: ${(props) =>
-    props.size?.includes('small') ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width}`};
+  width: ${(props) => (props.size === 'small' ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width}`)};
   height: ${(props) =>
-    props.size?.includes('small') ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
+    props.size === 'small' ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
   left: 59px;
   top: 43px;
   cursor: pointer;
   font-family: ${BodySmall.fontFamily};
   font-size: ${(props) =>
-    props.size?.includes('small') ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
+    props.size === 'small' ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
   border: 2px solid #1a2847;
   border-radius: 26px;
   &:hover {
