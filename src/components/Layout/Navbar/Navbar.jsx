@@ -17,24 +17,25 @@ const StyledNav = styled.nav`
   position: fixed;
   top: 0;
   z-index: 100;
-  & .wrapper {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1440px;
-    padding-left: 124px;
-    padding-right: 120px;
-  }
 `;
+const Wrapper = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  padding-left: 124px;
+  padding-right: 120px;
+`;
+
 const LogoButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
 `;
 
-function Navbar({ reversedSocialLinks, pathname }) {
+function Navbar({ socialLinks, pathname }) {
   const [isVisible, setIsVisible] = useState(false);
   const [browserWindow, setBrowserWindow] = useState({});
   const router = useRouter();
@@ -68,17 +69,14 @@ function Navbar({ reversedSocialLinks, pathname }) {
 
   return (
     <StyledNav>
-      <div className="wrapper">
+      <Wrapper>
         <LogoButton onClick={handleLogoClick}>
           <LogoIkssFrame />
         </LogoButton>
-
         <NavigationMenu pathname={pathname} />
-        {isVisible && (
-          <SocialButtons reversedSocialLinks={reversedSocialLinks} size="12px" body="24px" />
-        )}
+        {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
         <PrimaryButton size="small">Skontaktuj się</PrimaryButton>
-      </div>
+      </Wrapper>
     </StyledNav>
   );
 }

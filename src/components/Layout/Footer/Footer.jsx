@@ -82,7 +82,7 @@ const LogoContainer = styled.a`
   line-height: 0px;
 `;
 
-function Footer({ reversedSocialLinks, footerText, pathname }) {
+function Footer({ socialLinks, footerText, pathname }) {
   return (
     <StyledFooter pathname={pathname}>
       <div className="wrapper">
@@ -102,7 +102,7 @@ function Footer({ reversedSocialLinks, footerText, pathname }) {
           </Link>
         </div>
         <ul>
-          {reversedSocialLinks?.map((link) => (
+          {socialLinks?.map((link) => (
             <li key={link.fields.identifier}>
               <SocialLink socialUrl={link.fields.linkUrl} />
             </li>
