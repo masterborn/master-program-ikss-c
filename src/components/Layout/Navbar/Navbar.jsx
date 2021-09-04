@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import LogoIkssFrame from '@root/components/logoIkssFrame';
 import SocialButtons from './SocialButtons';
 import NavigationMenu from './NavigationMenu';
+import HamburgerMenu from './HamburgerMenu';
 
 const StyledNav = styled.nav`
   display: flex;
@@ -24,9 +25,8 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1440px;
-  padding-left: 124px;
-  padding-right: 120px;
+  max-width: 1200px;
+  margin: 0 20px;
 `;
 
 const LogoButton = styled.button`
@@ -77,6 +77,7 @@ function Navbar({ socialLinks, pathname }) {
         {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
         <PrimaryButton size="small">Skontaktuj się</PrimaryButton>
       </Wrapper>
+      <HamburgerMenu />
     </StyledNav>
   );
 }
