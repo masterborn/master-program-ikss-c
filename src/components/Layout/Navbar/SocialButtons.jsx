@@ -38,7 +38,7 @@ function SocialButtons({ socialLinks, size, body, hamburger }) {
   return (
     <SocialBar hamburger={hamburger}>
       {socialLinks?.map((link) => (
-        <div key={link.fields.identifier}>
+        <div key={`${link.fields.identifier}+${Math.random()}`}>
           <a href={link.fields.linkUrl}>{addSocialIcon(link.fields.linkUrl, size, body)}</a>
         </div>
       ))}
