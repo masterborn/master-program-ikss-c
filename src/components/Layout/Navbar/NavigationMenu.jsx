@@ -9,16 +9,20 @@ const StyledA = styled.a`
 
 const NavMenu = styled.div`
   display: flex;
+  flex-direction: 
   justify-content: space-between;
   width: 413px;
   line-height: 20px;
   font-weight: 700;
   margin-left: 20px;
+  @media (max-width: 768px) {
+    display: ${(props) => (props.hamburger ? 'flex' : 'none')};
+  }
 `;
 
-function NavigationMenu({ pathname }) {
+function NavigationMenu({ pathname, hamburger }) {
   return (
-    <NavMenu>
+    <NavMenu hamburger={hamburger}>
       <Link href="/" passHref>
         <StyledA pathname={pathname}>Strona główna</StyledA>
       </Link>
