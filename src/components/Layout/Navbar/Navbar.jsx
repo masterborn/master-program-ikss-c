@@ -75,11 +75,9 @@ function Navbar({ socialLinks, pathname }) {
         </LogoButton>
         <NavigationMenu pathname={pathname} />
         {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
-        {/* <PrimaryButton size="small">
-          Skontaktuj się
-        </PrimaryButton> */}
+        <PrimaryButton size="small">Skontaktuj się</PrimaryButton>
       </Wrapper>
-      <HamburgerMenu pathname={pathname} />
+      <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />
     </StyledNav>
   );
 }

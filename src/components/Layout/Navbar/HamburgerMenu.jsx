@@ -1,6 +1,8 @@
+import { PrimaryButton } from '@root/components/UI/Button/Button';
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
-import NavigationMenu from './NavigationMenu'
+import NavigationMenu from './NavigationMenu';
+import SocialButtons from './SocialButtons';
 
 const styles = {
   zIndex: '1000',
@@ -15,8 +17,8 @@ const styles = {
     background: '#1889E9',
   },
   bmCrossButton: {
-    height: '21px',
-    width: '29px',
+    top: '12px',
+    right: '24px',
   },
   bmCross: {
     height: '14px',
@@ -27,22 +29,22 @@ const styles = {
     height: '120%',
     top: '0',
     right: '0',
-    width: '80%',
+    width: '80vw',
     boxShadow: '0px 4px 16px rgba(97, 121, 139, 0.1)',
-    // borderRadius: '15px',
   },
   bmMenu: {
     background: '#fff',
     fontSize: '16px',
     borderRadius: '16px',
-    padding: '0, 20px, 30px 0',
+    padding: '0',
     width: '110%',
   },
   bmItemList: {
     display: 'flex',
     flexDirection: 'column',
     color: '#b8b7ad',
-    padding: '0.8em',
+    padding: '56px 0px 0px 0',
+    width: '80vw',
   },
   bmItem: {
     display: 'inline-block',
@@ -55,8 +57,7 @@ const styles = {
   },
 };
 
-function HamburgerMenu({pathname}) {
-
+function HamburgerMenu({ pathname, socialLinks }) {
   return (
     <Menu
       right
@@ -75,20 +76,16 @@ function HamburgerMenu({pathname}) {
           />
         </svg>
       }
-    > 
-      <NavigationMenu pathname={pathname} className="menu-item" hamburger/>
-      {/* <a id="home" className="menu-item" href="/">
-        Home
-      </a>
-      <a id="about" className="menu-item" href="/about">
-        About
-      </a>
-      <a id="contact" className="menu-item" href="/contact">
-        Contact
-      </a>
-      <a showSettings={showSettings} className="menu-item--small" href="">
-        Settings
-      </a> */}
+    >
+      <NavigationMenu pathname={pathname} className="menu-item" hamburger />
+      <PrimaryButton
+        className="menu-item"
+        style={{ margin: '40px', alignSelf: 'center' }}
+        size="small"
+      >
+        Skontaktuj się
+      </PrimaryButton>
+      <SocialButtons socialLinks={socialLinks} size="16px" body="32px" hamburger />
     </Menu>
   );
 }
