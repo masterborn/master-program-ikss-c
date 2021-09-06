@@ -7,6 +7,7 @@ const BIG_BUTTON = {
   fontSize: '16px',
 };
 const SMALL_BUTTON = {
+  width: '77px',
   height: '36px',
   fontSize: '14px',
   lineHeight: '17,5px',
@@ -23,8 +24,7 @@ export const PrimaryButton = styled.button`
   padding: 0px 16px;
   background: ${PRIMARY_BUTTON.backgroundColor};
   color: white;
-  width: ${(props) =>
-    props.size === 'small' ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width * 2}`};
+  width: fit-content;
   height: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
   left: 59px;
