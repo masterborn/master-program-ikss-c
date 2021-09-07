@@ -45,9 +45,6 @@ const Wrapper = styled.div`
     width: 185px;
     justify-content: space-between;
   }
-  & .iconBody {
-    font-size: 24px;
-  }
   & .ScrollUpButtonBody {
     position: absolute;
     margin-right: 20px;

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { color } from '@root/styles/GlobalStyles';
 
 const StyledA = styled.a`
@@ -16,18 +16,40 @@ const StyledA = styled.a`
   }
 `;
 
+const hamburgerMenu = css`
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-left: 0px;
+  @media (max-width: 860px) {
+    display: flex;
+  }
+`;
+const navbarMenu = css`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 413px;
+  margin-left: 20px;
+  @media (max-width: 860px) {
+    display: none;
+  }
+`;
+
 const NavMenu = styled.div`
   display: flex;
-  flex-direction: ${(props) => (props.hamburger ? 'column' : 'row')};
-  justify-content: ${(props) => (props.hamburger ? 'flex-start' : 'space-between')};
-  align-items: ${(props) => (props.hamburger ? 'flex-start' : 'center')};
-  width: ${(props) => (props.hamburger ? '100%' : '413px')};
+  /* flex-direction: ${(props) => (props.hamburger ? 'column' : 'row')};
+justify-content: ${(props) => (props.hamburger ? 'flex-start' : 'space-between')};
+align-items: ${(props) => (props.hamburger ? 'flex-start' : 'center')};
+width: ${(props) => (props.hamburger ? '100%' : '413px')}; */
   line-height: 20px;
   font-weight: 700;
-  margin-left: ${(props) => (props.hamburger ? '0px' : '20px')};
-  @media (max-width: 860px) {
-    display: ${(props) => (props.hamburger ? 'flex' : 'none')};
-  }
+  /* margin-left: ${(props) => (props.hamburger ? '0px' : '20px')};
+@media (max-width: 860px) {
+  display: ${(props) => (props.hamburger ? 'flex' : 'none')};
+} */
+  ${({ hamburger }) => (hamburger ? hamburgerMenu : navbarMenu)}
 `;
 
 function NavigationMenu({ pathname, hamburger }) {
