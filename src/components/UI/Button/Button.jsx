@@ -26,6 +26,8 @@ export const PrimaryButton = styled.button`
   width: fit-content;
   height: ${(props) =>
     props.size?.includes('s') ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
+  margin: ${(props) => props.margin || '0px'};
+  align-self: ${(props) => props.alignSelf || 'auto'};
   left: 59px;
   cursor: pointer;
   top: 43px;

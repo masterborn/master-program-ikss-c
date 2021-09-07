@@ -78,11 +78,7 @@ function HamburgerMenu({ pathname, socialLinks }) {
       }
     >
       <NavigationMenu pathname={pathname} className="menu-item" hamburger />
-      <PrimaryButton
-        className="menu-item"
-        style={{ margin: '40px', alignSelf: 'center' }}
-        size="small"
-      >
+      <PrimaryButton className="menu-item" margin="40px" alignSelf="center" size="small">
         Skontaktuj się
       </PrimaryButton>
       <SocialButtons socialLinks={socialLinks} size="16px" body="32px" hamburger />
