@@ -23,8 +23,9 @@ export const PrimaryButton = styled.button`
   padding: 0px 16px;
   background: ${PRIMARY_BUTTON.backgroundColor};
   color: white;
-  width: ${(props) =>
-    props.size === 'small' ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width * 2}`};
+  width: fit-content;
+  margin: ${(props) => props.margin || '0px'};
+  align-self: ${(props) => props.alignSelf || 'auto'};
   height: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
   left: 59px;

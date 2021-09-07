@@ -3,7 +3,9 @@ import Footer from './Footer/Footer';
 import Navbar from './Navbar/Navbar';
 
 function Layout({ children, props }) {
-  const socialLinks = props.content?.filter((position) => position.fields.linkUrl !== undefined);
+  const socialLinks = props.content
+    ?.filter((position) => position.fields.linkUrl !== undefined)
+    .reverse();
   const footerText = props.content?.find(
     (position) => position.fields.identifier === 'footer-text',
   );

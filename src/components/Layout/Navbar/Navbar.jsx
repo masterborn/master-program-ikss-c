@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { PrimaryButton } from '@root/components/UI/Button/Button';
+import { useRouter } from 'next/dist/client/router';
 import styled from 'styled-components';
 import LogoIkssFrame from '@root/components/logoIkssFrame';
 import SocialButtons from './SocialButtons';
 import NavigationMenu from './NavigationMenu';
+import HamburgerMenu from './HamburgerMenu';
 
 const StyledNav = styled.nav`
   display: flex;
@@ -18,14 +20,19 @@ const StyledNav = styled.nav`
   z-index: 100;
 `;
 const Wrapper = styled.div`
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1440px;
-    padding-left: 124px;
-    padding-right: 120px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 20px;
+`;
+
+const LogoButton = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
 `;
 const StaticWidth = styled.div`
   width: 325px;
@@ -33,11 +40,13 @@ const StaticWidth = styled.div`
 
 function Navbar({ socialLinks, pathname }) {
   const [isVisible, setIsVisible] = useState(false);
+  const [browserWindow, setBrowserWindow] = useState({});
+  const [mobileView, setMobileView] = useState(false);
+  const router = useRouter();
 
   const showAfterScroll = () => {
-    const heightToShowFrom = 600;
+    const heightToShowFrom = 550;
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-
     if (winScroll > heightToShowFrom) {
       setIsVisible(true);
     } else {
@@ -46,20 +55,41 @@ function Navbar({ socialLinks, pathname }) {
   };
 
   useEffect(() => {
+    window.onresize = () => {
+      if (window.innerWidth < 860) {
+        setMobileView(true);
+      } else setMobileView(false);
+    };
+
+    setBrowserWindow(window);
     window.addEventListener('scroll', showAfterScroll);
     return () => window.removeEventListener('scroll', showAfterScroll);
   }, []);
 
+  const handleLogoClick = () => {
+    if (pathname === '/') {
+      browserWindow.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    } else {
+      router.push('/');
+    }
+  };
+
   return (
     <StyledNav>
       <Wrapper>
-        <LogoIkssFrame />
-        <NavigationMenu pathname={pathname} />
+        <LogoButton onClick={handleLogoClick}>
+          <LogoIkssFrame />
+        </LogoButton>
+        {!mobileView && <NavigationMenu pathname={pathname} />}
         <StaticWidth>
           {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
         </StaticWidth>
-        <PrimaryButton size="small">Skontaktuj się</PrimaryButton>
+        {!mobileView && <PrimaryButton size="small">Skontaktuj się</PrimaryButton>}
       </Wrapper>
+      {mobileView && <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />}
     </StyledNav>
   );
 }
