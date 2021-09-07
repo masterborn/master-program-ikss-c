@@ -22,9 +22,6 @@ const hamburgerMenu = css`
   align-items: flex-start;
   width: 100%;
   margin-left: 0px;
-  @media (max-width: 860px) {
-    display: flex;
-  }
 `;
 const navbarMenu = css`
   flex-direction: row;
@@ -32,23 +29,12 @@ const navbarMenu = css`
   align-items: center;
   width: 413px;
   margin-left: 20px;
-  @media (max-width: 860px) {
-    display: none;
-  }
 `;
 
 const NavMenu = styled.div`
   display: flex;
-  /* flex-direction: ${(props) => (props.hamburger ? 'column' : 'row')};
-justify-content: ${(props) => (props.hamburger ? 'flex-start' : 'space-between')};
-align-items: ${(props) => (props.hamburger ? 'flex-start' : 'center')};
-width: ${(props) => (props.hamburger ? '100%' : '413px')}; */
   line-height: 20px;
   font-weight: 700;
-  /* margin-left: ${(props) => (props.hamburger ? '0px' : '20px')};
-@media (max-width: 860px) {
-  display: ${(props) => (props.hamburger ? 'flex' : 'none')};
-} */
   ${({ hamburger }) => (hamburger ? hamburgerMenu : navbarMenu)}
 `;
 

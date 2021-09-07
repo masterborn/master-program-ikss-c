@@ -38,6 +38,7 @@ const LogoButton = styled.button`
 function Navbar({ socialLinks, pathname }) {
   const [isVisible, setIsVisible] = useState(false);
   const [browserWindow, setBrowserWindow] = useState({});
+  const [mobileView, setMobileView] = useState(false);
   const router = useRouter();
 
   const showAfterScroll = () => {
@@ -51,6 +52,12 @@ function Navbar({ socialLinks, pathname }) {
   };
 
   useEffect(() => {
+    window.onresize = () => {
+      if (window.innerWidth < 860) {
+        setMobileView(true);
+      } else setMobileView(false);
+    };
+
     setBrowserWindow(window);
     window.addEventListener('scroll', showAfterScroll);
     return () => window.removeEventListener('scroll', showAfterScroll);
@@ -73,11 +80,11 @@ function Navbar({ socialLinks, pathname }) {
         <LogoButton onClick={handleLogoClick}>
           <LogoIkssFrame />
         </LogoButton>
-        <NavigationMenu pathname={pathname} />
+        {!mobileView && <NavigationMenu pathname={pathname} />}
         {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
-        <PrimaryButton size="small">Skontaktuj się</PrimaryButton>
+        {!mobileView && <PrimaryButton size="small">Skontaktuj się</PrimaryButton>}
       </Wrapper>
-      <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />
+      {mobileView && <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />}
     </StyledNav>
   );
 }
