@@ -4,6 +4,11 @@
     "react/prop-types": 0,
     "react/jsx-one-expression-per-line": "off",
     "react/react-in-jsx-scope": "off",
+    "arrow-body-style": ["error", "as-needed"],
+    "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+    "no-return-await": "off",
+    "@typescript-eslint/return-await": "error",
+    "no-param-reassign": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "tsx"] }],
     "react/jsx-props-no-spreading": "off",
     "jsx-a11y/anchor-is-valid": "off"

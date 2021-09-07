@@ -15,7 +15,7 @@ const StyledNav = styled.nav`
   width: 100%;
   background-color: #fff;
   box-shadow: 0px 4px 16px rgba(97, 121, 139, 0.1);
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 100;
 `;
@@ -33,6 +33,9 @@ const LogoButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+`;
+const StaticWidth = styled.div`
+  width: 325px;
 `;
 
 function Navbar({ socialLinks, pathname }) {
@@ -81,7 +84,9 @@ function Navbar({ socialLinks, pathname }) {
           <LogoIkssFrame />
         </LogoButton>
         {!mobileView && <NavigationMenu pathname={pathname} />}
-        {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
+        <StaticWidth>
+          {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
+        </StaticWidth>
         {!mobileView && <PrimaryButton size="small">Skontaktuj się</PrimaryButton>}
       </Wrapper>
       {mobileView && <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />}

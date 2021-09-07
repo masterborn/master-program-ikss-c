@@ -7,9 +7,8 @@ import styled from 'styled-components';
 import { steelTints } from '../../../../../styles/GlobalStyles';
 
 const ICON_SIZE = '30px';
-const BODY_SIZE = ' 55px';
 
-const Div = styled.div`
+const StyledAnchor = styled.a`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,30 +36,26 @@ const H5 = styled.h5`
   margin-left: 15px;
 `;
 function SocialBanner({ yt, insta, lin, fb }) {
-  const onClickHandler = (url) => {
-    window.open(`${url}`, '_blank');
-  };
-
   const keyDownHandler = () => {};
 
   return (
     <BannerDiv>
-      <Div onClick={() => onClickHandler(yt)} onKeyPress={keyDownHandler} tabIndex={0}>
-        <YoutubeCircleIcon size={ICON_SIZE} body={BODY_SIZE} />
-        <H5>YouTube</H5>
-      </Div>
-      <Div onClick={() => onClickHandler(insta)} onKeyPress={keyDownHandler} tabIndex={0}>
-        <InstagramCircleIcon size={ICON_SIZE} body={BODY_SIZE} />
-        <H5>Instagram</H5>
-      </Div>
-      <Div onClick={() => onClickHandler(fb)} onKeyPress={keyDownHandler} tabIndex={0}>
-        <FacebookCircleIcon size={ICON_SIZE} body={BODY_SIZE} />
+      <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={fb} target="_blank">
+        <FacebookCircleIcon size={ICON_SIZE} />
         <H5>Facebook</H5>
-      </Div>
-      <Div onClick={() => onClickHandler(lin)} onKeyPress={keyDownHandler} tabIndex={-1}>
-        <LinkedinCircleIcon size={ICON_SIZE} body={BODY_SIZE} />
+      </StyledAnchor>
+      <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={insta} target="_blank">
+        <InstagramCircleIcon size={ICON_SIZE} />
+        <H5>Instagram</H5>
+      </StyledAnchor>
+      <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={yt} target="_blank">
+        <YoutubeCircleIcon size={ICON_SIZE} />
+        <H5>YouTube</H5>
+      </StyledAnchor>
+      <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={lin} target="_blank">
+        <LinkedinCircleIcon size={ICON_SIZE} />
         <H5>LinkedIn</H5>
-      </Div>
+      </StyledAnchor>
     </BannerDiv>
   );
 }
