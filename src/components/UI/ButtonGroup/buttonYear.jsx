@@ -16,13 +16,16 @@ const Button = styled.button`
   color: ${(props) => (props.isActive ? 'white' : 'black')};
   height: 48px;
   border-radius: 26px;
+  cursor: pointer;
   border: transparent;
   min-width: auto;
   background-color: ${(props) => (props.isActive ? `${color.blue}` : `${blueTints.blue_20}`)};
 `;
 
 const ButtonYear = ({ years, parentCallback, activeYear }) => {
-  const btnGroup = years.map((year) => (
+  const lastYears = [...years];
+  const take3Years = lastYears.slice(0, 3);
+  const btnGroup = take3Years.map((year) => (
     <Button
       key={year}
       type="button"
