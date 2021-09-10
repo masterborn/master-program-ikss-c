@@ -1,26 +1,48 @@
 import Link from 'next/link';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { color } from '@root/styles/GlobalStyles';
 
 const StyledA = styled.a`
+  padding: ${(props) => (props.hamburger ? '24px' : '0')};
   color: ${(props) => (props.pathname === props.href ? color.navy : color.steel)};
+  box-shadow: ${(props) =>
+    props.hamburger ? 'inset 0px 1.5px 0px #EAF5FF, inset 0px 0px 0px #EAF5FF; ' : 'none'};
+  width: ${(props) => (props.hamburger ? '100%' : 'auto')};
+  text-align: left;
+  &:last-child {
+    box-shadow: ${(props) =>
+      props.hamburger ? 'inset 0px 1.5px 0px #EAF5FF, inset 0px -1.5px 0px #EAF5FF; ' : 'none'};
+  }
+`;
+
+const hamburgerMenu = css`
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-left: 0px;
+`;
+const navbarMenu = css`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 413px;
+  margin-left: 20px;
 `;
 
 const NavMenu = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 413px;
   line-height: 20px;
   font-weight: 700;
-  margin-left: 20px;
+  ${({ hamburger }) => (hamburger ? hamburgerMenu : navbarMenu)}
 `;
 
-function NavigationMenu({ pathname }) {
+function NavigationMenu({ pathname, hamburger }) {
   return (
-    <NavMenu>
-      <Link href="/">
-        <StyledA pathname={pathname} href="/">
+    <NavMenu hamburger={hamburger}>
+      <Link href="/" passHref>
+        <StyledA hamburger={hamburger} pathname={pathname}>
           Strona główna
         </StyledA>
       </Link>
@@ -29,13 +51,13 @@ function NavigationMenu({ pathname }) {
           Projekty
         </StyledA>
       </Link>
-      <Link href="/o-nas">
-        <StyledA pathname={pathname} href="/o-nas">
+      <Link href="/o-nas" passHref>
+        <StyledA hamburger={hamburger} pathname={pathname}>
           O nas
         </StyledA>
       </Link>
-      <Link href="/wspolpraca">
-        <StyledA pathname={pathname} href="/wspolpraca">
+      <Link href="/wspolpraca" passHref>
+        <StyledA hamburger={hamburger} pathname={pathname}>
           Współpraca
         </StyledA>
       </Link>
