@@ -9,10 +9,14 @@ const SocialBar = styled.div`
   display: flex;
   justify-content: space-between;
   width: 168px;
-  margin-left: 135px;
-  margin-right: 20px;
+  margin-left: ${(props) => (props.hamburger ? '0' : '135px')};
+  margin-right: ${(props) => (props.hamburger ? '0' : '20px')};
+  align-self: ${(props) => (props.hamburger ? 'center' : 'none')};
   @media (max-width: 1250px) {
-    margin-left: 40px;
+    margin-left: ${(props) => (props.hamburger ? '0' : '40px')};
+  }
+  @media (max-width: 860px) {
+    display: ${(props) => (props.hamburger ? 'flex' : 'none')};
   }
 `;
 
@@ -30,11 +34,11 @@ const addSocialIcon = (url, size, body) => {
   return icon;
 };
 
-function SocialButtons({ socialLinks, size, body }) {
+function SocialButtons({ socialLinks, size, body, hamburger }) {
   return (
-    <SocialBar>
+    <SocialBar hamburger={hamburger}>
       {socialLinks?.map((link) => (
-        <div key={link.fields.identifier}>
+        <div key={`${link.fields.identifier}+${Math.random()}`}>
           <a href={link.fields.linkUrl}>{addSocialIcon(link.fields.linkUrl, size, body)}</a>
         </div>
       ))}

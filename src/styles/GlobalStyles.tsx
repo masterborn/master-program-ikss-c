@@ -15,9 +15,6 @@ const GlobalStyles = createGlobalStyle`
     line-height: 32px;
     letter-spacing: -0.015em;
     color: #61798B;
-    max-width: 1440px;
-    margin: 0 auto; 
-    float: none !important; 
     height: 100vh;
     text-align: center;
   };
