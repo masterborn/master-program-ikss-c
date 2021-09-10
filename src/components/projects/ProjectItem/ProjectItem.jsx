@@ -9,8 +9,7 @@ function extractImageUrl(imageId, assets) {
   return url;
 }
 
-function ProjectItem(props) {
-  const { project, assets } = props;
+function ProjectItem({ project, assets }) {
   const { date, title, description, linkUrl, linkCaption, image, videoUrl } = project.fields || {};
   const desc = description?.content.map((x) => x.content.find((y) => y.value).value).toString();
   const imageUrl = extractImageUrl(image?.sys.id, assets);

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import YoutubeEmbed from '../../main/projects/Banner/YoutubeEmbed/youtubeEmbed';
-import { FaPrimaryButton } from '../Button/FaButton';
+import { FaPrimaryButton, Button } from '../Button/FaButton';
 
 const CardStyled = styled.div`
   width: 100%;
@@ -52,9 +52,16 @@ function extractEmbededVideoUrl(url) {
   return `https://www.youtube.com/embed/${youtubeId}`;
 }
 
-function Card(props) {
-  const { children } = props;
+function Card({ children }) {
   const embededVideoUrl = extractEmbededVideoUrl(children.videoUrl);
+  const checkIsCaptionExist = children.linkCaption !== undefined;
+  const useFacebookOrNormalBtn = children.linkUrl?.includes('facebook') ? (
+    <FaPrimaryButton content={children.linkCaption} link={children.linkUrl} />
+  ) : (
+    <Button content={children.linkCaption} link={children.linkUrl} />
+  );
+  const renderButton = checkIsCaptionExist && useFacebookOrNormalBtn;
+
   const renderVideoOrImage = children.videoUrl ? (
     <YoutubeEmbed
       url={embededVideoUrl}
@@ -75,7 +82,7 @@ function Card(props) {
           <h5 style={{ marginLeft: '20px', color: '#61798B' }}>{children.date}</h5>
         </Headline>
         <StyledParagraph>{children.description}</StyledParagraph>
-        <FaPrimaryButton content={children.linkCaption} link={children.linkUrl} />
+        {renderButton}
       </Content>
     </CardStyled>
   );
