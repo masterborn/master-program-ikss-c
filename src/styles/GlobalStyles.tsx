@@ -118,17 +118,17 @@ const GlobalStyles = createGlobalStyle`
   .fa-times-circle {
     width: 21px;
     height: 21px;
-    color: #61798B;
+    color: #FFFFFF;
   };
   .fa-check-circle {
     width: 20px;
     height: 20px;
-    color: #61798B;
+    color: #FFFFFF;
   };
   .fa-spinner {
     width: 24px;
     height: 24px;
-    color: #61798B;
+    color: #FFFFFF;
   };
   .fa-facebook-f {
     width: 10.2px;
@@ -195,9 +195,11 @@ input, textarea {
 
 
 input[type="checkbox"] {
-    height: 24px;
-    width: 24px;
-    padding: 0;
+  height: 24px;
+  width: 24px;
+  padding: 0;
+  margin-right: 16px;
+  color: #90A1AE;
   }
 input[type="checkbox"]:not(:disabled):hover {
     border-color:#1889E9;
@@ -206,7 +208,7 @@ input[type="checkbox"]:not(:disabled):hover {
 input[type="checkbox"]:active:not(:disabled) {
     border-color:#1889E9; 
 }
-input:focus {
+input:focus, textarea:focus {
   border-color:#1889E9;
   outline: none;
 }
@@ -234,6 +236,16 @@ label{
   line-height: 28px;
   letter-spacing: -0.015em;
   color: #1A2847;
+};
+
+form {
+  width: 588px;
+  height: 556px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 `;
 

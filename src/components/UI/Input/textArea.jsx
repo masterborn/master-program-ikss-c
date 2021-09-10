@@ -5,16 +5,18 @@ import Info from './icons/Info';
 import AlertTriangle from './icons/alert-triangle';
 import InfoGray from './icons/info-gray';
 
-const StyledInput = styled.input`
-  border-color: ${(props) => (props.error ? color.error : steelTints.steel_30)};
+const StyledTextArea = styled.textarea`
+  box-size: border-box;
+  height: 221px;
+  border-color: ${(props) => (props.error ? 'red' : steelTints.steel_30)};
   color: ${color.steel};
   width: 100%;
-  height: 48px;
   padding-right: 43px;
+  resize: none;
   ::placeholder {
-    color: ${(props) => (props.error ? color.error : steelTints.steel_60)};
+    color: ${(props) => (props.error ? 'red' : steelTints.steel_60)};
   }
-  &:active {
+  &:active
     border-color: ${color.blue};
     color: ${color.steel};
   }
@@ -27,9 +29,7 @@ const StyledInput = styled.input`
   }
 `;
 const Containter = styled.div`
-  height: 78px;
-  width: ${(props) =>
-    props.children[1].props.id === 'fname' || props.children[1].props.id === 'lname' ? '282px' : '588px'};
+  width: 588px;
   position: relative;
   margin-top: 9px;
   & svg {
@@ -47,11 +47,11 @@ function InfoIcon({ disabled }) {
   return <div> {disabled ? <InfoGray /> : <Info />}</div>;
 }
 
-function Input({ id, type, labelText, placeholder, disabled, error, icon, onChange, row, col, name}) {
+function TextArea({ id, type, labelText, placeholder, disabled, error, icon, onChange, row, col, name }) {
   return (
     <Containter>
       <Label htmlFor={id}>{labelText}</Label>
-      <StyledInput
+      <StyledTextArea
         id={id}
         name={name}
         type={type}
@@ -67,4 +67,4 @@ function Input({ id, type, labelText, placeholder, disabled, error, icon, onChan
   );
 }
 
-export default Input;
+export default TextArea;

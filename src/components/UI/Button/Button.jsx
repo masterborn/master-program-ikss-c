@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { BodySmall } from '../../../styles/GlobalStyles';
 
 const BIG_BUTTON = {
-  width: '134px',
   height: '40px',
   fontSize: '16px',
 };
@@ -23,8 +22,7 @@ export const PrimaryButton = styled.button`
   padding: 0px 16px;
   background: ${PRIMARY_BUTTON.backgroundColor};
   color: white;
-  width: ${(props) =>
-    props.size === 'small' ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width * 2}`};
+  width: fit-content;
   height: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
   left: 59px;

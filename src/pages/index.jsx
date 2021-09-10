@@ -3,6 +3,7 @@ import MainPageSponsorsList from '@root/components/main/partners/MainPagePartner
 import Banner from '@root/components/main/projects/Banner/banner';
 import MainPageProjectList from '@root/components/main/projects/MainPageProjectList';
 import Highlights from '@root/components/main/Values/highlights';
+import Form from '@root/components/Form/Form';
 import { getBasicContent, getPartnerLogos, getProjects } from '../api/cmsClient/index';
 
 function HomePage(props) {
@@ -13,6 +14,7 @@ function HomePage(props) {
       <Highlights content={content} assets={assets} />
       <MainPageProjectList projects={projects} assets={assets} />
       <MainPageSponsorsList partners={partners} assets={assets} content={content} />
+      <Form content={content} />
     </>
   );
 }
