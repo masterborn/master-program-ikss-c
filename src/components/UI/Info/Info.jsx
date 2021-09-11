@@ -13,11 +13,15 @@ const InfoDiv = styled.div`
   border-radius: 16px;
 `;
 
+const StyledHeading = styled.h3`
+  margin-top: 100px;
+`;
+
 function Info() {
   return (
     <InfoDiv>
-      <h3 style={{ marginTop: '100px' }}>Chcesz zorganizowac z nami podobny projekt?</h3>
-      <PrimaryButton style={{ margin: '20px auto' }}>Skontaktuj sie z nami</PrimaryButton>
+      <StyledHeading>Chcesz zorganizowac z nami podobny projekt?</StyledHeading>
+      <PrimaryButton margin="20px auto">Skontaktuj sie z nami</PrimaryButton>
     </InfoDiv>
   );
 }

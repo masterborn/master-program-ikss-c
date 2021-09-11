@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { blueTints, color } from '../../../styles/GlobalStyles';
 
+const blue20 = (props) => props.theme.color.blue_20;
+const blue = (props) => props.theme.color.blue;
 const GroupDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: ${blueTints.blue_20};
+  background-color: ${({ theme }) => theme.color.blue_20};
   border-radius: 26px;
   margin: 20px 0 30px 0;
 `;
@@ -19,10 +20,10 @@ const Button = styled.button`
   cursor: pointer;
   border: transparent;
   min-width: auto;
-  background-color: ${(props) => (props.isActive ? `${color.blue}` : `${blueTints.blue_20}`)};
+  background-color: ${(props) => (props.isActive ? blue : blue20)};
 `;
 
-const ButtonYear = ({ years, parentCallback, activeYear }) => {
+const ButtonYear = ({ years, selectYearHandler, activeYear }) => {
   const lastYears = [...years];
   const take3Years = lastYears.slice(0, 3);
   const btnGroup = take3Years.map((year) => (
@@ -31,7 +32,7 @@ const ButtonYear = ({ years, parentCallback, activeYear }) => {
       type="button"
       isActive={year === activeYear}
       onClick={() => {
-        parentCallback(year);
+        selectYearHandler(year);
       }}
     >
       {year}

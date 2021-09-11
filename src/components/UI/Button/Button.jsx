@@ -7,7 +7,6 @@ const BIG_BUTTON = {
   fontSize: '16px',
 };
 const SMALL_BUTTON = {
-  width: '77px',
   height: '36px',
   fontSize: '14px',
   lineHeight: '17,5px',

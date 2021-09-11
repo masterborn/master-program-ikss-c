@@ -11,8 +11,8 @@ const Div = styled.div`
   min-height: 100%;
 `;
 
-const YoutubeEmbed = ({ url, sizeHeight, sizeWidth, padding, ratio, borderRadius }) => (
-  <Div padding={padding}>
+const YoutubeEmbed = ({ url, sizeHeight, sizeWidth, paddingBottom, ratio, borderRadius }) => (
+  <Div padding={paddingBottom}>
     <iframe
       style={{
         maxWidth: sizeWidth || 1200,

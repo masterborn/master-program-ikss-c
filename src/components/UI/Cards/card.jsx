@@ -6,7 +6,6 @@ import { FaPrimaryButton, Button } from '../Button/FaButton';
 const CardStyled = styled.div`
   width: 100%;
   break-inside: avoid;
-  transform: translateZ(0px);
   margin-bottom: 24px;
   text-align: justify;
   border-radius: 16px !important;
@@ -47,42 +46,54 @@ const StyledImg = styled.img`
   height: 355px;
   border-radius: 16px 16px 0 0;
 `;
+
+const StyledHeading = styled.h5`
+  margin-left: 20px;
+  color: ${({ theme }) => theme.color.card};
+`;
+
 function extractEmbededVideoUrl(url) {
   const youtubeId = url?.split('=').pop();
   return `https://www.youtube.com/embed/${youtubeId}`;
 }
 
-function Card({ children }) {
-  const embededVideoUrl = extractEmbededVideoUrl(children.videoUrl);
-  const checkIsCaptionExist = children.linkCaption !== undefined;
-  const useFacebookOrNormalBtn = children.linkUrl?.includes('facebook') ? (
-    <FaPrimaryButton content={children.linkCaption} link={children.linkUrl} />
+// intentionally leave this component in this file as it is use only i this place
+function EventButton({ caption, linkUrl }) {
+  const checkIsCaptionExist = caption !== undefined;
+  const useFacebookOrNormalBtn = linkUrl?.includes('facebook') ? (
+    <FaPrimaryButton content={caption} link={linkUrl} />
   ) : (
-    <Button content={children.linkCaption} link={children.linkUrl} />
+    <Button content={caption} link={linkUrl} />
   );
   const renderButton = checkIsCaptionExist && useFacebookOrNormalBtn;
+  return <>{renderButton}</>;
+}
 
-  const renderVideoOrImage = children.videoUrl ? (
+function Card({ children }) {
+  const { videoUrl, imageUrl, description, linkCaption, linkUrl, title, date } = children;
+  const embededVideoUrl = extractEmbededVideoUrl(videoUrl);
+
+  const renderVideoOrImage = videoUrl ? (
     <YoutubeEmbed
       url={embededVideoUrl}
       sizeHeight={355}
-      padding="0"
+      paddingBottom="0"
       ratio="2/1"
       borderRadius="16px 16px 0 0 "
     />
   ) : (
-    <StyledImg src={children.imageUrl} alt="project" />
+    <StyledImg src={imageUrl} alt="project" />
   );
   return (
     <CardStyled>
       <Container>{renderVideoOrImage}</Container>
       <Content>
         <Headline>
-          <h4>{children.title}</h4>
-          <h5 style={{ marginLeft: '20px', color: '#61798B' }}>{children.date}</h5>
+          <h4>{title}</h4>
+          <StyledHeading>{date}</StyledHeading>
         </Headline>
-        <StyledParagraph>{children.description}</StyledParagraph>
-        {renderButton}
+        <StyledParagraph>{description}</StyledParagraph>
+        <EventButton caption={linkCaption} linkUrl={linkUrl} />
       </Content>
     </CardStyled>
   );
