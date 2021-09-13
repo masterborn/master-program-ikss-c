@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import YoutubeEmbed from '../../main/projects/Banner/YoutubeEmbed/youtubeEmbed';
 import { FaPrimaryButton, Button } from '../Button/FaButton';
+import fallback from '../../../assets/fallback/fallback.png';
 
 const CardStyled = styled.div`
   width: 100%;
@@ -72,7 +73,6 @@ function EventButton({ caption, linkUrl }) {
 function Card({ children }) {
   const { videoUrl, imageUrl, description, linkCaption, linkUrl, title, date } = children;
   const embededVideoUrl = extractEmbededVideoUrl(videoUrl);
-
   const renderVideoOrImage = videoUrl ? (
     <YoutubeEmbed
       url={embededVideoUrl}
@@ -82,7 +82,7 @@ function Card({ children }) {
       borderRadius="16px 16px 0 0 "
     />
   ) : (
-    <StyledImg src={imageUrl} alt="project" />
+    <StyledImg src={imageUrl || fallback.src} alt="project" />
   );
   return (
     <CardStyled>

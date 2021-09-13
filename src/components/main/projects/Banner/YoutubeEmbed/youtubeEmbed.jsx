@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Div = styled.div`
-  padding-bottom: ${(props) => (props.padding ? props.padding : '56.25%')};
+  padding-bottom: ${(props) => (props.paddingBottom ? props.paddingBottom : '56.25%')};
   overflow: hidden;
   display: flex;
   justify-self: start;
@@ -12,7 +12,7 @@ const Div = styled.div`
 `;
 
 const YoutubeEmbed = ({ url, sizeHeight, sizeWidth, paddingBottom, ratio, borderRadius }) => (
-  <Div padding={paddingBottom}>
+  <Div paddingBottom={paddingBottom}>
     <iframe
       style={{
         maxWidth: sizeWidth || 1200,

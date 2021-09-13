@@ -1,6 +1,7 @@
 import ButtonGroup from '@root/components/UI/ButtonGroup/buttonGroup';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { SecondaryButton } from '@root/components/UI/Button/Button';
 import ProjectToDisplay from './ProjectToDisplay/ProjectToDisplay';
 
 const Div = styled.div`
@@ -48,6 +49,9 @@ function MainPageProjectList({ projects, assets }) {
       <h3>Najnowsze projekty</h3>
       <ButtonGroup titles={titles} parentCallback={callbackToChild} activeProjectId={projectShow} />
       <ProjectToDisplay project={projectsWithImages[projectShow]} activeProject={projectShow} />
+      <SecondaryButton marginTop="30px" as="a" href="/projects">
+        Zobacz wszystkie projekty
+      </SecondaryButton>
     </Div>
   );
 }

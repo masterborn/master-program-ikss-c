@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PrimaryButton } from '../Button/Button';
-import { blueTints } from '../../../styles/GlobalStyles';
 
 const InfoDiv = styled.div`
   width: 1440px;
   height: 352px;
-  background-color: ${blueTints.blue_10};
+  background-color: ${({ theme }) => theme.color.blue_10};
   text-align: center;
   padding: 30px 0;
   margin: 92px 0;

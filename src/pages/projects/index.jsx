@@ -38,8 +38,8 @@ function ProjectList({ projects, assets }) {
   const presentedProjectByYear = projectsWithYears.proj.filter(
     (project) => project?.year === selectedYear,
   );
-  const renderProjects = presentedProjectByYear.map((pproject) => (
-    <ProjectItem project={pproject} key={pproject.sys.id} assets={assets} />
+  const renderProjects = presentedProjectByYear.map((project) => (
+    <ProjectItem project={project} key={project.sys.id} assets={assets} />
   ));
   return (
     <ButtonDiv>
