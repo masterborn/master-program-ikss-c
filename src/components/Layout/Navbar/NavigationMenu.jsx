@@ -46,8 +46,8 @@ function NavigationMenu({ pathname, hamburger }) {
           Strona główna
         </StyledA>
       </Link>
-      <Link href="/projects">
-        <StyledA pathname={pathname} href="/projects">
+      <Link href="/projekty">
+        <StyledA pathname={pathname} href="/projekty">
           Projekty
         </StyledA>
       </Link>

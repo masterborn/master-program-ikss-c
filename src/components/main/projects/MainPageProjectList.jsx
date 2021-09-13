@@ -49,7 +49,7 @@ function MainPageProjectList({ projects, assets }) {
       <h3>Najnowsze projekty</h3>
       <ButtonGroup titles={titles} parentCallback={callbackToChild} activeProjectId={projectShow} />
       <ProjectToDisplay project={projectsWithImages[projectShow]} activeProject={projectShow} />
-      <SecondaryButton marginTop="30px" as="a" href="/projects">
+      <SecondaryButton marginTop="30px" as="a" href="/projekty">
         Zobacz wszystkie projekty
       </SecondaryButton>
     </Div>
