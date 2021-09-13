@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, blueTints, steelTints } from '../../../styles/GlobalStyles';
-import Info from './icons/Info';
-import AlertTriangle from './icons/alert-triangle';
-import InfoGray from './icons/info-gray';
+import Info from '../Input/icons/Info';
+import AlertTriangle from '../Input/icons/alert-triangle';
+import InfoGray from '../Input/icons/info-gray';
 
 const StyledTextArea = styled.textarea`
   box-size: border-box;

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import Input from '../UI/Input/Input';
-import TextArea from '../UI/Input/textArea';
+import TextArea from '../UI/TextArea/textArea';
 import CheckBox from './CheckBox';
 import FormButton from './FormButton';
 import { StyledButtonContainer } from './FormStyles';
