@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import ProjectItem from '@root/components/projects/ProjectItem/ProjectItem';
 import styled from 'styled-components';
+import Section from '@root/components/UI/Section/section';
 import Info from '@root/components/UI/Info/Info';
 import ButtonYear from '@root/components/UI/ButtonGroup/buttonYear';
-import { getProjects } from '../../api/cmsClient/index';
+import { getBasicContent, getProjects } from '../../api/cmsClient/index';
 import getAllAssets from '../../api/assetClient/index';
 
 const StyledDiv = styled.div`
@@ -17,7 +18,7 @@ const ButtonDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 180px;
+  margin-top: 80px;
 `;
 
 const extractProjectsDataFromProps = (projects) => {
@@ -32,9 +33,11 @@ const extractProjectsDataFromProps = (projects) => {
   return { proj: sortedProjectList, year: uniqueYear };
 };
 
-function ProjectList({ projects, assets }) {
+function ProjectList({ projects, assets, content }) {
   const [selectedYear, setSelectedYear] = useState(2021);
   const projectsWithYears = extractProjectsDataFromProps(projects);
+  const topSection = content.filter((x) => x.fields.identifier === 'projects-top-section');
+  const bottomCta = content.filter((x) => x.fields.identifier === 'projects-bottom-cta-text');
   const presentedProjectByYear = projectsWithYears.proj.filter(
     (project) => project?.year === selectedYear,
   );
@@ -42,16 +45,20 @@ function ProjectList({ projects, assets }) {
     <ProjectItem project={project} key={project.sys.id} assets={assets} />
   ));
   return (
-    <ButtonDiv>
-      <ButtonYear
-        years={projectsWithYears.year}
-        selectYearHandler={(index) => setSelectedYear(index)}
-        activeYear={selectedYear}
-      />
-      <StyledDiv>{renderProjects.slice(0, 4)}</StyledDiv>
-      <div>{renderProjects.length >= 7 && <Info />}</div>
-      <StyledDiv>{renderProjects.slice(4)}</StyledDiv>
-    </ButtonDiv>
+    <>
+      <Section content={topSection} assets={assets} />
+      <ButtonDiv>
+        <ButtonYear
+          years={projectsWithYears.year}
+          selectYearHandler={(index) => setSelectedYear(index)}
+          activeYear={selectedYear}
+        />
+        <StyledDiv>{renderProjects.slice(0, 4)}</StyledDiv>
+        <div>{renderProjects.length >= 7 && <Info />}</div>
+        <StyledDiv>{renderProjects.slice(4)}</StyledDiv>
+      </ButtonDiv>
+      <Section content={bottomCta} />
+    </>
   );
 }
 
@@ -60,11 +67,12 @@ export default ProjectList;
 export async function getStaticProps() {
   const projects = await getProjects();
   const assets = await getAllAssets();
-
+  const content = await getBasicContent();
   return {
     props: {
       projects,
       assets,
+      content,
     },
   };
 }
