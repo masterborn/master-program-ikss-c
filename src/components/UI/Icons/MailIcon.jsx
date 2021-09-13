@@ -1,10 +1,10 @@
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function MailIcon() {
+export default function MailIcon({color}) {
   return (
     <div className="iconBody">
-      <FontAwesomeIcon icon={faPaperPlane} />
+      <FontAwesomeIcon style={{color: `${color}`}} icon={faPaperPlane} />
     </div>
   );
 }

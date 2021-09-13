@@ -2,14 +2,15 @@ import styled from 'styled-components';
 import { BodySmall } from '../../../styles/GlobalStyles';
 
 const BIG_BUTTON = {
-  width: '134px',
   height: '40px',
   fontSize: '16px',
+  padding: '14px 24px',
 };
 const SMALL_BUTTON = {
   height: '36px',
   fontSize: '14px',
-  lineHeight: '17,5px',
+  lineHeight: '18px',
+  padding: '9px 16px',
 };
 
 const PRIMARY_BUTTON = {
@@ -20,7 +21,8 @@ const SECONDARY_BUTTON = {
 };
 
 export const PrimaryButton = styled.button`
-  padding: 0px 16px;
+  padding: ${(props) =>
+    props.size === 'small' ? `${SMALL_BUTTON.padding}` : `${BIG_BUTTON.padding}`};
   background: ${PRIMARY_BUTTON.backgroundColor};
   color: white;
   width: fit-content;
@@ -32,7 +34,6 @@ export const PrimaryButton = styled.button`
   cursor: pointer;
   top: 43px;
   border-radius: 26px;
-  padding: 0 20px 0 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -58,12 +59,15 @@ export const PrimaryButton = styled.button`
 export const SecondaryButton = styled.button`
   background: ${SECONDARY_BUTTON.backgroundColor};
   color: black;
-  width: ${(props) => (props.size === 'small' ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width}`)};
   height: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
   left: 59px;
   top: 43px;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   font-family: ${BodySmall.fontFamily};
   font-size: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
