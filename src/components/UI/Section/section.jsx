@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import extractImageUrl from '@root/utils';
 import { PrimaryButton } from '../Button/Button';
 
 const StyledDiv = styled.div`
@@ -14,15 +15,6 @@ const StyledParegraph = styled.p`
   max-width: ${(props) => props.paragraphWidth};
 `;
 
-function extractImageUrl(image1, assets) {
-  let url;
-  if (image1) {
-    url = assets.find((image) => image.sys.id === image1.sys.id).fields.file.url;
-    return url;
-  }
-  return null;
-}
-
 function Section({ content, assets }) {
   const data = content.find((x) => x.fields);
   const { title, text1, image1, linkCaption } = data.fields;
@@ -30,7 +22,7 @@ function Section({ content, assets }) {
   const imageUrl = extractImageUrl(image1, assets);
 
   const divHeight = linkCaption ? '252px' : '358px';
-  const divMargin = linkCaption ? '-200px 0 200px 0' : '0px';
+  const divMargin = linkCaption ? '200px 0' : '0px';
   const paragraphWidth = linkCaption ? '635px' : '995px';
   return (
     <StyledDiv divHeight={divHeight} divMargin={divMargin}>
