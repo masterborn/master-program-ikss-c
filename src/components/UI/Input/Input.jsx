@@ -47,7 +47,7 @@ function InfoIcon({ disabled }) {
   return <div> {disabled ? <InfoGray /> : <Info />}</div>;
 }
 
-function Input({ id, type, labelText, placeholder, disabled, error, icon, onChange, row, col, name}) {
+function Input({ id, type, labelText, placeholder, disabled, error, icon, onChange, name}) {
   return (
     <Containter>
       <Label htmlFor={id}>{labelText}</Label>
@@ -59,8 +59,6 @@ function Input({ id, type, labelText, placeholder, disabled, error, icon, onChan
         disabled={disabled}
         error={error}
         onChange={onChange}
-        row={row}
-        col={col}
       />
       {icon && (error ? <AlertTriangle /> : <InfoIcon disabled={disabled} />)}
     </Containter>

@@ -1,19 +1,19 @@
 import React from 'react';
-import { StyledCheckbox } from './FormStyles';
+import { StyledCheckboxLabel, StyledCheckbox } from './FormStyles';
 import ToolTip from './ToolTip';
 
 function CheckBox({toolTipText}) {
     return (
-        <StyledCheckbox htmlFor="check">
-        <input id="check" type="checkbox" required />
+      <StyledCheckboxLabel htmlFor="check">
+        <StyledCheckbox id="check" type="checkbox" required />
         Zapoznałem się z
         <a href="https://uodo.gov.pl/">
-            <ToolTip toolTipText={toolTipText}>
+          <ToolTip toolTipText={toolTipText}>
             informacją o administratorze i przetwarzaniu danych.
-            </ToolTip>
+          </ToolTip>
         </a>
-        </StyledCheckbox>
-    )
+      </StyledCheckboxLabel>
+    );
 };
 
 export default CheckBox;

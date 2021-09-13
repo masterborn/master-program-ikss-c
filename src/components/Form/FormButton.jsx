@@ -7,7 +7,7 @@ import { StyledFormButton } from './FormStyles';
 function FormButton({status, submitButtonText, onClick}) {
   return (
     <StyledFormButton type="submit" onClick={onClick} status={status}>
-      {status === 'pending' ? <SpinnerIcon /> : <></>}
+      {status === 'pending' && <SpinnerIcon />}
       {status === 'error' ? <CircleXIcon /> : <></>}
       {status === 'success' ? <SuccessIcon /> : <></>}
       {submitButtonText}

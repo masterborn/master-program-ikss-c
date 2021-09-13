@@ -7,14 +7,13 @@ import InfoGray from '../Input/icons/info-gray';
 
 const StyledTextArea = styled.textarea`
   box-size: border-box;
-  height: 221px;
-  border-color: ${(props) => (props.error ? 'red' : steelTints.steel_30)};
+  border-color: ${(props) => (props.error ? color.error : steelTints.steel_30)};
   color: ${color.steel};
   width: 100%;
   padding-right: 43px;
   resize: none;
   ::placeholder {
-    color: ${(props) => (props.error ? 'red' : steelTints.steel_60)};
+    color: ${(props) => (props.error ? color.error : steelTints.steel_60)};
   }
   &:active
     border-color: ${color.blue};
@@ -47,7 +46,7 @@ function InfoIcon({ disabled }) {
   return <div> {disabled ? <InfoGray /> : <Info />}</div>;
 }
 
-function TextArea({ id, type, labelText, placeholder, disabled, error, icon, onChange, row, col, name }) {
+function TextArea({ id, type, labelText, placeholder, disabled, error, icon, onChange, rows, name }) {
   return (
     <Containter>
       <Label htmlFor={id}>{labelText}</Label>
@@ -59,8 +58,7 @@ function TextArea({ id, type, labelText, placeholder, disabled, error, icon, onC
         disabled={disabled}
         error={error}
         onChange={onChange}
-        row={row}
-        col={col}
+        rows={rows}
       />
       {icon && (error ? <AlertTriangle /> : <InfoIcon disabled={disabled} />)}
     </Containter>

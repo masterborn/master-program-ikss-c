@@ -4,7 +4,7 @@ import Input from '../UI/Input/Input';
 import TextArea from '../UI/TextArea/textArea';
 import CheckBox from './CheckBox';
 import FormButton from './FormButton';
-import { StyledButtonContainer } from './FormStyles';
+import { StyledButtonContainer, StyledFormInputs } from './FormStyles';
 
 function FormInputs({ toolTip }) {
 
@@ -26,6 +26,7 @@ function FormInputs({ toolTip }) {
     topic: false,
     contents: false,
   });
+
   const [placeholder, setPlaceholder] = useState({
     fname: 'Wpisz swoje imię',
     lname: 'Wpisz swoje nazwisko',
@@ -33,6 +34,14 @@ function FormInputs({ toolTip }) {
     topic: 'Temat wiadomości',
     contents: 'O czym chcesz z nami porozmawiać?',
   });
+
+  const clearPlaceholder = {
+    fname: 'Wpisz swoje imię',
+    lname: 'Wpisz swoje nazwisko',
+    email: 'Wpisz swój email',
+    topic: 'Temat wiadomości',
+    contents: 'O czym chcesz z nami porozmawiać?',
+  };
 
   function setButtonError(){
     setStatus('error');
@@ -54,36 +63,13 @@ function FormInputs({ toolTip }) {
     });
   }
 
-  function handleFnameChange(e) {
-    setErr((prev) => ({ ...prev, fname: false }));
-    setValue((prev) => ({ ...prev, fname: e.target.value }));
-    setPlaceholder((prev) => ({ ...prev, fname: 'Wpisz swoje imię' }));
+  function handleChange(e) {
+    setErr((prev) => ({ ...prev, [e.target.id]: false }));
+    setValue((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setPlaceholder((prev) => ({ ...prev, [e.target.id]: clearPlaceholder[e.target.id] }));
     clearButton();
   }
-  function handleLnameChange(e) {
-    setErr((prev) => ({ ...prev, lname: false }));
-    setValue((prev) => ({ ...prev, lname: e.target.value }));
-    setPlaceholder((prev) => ({ ...prev, lname: 'Wpisz swoje nazwisko' }));
-    clearButton();
-  }
-  function handleEmailChange(e) {
-    setErr((prev) => ({ ...prev, email: false }));
-    setValue((prev) => ({ ...prev, email: e.target.value }));
-    setPlaceholder((prev) => ({ ...prev, email: 'Wpisz swój email' }));
-    clearButton();
-  }
-  function handleTopicChange(e) {
-    setErr((prev) => ({ ...prev, topic: false }));
-    setValue((prev) => ({ ...prev, topic: e.target.value }));
-    setPlaceholder((prev) => ({ ...prev, topic: 'Teamt wiadomości' }));
-    clearButton();
-  }
-  function handleContentsChange(e) {
-    setErr((prev) => ({ ...prev, contents: false }));
-    setValue((prev) => ({ ...prev, contents: e.target.value }));
-    setPlaceholder((prev) => ({ ...prev, contents: 'O czym chcesz z nami porozmawiać?' }));
-    clearButton();
-  }
+
 
   function validation() {
     if (!value.fname) {
@@ -128,7 +114,6 @@ function FormInputs({ toolTip }) {
     if (!err.fname && !err.lname && !err.email && !err.topic && !err.contents) {
       setStatus('pending');
       setSubmitButtonText('');
-      try {
         axios
           .post('https://formcarry.com/s/W2_tnOLNhqA', value, {
             headers: { Accept: 'application/json' },
@@ -144,23 +129,20 @@ function FormInputs({ toolTip }) {
           .catch((error) => {
             setStatus('error');
             setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
-            throw Error(error);
+            Error(error.message);
           });
-      } catch (e) {
-        throw Error(e);
-      }
     }
   }
 
   return (
-    <form id="form" onSubmit={handleSubmit}>
+    <StyledFormInputs id="form" onSubmit={handleSubmit}>
       <Input
         id="fname"
         name="fname"
         type="text"
         labelText="Imię"
         placeholder={placeholder.fname}
-        onChange={(e) => handleFnameChange(e)}
+        onChange={(e) => handleChange(e)}
         error={err.fname}
         icon={err.fname}
       />
@@ -170,7 +152,7 @@ function FormInputs({ toolTip }) {
         type="text"
         labelText="Nazwisko"
         placeholder={placeholder.lname}
-        onChange={(e) => handleLnameChange(e)}
+        onChange={(e) => handleChange(e)}
         error={err.lname}
         icon={err.lname}
       />
@@ -180,7 +162,7 @@ function FormInputs({ toolTip }) {
         type="email"
         labelText="Adres email"
         placeholder={placeholder.email}
-        onChange={(e) => handleEmailChange(e)}
+        onChange={(e) => handleChange(e)}
         error={err.email}
         icon={err.email}
       />
@@ -190,7 +172,7 @@ function FormInputs({ toolTip }) {
         type="text"
         labelText="Temat"
         placeholder={placeholder.topic}
-        onChange={(e) => handleTopicChange(e)}
+        onChange={(e) => handleChange(e)}
         error={err.topic}
         icon={err.topic}
       />
@@ -198,19 +180,23 @@ function FormInputs({ toolTip }) {
         id="contents"
         name="contents"
         type="textarea"
-        row={50}
-        col={50}
+        rows={7}
         labelText="Treść"
         placeholder={placeholder.contents}
-        onChange={(e) => handleContentsChange(e)}
+        onChange={(e) => handleChange(e)}
         error={err.contents}
         icon={err.contents}
       />
-      <CheckBox toolTipText={toolTipText}/>
+      <CheckBox toolTipText={toolTipText} />
       <StyledButtonContainer>
-        <FormButton type="submit" onClick={validation} status={status} submitButtonText={submitButtonText}/>
+        <FormButton
+          type="submit"
+          onClick={validation}
+          status={status}
+          submitButtonText={submitButtonText}
+        />
       </StyledButtonContainer>
-    </form>
+    </StyledFormInputs>
   );
 }
 
