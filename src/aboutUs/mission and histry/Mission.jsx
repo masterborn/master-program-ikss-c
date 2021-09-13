@@ -2,8 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-display: flex;
-flex-direction: row;
+  max-width: 1440px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 150px;
 `;
 
 const Image = styled.img`
@@ -14,10 +19,15 @@ const Image = styled.img`
     drop-shadow(0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035))
     drop-shadow(0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275));
   border-radius: 16px;
+  margin-right: 56px;
 `;
 
 const TextContent = styled.div`
-text-align: left;
+  width: 658px;
+  height: 128px;
+  & h2{
+    padding-bottom: 24px;
+  }
 `;
 
 function Mission({content, assets}) {
