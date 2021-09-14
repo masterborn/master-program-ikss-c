@@ -8,9 +8,11 @@ import { getBasicContent, getProjects } from '../../api/cmsClient/index';
 import getAllAssets from '../../api/assetClient/index';
 
 const StyledDiv = styled.div`
-  column-count: 2;
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: ${(props) => (props.countOfItems === 1 ? '1' : '2')};
+  width: ${(props) => (props.countOfItems === 1 ? '50%' : '100%')};
   column-gap: 24px;
-  column-fill: balance;
 `;
 
 const ButtonDiv = styled.div`
@@ -53,7 +55,7 @@ function ProjectList({ projects, assets, content }) {
           selectYearHandler={(index) => setSelectedYear(index)}
           activeYear={selectedYear}
         />
-        <StyledDiv>{renderProjects.slice(0, 4)}</StyledDiv>
+        <StyledDiv countOfItems={renderProjects.length}>{renderProjects.slice(0, 4)}</StyledDiv>
         <div>{renderProjects.length >= 7 && <Info />}</div>
         <StyledDiv>{renderProjects.slice(4)}</StyledDiv>
       </ButtonDiv>

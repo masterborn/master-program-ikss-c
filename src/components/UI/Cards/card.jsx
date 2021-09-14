@@ -53,7 +53,7 @@ const StyledHeading = styled.h5`
 `;
 
 const Div = styled.div`
-  padding-bottom: 24px;
+  padding-top: 20px;
 `;
 
 function extractEmbededVideoUrl(url) {
