@@ -128,8 +128,7 @@ function FormInputs({ toolTip }) {
           })
           .catch((error) => {
             setStatus('error');
-            setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
-            Error(error.message);
+            setSubmitButtonText(`${error.message}`);
           });
     }
   }
@@ -145,6 +144,7 @@ function FormInputs({ toolTip }) {
         onChange={(e) => handleChange(e)}
         error={err.fname}
         icon={err.fname}
+        isWide={false}
       />
       <Input
         id="lname"
@@ -155,6 +155,7 @@ function FormInputs({ toolTip }) {
         onChange={(e) => handleChange(e)}
         error={err.lname}
         icon={err.lname}
+        isWide={false}
       />
       <Input
         id="email"
@@ -165,6 +166,7 @@ function FormInputs({ toolTip }) {
         onChange={(e) => handleChange(e)}
         error={err.email}
         icon={err.email}
+        isWide
       />
       <Input
         id="topic"
@@ -175,6 +177,7 @@ function FormInputs({ toolTip }) {
         onChange={(e) => handleChange(e)}
         error={err.topic}
         icon={err.topic}
+        isWide
       />
       <TextArea
         id="contents"

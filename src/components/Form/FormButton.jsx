@@ -8,8 +8,8 @@ function FormButton({status, submitButtonText, onClick}) {
   return (
     <StyledFormButton type="submit" onClick={onClick} status={status}>
       {status === 'pending' && <SpinnerIcon />}
-      {status === 'error' ? <CircleXIcon /> : <></>}
-      {status === 'success' ? <SuccessIcon /> : <></>}
+      {status === 'error' && <CircleXIcon /> }
+      {status === 'success' && <SuccessIcon /> }
       {submitButtonText}
     </StyledFormButton>
   );

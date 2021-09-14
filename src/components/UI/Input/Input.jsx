@@ -28,8 +28,7 @@ const StyledInput = styled.input`
 `;
 const Containter = styled.div`
   height: 78px;
-  width: ${(props) =>
-    props.children[1].props.id === 'fname' || props.children[1].props.id === 'lname' ? '282px' : '588px'};
+  width: ${(props) => (props.isWide ? '588px' : '282px')};
   position: relative;
   margin-top: 9px;
   & svg {
@@ -47,9 +46,9 @@ function InfoIcon({ disabled }) {
   return <div> {disabled ? <InfoGray /> : <Info />}</div>;
 }
 
-function Input({ id, type, labelText, placeholder, disabled, error, icon, onChange, name}) {
+function Input({ id, type, labelText, placeholder, disabled, error, icon, onChange, name, isWide}) {
   return (
-    <Containter>
+    <Containter isWide={isWide}>
       <Label htmlFor={id}>{labelText}</Label>
       <StyledInput
         id={id}
