@@ -126,9 +126,9 @@ function FormInputs({ toolTip }) {
               resetForm();
             }
           })
-          .catch((error) => {
+          .catch(() => {
             setStatus('error');
-            setSubmitButtonText(`${error.message}. Spróbuj ponownie później.`);
+            setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
           });
     }
   }
