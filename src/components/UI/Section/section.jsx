@@ -26,7 +26,7 @@ function Section({ content, assets }) {
   const paragraphWidth = linkCaption ? '635px' : '995px';
   return (
     <StyledDiv divHeight={divHeight} divMargin={divMargin}>
-      {imageUrl && <img src={imageUrl} alt="test" />}
+      {imageUrl && <img src={imageUrl} alt={`Logo ${title}`} />}
       {linkCaption ? <h3>{title}</h3> : <h1>{title}</h1>}
       <StyledParegraph paragraphWidth={paragraphWidth}>{description}</StyledParegraph>
       {linkCaption && <PrimaryButton>{linkCaption}</PrimaryButton>}
