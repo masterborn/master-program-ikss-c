@@ -1,6 +1,7 @@
 import ButtonGroup from '@root/components/UI/ButtonGroup/buttonGroup';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { SecondaryButton } from '@root/components/UI/Button/Button';
 import ProjectToDisplay from './ProjectToDisplay/ProjectToDisplay';
 
 const Div = styled.div`
@@ -33,7 +34,7 @@ function mapProjectsWithImageUrl(projects, urls) {
 function MainPageProjectList({ projects, assets }) {
   const [projectShow, setProjectShow] = useState(0);
   const homepageProjects = projects.filter((p) => p.fields.showOnHomepage);
-  const homepageProjectsSorted = homepageProjects.sort((a, b) => (b.fields.order) - (a.fields.order));
+  const homepageProjectsSorted = homepageProjects.sort((a, b) => b.fields.order - a.fields.order);
   const imagesAsset = homepageProjectsSorted.filter((i) => i.fields);
   const imageAssetId = imagesAsset.map((el) => el.fields.image.sys.id);
   const imagesUrl = extractHomeProjectImage(imageAssetId, assets);
@@ -46,8 +47,11 @@ function MainPageProjectList({ projects, assets }) {
   return (
     <Div>
       <h3>Najnowsze projekty</h3>
-      <ButtonGroup titles={titles} parentCallback={callbackToChild} activeProjectId={projectShow}/>
-      <ProjectToDisplay project={projectsWithImages[projectShow]} activeProject={projectShow}/>
+      <ButtonGroup titles={titles} parentCallback={callbackToChild} activeProjectId={projectShow} />
+      <ProjectToDisplay project={projectsWithImages[projectShow]} activeProject={projectShow} />
+      <SecondaryButton marginTop="30px" as="a" href="/projekty">
+        Zobacz wszystkie projekty
+      </SecondaryButton>
     </Div>
   );
 }
