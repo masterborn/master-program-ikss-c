@@ -115,7 +115,7 @@ function FormInputs({ toolTip }) {
       setStatus('pending');
       setSubmitButtonText('');
         axios
-          .post('https://formcarry.com/s/W2_tnOLNhqA', value, {
+          .post('https://formcarry.com/s/W2_tnOLNhq', value, {
             headers: { Accept: 'application/json' },
           })
           .then((response) => {
@@ -128,7 +128,7 @@ function FormInputs({ toolTip }) {
           })
           .catch((error) => {
             setStatus('error');
-            setSubmitButtonText(`${error.message}`);
+            setSubmitButtonText(`${error.message}. Spróbuj ponownie później.`);
           });
     }
   }
