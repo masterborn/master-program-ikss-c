@@ -51,7 +51,7 @@ function NavigationMenu({ pathname, hamburger }) {
           Projekty
         </StyledA>
       </Link>
-      <Link href="/aboutUs" passHref>
+      <Link href="/o-nas" passHref>
         <StyledA hamburger={hamburger} pathname={pathname}>
           O nas
         </StyledA>

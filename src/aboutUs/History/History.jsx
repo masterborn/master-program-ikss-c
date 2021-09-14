@@ -44,7 +44,7 @@ const TextContent = styled.div`
 
 `;
 
-function Histry({ content, assets }) {
+function History({ content, assets }) {
     const headline = content.find((v) => v.fields.identifier === 'about-us-content-2');
     const headlineTitle = headline.fields.title;
     const headlineDescription1Part = headline.fields.text1.content[0].content[0].value;
@@ -55,12 +55,12 @@ function Histry({ content, assets }) {
 
     return (
       <Container>
-          <FirstImage src={histryImage1} alt="Members of the IKSS association" />
+          <FirstImage src={histryImage1} alt="Zdjęcie członków stowarzyszenia IKSS" />
           <TextContent>
             <h2>{headlineTitle}</h2>
             <p>{headlineDescription1Part}</p>
           </TextContent>
-          <SecondImage src={histryImage2} alt="Members of the IKSS association" />
+          <SecondImage src={histryImage2} alt="Zdjęcie członków stowarzyszenia IKSS" />
           <TextContent>
             <p>{headlineDescription2Part}</p>
             <p>{headlineDescription3Part}</p>
@@ -68,4 +68,4 @@ function Histry({ content, assets }) {
       </Container>
     );
 }
-export default Histry;
+export default History;

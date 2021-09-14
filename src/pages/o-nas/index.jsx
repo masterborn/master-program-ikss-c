@@ -1,6 +1,6 @@
 import getAllAssets from '@root/api/assetClient';
-import Mission from '@root/aboutUs/mission and histry/Mission';
-import Histry from '@root/aboutUs/mission and histry/Histry';
+import Mission from '@root/aboutUs/Mission/Mission';
+import History from '@root/aboutUs/History/History';
 import { getBasicContent } from '@root/api/cmsClient';
 
 function AboutUsPage(props) {
@@ -8,7 +8,7 @@ function AboutUsPage(props) {
   return (
     <>
       <Mission content={content} assets={assets} />
-      <Histry content={content} assets={assets} />
+      <History content={content} assets={assets} />
     </>
   );
 }
