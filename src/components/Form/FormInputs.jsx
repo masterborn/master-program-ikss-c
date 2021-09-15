@@ -115,7 +115,7 @@ function FormInputs({ toolTip }) {
       setStatus('pending');
       setSubmitButtonText('');
         axios
-          //TODO Move URL to env.local(after adding environment variable to Vercel)
+          // TODO Move URL to env.local(after adding environment variable to Vercel)
           .post('https://formcarry.com/s/W2_tnOLNhqA', value, {
             headers: { Accept: 'application/json' },
           })
