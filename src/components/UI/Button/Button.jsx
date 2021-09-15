@@ -58,12 +58,14 @@ export const PrimaryButton = styled.button`
 export const SecondaryButton = styled.button`
   background: ${SECONDARY_BUTTON.backgroundColor};
   color: black;
-  width: ${(props) => (props.size === 'small' ? `${SMALL_BUTTON.width}` : `${BIG_BUTTON.width}`)};
+  width: fit-content;
+  padding: 0 10px;
   height: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
   left: 59px;
   top: 43px;
   cursor: pointer;
+  margin-top: ${(props) => props.marginTop || '0px'};
   font-family: ${BodySmall.fontFamily};
   font-size: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
