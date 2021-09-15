@@ -1,20 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, blueTints, steelTints } from '../../../styles/GlobalStyles';
-import Info from './icons/Info';
-import AlertTriangle from './icons/alert-triangle';
-import InfoGray from './icons/info-gray';
+import Info from '../Input/icons/Info';
+import AlertTriangle from '../Input/icons/alert-triangle';
+import InfoGray from '../Input/icons/info-gray';
 
-const StyledInput = styled.input`
+const StyledTextArea = styled.textarea`
+  box-size: border-box;
   border-color: ${(props) => (props.error ? color.error : steelTints.steel_30)};
   color: ${color.steel};
   width: 100%;
-  height: 48px;
   padding-right: 43px;
+  resize: none;
   ::placeholder {
     color: ${(props) => (props.error ? color.error : steelTints.steel_60)};
   }
-  &:active {
+  &:active
     border-color: ${color.blue};
     color: ${color.steel};
   }
@@ -27,8 +28,7 @@ const StyledInput = styled.input`
   }
 `;
 const Containter = styled.div`
-  height: 78px;
-  width: ${(props) => (props.isWide ? '588px' : '282px')};
+  width: 588px;
   position: relative;
   margin-top: 9px;
   & svg {
@@ -46,11 +46,11 @@ function InfoIcon({ disabled }) {
   return <div> {disabled ? <InfoGray /> : <Info />}</div>;
 }
 
-function Input({ id, type, labelText, placeholder, disabled, error, icon, onChange, name, isWide}) {
+function TextArea({ id, type, labelText, placeholder, disabled, error, icon, onChange, rows, name }) {
   return (
-    <Containter isWide={isWide}>
+    <Containter>
       <Label htmlFor={id}>{labelText}</Label>
-      <StyledInput
+      <StyledTextArea
         id={id}
         name={name}
         type={type}
@@ -58,10 +58,11 @@ function Input({ id, type, labelText, placeholder, disabled, error, icon, onChan
         disabled={disabled}
         error={error}
         onChange={onChange}
+        rows={rows}
       />
       {icon && (error ? <AlertTriangle /> : <InfoIcon disabled={disabled} />)}
     </Containter>
   );
 }
 
-export default Input;
+export default TextArea;
