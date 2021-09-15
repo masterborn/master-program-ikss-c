@@ -1,5 +1,5 @@
 import getAllAssets from '@root/api/assetClient';
-import MainPageSponsorsList from '@root/components/main/partners/MainPagePartnersList';
+import MainPagePartnersList from '@root/components/main/partners/MainPagePartnersList';
 import Banner from '@root/components/main/projects/Banner/banner';
 import MainPageProjectList from '@root/components/main/projects/MainPageProjectList';
 import Highlights from '@root/components/main/Values/highlights';
@@ -13,7 +13,7 @@ function HomePage(props) {
       <Banner content={content} asset={assets} />
       <Highlights content={content} assets={assets} />
       <MainPageProjectList projects={projects} assets={assets} />
-      <MainPageSponsorsList partners={partners} assets={assets} content={content} />
+      <MainPagePartnersList home partners={partners} assets={assets} content={content} />
       <Form content={content} />
     </>
   );
