@@ -59,6 +59,7 @@ function Input({ id, type, labelText, placeholder, value, disabled, error, icon,
         disabled={disabled}
         error={error}
         onChange={onChange}
+        autoComplete="on"
       />
       {icon && (error ? <AlertTriangle /> : <InfoIcon disabled={disabled} />)}
     </Containter>
