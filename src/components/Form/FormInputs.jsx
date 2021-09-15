@@ -141,6 +141,7 @@ function FormInputs({ toolTip }) {
         name="fname"
         type="text"
         labelText="Imię"
+        value={value.fname}
         placeholder={placeholder.fname}
         onChange={(e) => handleChange(e)}
         error={err.fname}
@@ -152,6 +153,7 @@ function FormInputs({ toolTip }) {
         name="lname"
         type="text"
         labelText="Nazwisko"
+        value={value.lname}
         placeholder={placeholder.lname}
         onChange={(e) => handleChange(e)}
         error={err.lname}
@@ -163,6 +165,7 @@ function FormInputs({ toolTip }) {
         name="email"
         type="email"
         labelText="Adres email"
+        value={value.email}
         placeholder={placeholder.email}
         onChange={(e) => handleChange(e)}
         error={err.email}
@@ -174,6 +177,7 @@ function FormInputs({ toolTip }) {
         name="topic"
         type="text"
         labelText="Temat"
+        value={value.topic}
         placeholder={placeholder.topic}
         onChange={(e) => handleChange(e)}
         error={err.topic}
@@ -186,6 +190,7 @@ function FormInputs({ toolTip }) {
         type="textarea"
         rows={7}
         labelText="Treść"
+        value={value.contents}
         placeholder={placeholder.contents}
         onChange={(e) => handleChange(e)}
         error={err.contents}
