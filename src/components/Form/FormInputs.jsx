@@ -135,7 +135,7 @@ function FormInputs({ toolTip }) {
   }
 
   return (
-    <StyledFormInputs id="form" onSubmit={handleSubmit}>
+    <StyledFormInputs autoComplete="off" id="form" onSubmit={handleSubmit}>
       <Input
         id="fname"
         name="fname"

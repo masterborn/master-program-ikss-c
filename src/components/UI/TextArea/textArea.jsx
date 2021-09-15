@@ -46,7 +46,9 @@ function InfoIcon({ disabled }) {
   return <div> {disabled ? <InfoGray /> : <Info />}</div>;
 }
 
+
 function TextArea({ id, type, labelText, placeholder, value, disabled, error, icon, onChange, rows, name }) {
+
   return (
     <Containter>
       <Label htmlFor={id}>{labelText}</Label>
