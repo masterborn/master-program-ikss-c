@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import config from '../../../config';
 import Input from '../UI/Input/Input';
 import TextArea from '../UI/TextArea/textArea';
 import CheckBox from './CheckBox';
@@ -115,7 +116,7 @@ function FormInputs({ toolTip }) {
       setStatus('pending');
       setSubmitButtonText('');
         axios
-          .post('https://formcarry.com/s/W2_tnOLNhqA', value, {
+          .post(`${config.FORMCARRY_URL}`, value, {
             headers: { Accept: 'application/json' },
           })
           .then((response) => {
