@@ -1,5 +1,4 @@
 export default {
   CONTENTFUL_API_SPACE: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
   CONTENTFUL_API_TOKEN: process.env.NEXT_PUBLIC_CONTENTFUL_API_TOKEN,
-  FORMCARRY_URL: 'https://formcarry.com/s/W2_tnOLNhqA',
 };
