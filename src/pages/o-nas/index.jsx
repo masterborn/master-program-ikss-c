@@ -1,6 +1,7 @@
 import getAllAssets from '@root/api/assetClient';
 import Mission from '@root/aboutUs/Mission/Mission';
 import History from '@root/aboutUs/History/History';
+import Team from '@root/aboutUs/Team/Team';
 import Section from '@root/components/UI/Section/section';
 import { getBasicContent } from '@root/api/cmsClient';
 
@@ -14,6 +15,7 @@ function AboutUsPage(props) {
       <Section content={topSection} assets={assets} />
       <Mission content={content} assets={assets} />
       <History content={content} assets={assets} />
+      <Team content={content} assets={assets} />
       <Section content={bottomCta} />
     </>
   );
