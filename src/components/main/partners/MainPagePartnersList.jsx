@@ -3,11 +3,14 @@ import styled from 'styled-components';
 
 const StyledPartners = styled.div`
   text-align: center;
+  max-width: 1188px;
+  max-height: 796px;
+  margin: 148px auto 132px;
   & h3 {
-    margin: 140px auto 30px;
+    margin: 32px;
   }
   & p {
-    margin: auto;
+    margin: 0 auto 80px;
     width: 635px;
     height: 64px;
   }
@@ -23,12 +26,19 @@ const StyledPartner = styled.div`
 `;
 
 const StyledPartnerLogo = styled.div`
-  width: 20%;
-  padding: 72px;
+  display: flex;
+  flex-basis: 20%;
+  margin-bottom: 48px;
+  -webkit-box-pack: center;
+  justify-content: center;
 `;
 
-function MainPagePartnersList({ partners, assets, content }) {
-  const partnersToDisplay = partners.filter((partner) => partner.fields.showOnHomepage);
+function MainPagePartnersList({ partners, assets, content, home}) {
+
+  const partnersToDisplay = home
+    ? partners.filter((partner) => partner.fields.showOnHomepage)
+    : partners.filter((partner) => partner.fields);
+
   const headline = content.find((v) => v.fields.identifier === 'cooperation-logos-text');
   const headlineTitle = headline.fields.title;
   const headlineDescription = headline.fields.text1.content
@@ -45,7 +55,7 @@ function MainPagePartnersList({ partners, assets, content }) {
     };
   });
 
-  partnersImgAndName.sort((a, b) => (a.order > b.order ? 1 : -1));
+  partnersImgAndName.sort((a, b) => (a.order > b.order ? -1 : 1));
 
   return (
     <StyledPartners>
