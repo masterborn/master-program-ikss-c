@@ -115,7 +115,7 @@ function FormInputs({ toolTip }) {
       setStatus('pending');
       setSubmitButtonText('');
         axios
-          .post('https://formcarry.com/s/W2_tnOLNhq', value, {
+          .post('https://formcarry.com/s/W2_tnOLNhqA', value, {
             headers: { Accept: 'application/json' },
           })
           .then((response) => {
