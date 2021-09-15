@@ -7,7 +7,6 @@ import fallback from '../../../assets/fallback/fallback.png';
 const CardStyled = styled.div`
   width: 100%;
   break-inside: avoid;
-  margin-bottom: 24px;
   text-align: justify;
   border-radius: 16px !important;
   background: #ffffff;
@@ -53,6 +52,10 @@ const StyledHeading = styled.h5`
   color: ${({ theme }) => theme.color.card};
 `;
 
+const Div = styled.div`
+  padding-top: 20px;
+`;
+
 function extractEmbededVideoUrl(url) {
   const youtubeId = url?.split('=').pop();
   return `https://www.youtube.com/embed/${youtubeId}`;
@@ -85,17 +88,19 @@ function Card({ children }) {
     <StyledImg src={imageUrl || fallback.src} alt="project" />
   );
   return (
-    <CardStyled>
-      <Container>{renderVideoOrImage}</Container>
-      <Content>
-        <Headline>
-          <h4>{title}</h4>
-          <StyledHeading>{date}</StyledHeading>
-        </Headline>
-        <StyledParagraph>{description}</StyledParagraph>
-        <EventButton caption={linkCaption} linkUrl={linkUrl} />
-      </Content>
-    </CardStyled>
+    <Div>
+      <CardStyled>
+        <Container>{renderVideoOrImage}</Container>
+        <Content>
+          <Headline>
+            <h4>{title}</h4>
+            <StyledHeading>{date}</StyledHeading>
+          </Headline>
+          <StyledParagraph>{description}</StyledParagraph>
+          <EventButton caption={linkCaption} linkUrl={linkUrl} />
+        </Content>
+      </CardStyled>
+    </Div>
   );
 }
 

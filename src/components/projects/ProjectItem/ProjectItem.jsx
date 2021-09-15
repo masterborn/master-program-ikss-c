@@ -1,18 +1,11 @@
 import React from 'react';
+import extractImageUrl from '@root/utils';
 import Card from '../../UI/Cards/card';
-
-function extractImageUrl(imageId, assets) {
-  let url;
-  if (imageId) {
-    url = assets.find((image) => image.sys.id === imageId).fields.file.url;
-  }
-  return url;
-}
 
 function ProjectItem({ project, assets }) {
   const { date, title, description, linkUrl, linkCaption, image, videoUrl } = project.fields || {};
   const desc = description?.content.map((x) => x.content.find((y) => y.value).value).toString();
-  const imageUrl = extractImageUrl(image?.sys.id, assets);
+  const imageUrl = extractImageUrl(image, assets);
   const renderedProject = {
     title,
     date,
