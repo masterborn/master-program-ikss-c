@@ -7,7 +7,8 @@ export const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 148px;
+  ${'' /* margin-bottom: 148px; */}
+  margin: ${(props) => props.margin};
 `;
 
 export const Image = styled.img`

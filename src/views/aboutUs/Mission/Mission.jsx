@@ -10,11 +10,11 @@ function Mission({content, assets}) {
     const missionImage = assets.find((v) => v.fields.title === 'Rectangle 20').fields.file.url;
 
     return (
-      <Container>
+      <Container margin="148px 0">
         <Image width={483} height={245} margin="0 56px 0 0" src={missionImage} alt="bla" />
         <TextContent>
-            <StyledHeading>{headlineTitle}</StyledHeading>
-            <p>{headlineDescription}</p>
+          <StyledHeading>{headlineTitle}</StyledHeading>
+          <p>{headlineDescription}</p>
         </TextContent>
       </Container>
     );
