@@ -75,21 +75,21 @@ function Tiles({ content, assets, displayOnHomePage }) {
   return (
     <StyledTiles>
       {partnersImgAndName.map((tile) => (
-        <StyledTile home key={tile.key}>
-          {home 
-          ? <>
-            <img src={tile.imgUrl} alt={tile.title} />
-            <h5>{tile.title}</h5>
-            <p>{tile.description}</p>
-            <StyledTileShadow home> </StyledTileShadow>
+        <StyledTile displayOnHomePage key={tile.key}>
+          {displayOnHomePage ? (
+            <>
+              <img src={tile.imgUrl} alt={tile.title} />
+              <h5>{tile.title}</h5>
+              <p>{tile.description}</p>
+              <StyledTileShadow displayOnHomePage> </StyledTileShadow>
             </>
-          : 
-          <StyledTileShadow>
-            <img src={tile.imgUrl} alt={tile.title} />
-            <h5>{tile.title}</h5>
-            <p>{tile.description}</p>
-          </StyledTileShadow>
-          }
+          ) : (
+            <StyledTileShadow>
+              <img src={tile.imgUrl} alt={tile.title} />
+              <h5>{tile.title}</h5>
+              <p>{tile.description}</p>
+            </StyledTileShadow>
+          )}
         </StyledTile>
       ))}
     </StyledTiles>
