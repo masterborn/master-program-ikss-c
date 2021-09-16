@@ -7,7 +7,25 @@ export const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 148px;
+  margin: ${(props) => props.margin};
+`;
+
+export const TeamContainer = styled.div`
+  max-width: 1440px;
+  text-align: center;
+  margin: ${(props) => props.margin};
+`;
+
+export const TeamStyledHeading = styled.h2`
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 44px;
+  padding-bottom: 32px;
+`;
+
+export const TeamStyledParagraph = styled.p`
+  width: 635px;
+  margin: 0 auto 64px;
 `;
 
 export const Image = styled.img`
@@ -26,7 +44,6 @@ export const TextContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  aling-items: center;
 `;
 
 export const StyledHeading = styled.h2`
