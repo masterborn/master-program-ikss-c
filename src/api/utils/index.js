@@ -19,10 +19,10 @@ export default async function getResource(collection = '') {
 }
 
 export function extractImageUrl(image1, assets) {
-  let url;
+  let URL;
   if (image1) {
-    url = assets.find((image) => image.sys.id === image1.sys.id).fields.file.url;
-    return url;
+    URL = assets.find((image) => image.sys.id === image1.sys.id).fields.file.url;
+    return URL;
   }
   return null;
 }
