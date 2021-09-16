@@ -33,27 +33,36 @@ const StyledTileShadow = styled.div`
 `;
 
 
-function Tiles({ content, assets }) {
-  const tilesToDisplay = content.filter(
-    (tile) =>
-      tile.fields.identifier === 'homepage-tile-1' ||
-      tile.fields.identifier === 'homepage-tile-2' ||
-      tile.fields.identifier === 'homepage-tile-3',
-  );
+function Tiles({ content, assets, displayOnHomePage }) {
+  const tilesToDisplay = displayOnHomePage
+    ? content.filter(
+        (tile) =>
+          tile.fields.identifier === 'homepage-tile-1' ||
+          tile.fields.identifier === 'homepage-tile-2' ||
+          tile.fields.identifier === 'homepage-tile-3',
+      )
+    : content.filter(
+        (tile) =>
+          tile.fields.identifier === 'cooperation-tile-1' ||
+          tile.fields.identifier === 'cooperation-tile-2' ||
+          tile.fields.identifier === 'cooperation-tile-3' ||
+          tile.fields.identifier === 'cooperation-tile-4' ||
+          tile.fields.identifier === 'cooperation-tile-5',
+      );
   tilesToDisplay.sort((a, b) => (a.fields.identifier > b.fields.identifier ? 1 : -1));
 
   const partnersImgAndName = tilesToDisplay.map((tile) => {
-  const tileImg = assets.find((asset) => tile.fields.image1.sys.id === asset.sys.id);
-  const tileDescription = tile.fields.text1.content
+    const tileImg = assets.find((asset) => tile.fields.image1.sys.id === asset.sys.id);
+    const tileDescription = tile.fields.text1.content
       .find((v) => v.nodeType === 'paragraph')
       .content.find((v) => v.nodeType === 'text').value;
-  return {
+    return {
       title: tile.fields.title,
       description: tileDescription,
       imgUrl: tileImg.fields.file.url,
       key: tile.fields.image1.sys.id,
-  };
-  }); 
+    };
+  });
 
   return (
     <StyledTiles>
