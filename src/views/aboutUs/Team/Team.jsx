@@ -1,5 +1,5 @@
 import React from 'react';
-import { TeamContainer, Image, TeamStyledParagraph, StyledHeading } from '../aboutUsStyle';
+import {TeamContainer, StyledHeading, TeamStyledParagraph, Image }from '../aboutUsStyle'
 
 function Team({ content, assets }) {
   const headline = content.find((v) => v.fields.identifier === 'about-us-content-3');
