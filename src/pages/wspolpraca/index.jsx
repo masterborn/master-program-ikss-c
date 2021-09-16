@@ -1,5 +1,6 @@
 import Section from '@root/components/UI/Section/section';
 import MainPagePartnersList from '@root/components/main/partners/MainPagePartnersList';
+import Highlights from '@root/components/main/Values/highlights';
 import { getBasicContent, getPartnerLogos } from '@root/api/cmsClient';
 import getAllAssets from '../../api/assetClient/index';
 
@@ -10,6 +11,7 @@ function Cooperation(props) {
   return (
     <>
       <Section short content={topSection} assets={assets} />
+      <Highlights content={content} assets={assets} />
       <MainPagePartnersList partners={partners} assets={assets} content={content} />
       <Section content={bottomCta} />
     </>

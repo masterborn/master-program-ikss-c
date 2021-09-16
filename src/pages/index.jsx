@@ -11,7 +11,7 @@ function HomePage(props) {
   return (
     <>
       <Banner content={content} asset={assets} />
-      <Highlights content={content} assets={assets} />
+      <Highlights home content={content} assets={assets} />
       <MainPageProjectList projects={projects} assets={assets} />
       <MainPagePartnersList home partners={partners} assets={assets} content={content} />
       <Form content={content} />
