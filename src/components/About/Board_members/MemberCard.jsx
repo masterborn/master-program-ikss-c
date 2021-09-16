@@ -67,24 +67,28 @@ const H4 = styled.h4`
   padding: 24px 0 8px;
 `;
 
-function MemberCard() {
+function MemberCard({ member }) {
+  const { name, role, email, phone, linkedinUrl } = member.fields || {};
+
   return (
     <MemberCardWrapper>
       <PhotoContainter photoUrl="https://images.ctfassets.net/n21y2i4hkj4h/2SbhYPaA4CB0py9yTVYNGB/5f5c03ba0553fe56e9c439ac826972e8/Micha___Ho__ownia-min.jpg.png" />
-      <H4>Piotr Kowalski</H4>
-      <H5>Członek zarządu ds. Kontaktów</H5>
+      <H4>{name}</H4>
+      <H5>{role}</H5>
       <ContactSection>
         <StyledAnchor href="tel:+48790603986">
           <PhoneIcon color={color.blue} />
-          790 603 986
+          {phone}
         </StyledAnchor>
         <StyledAnchor href="mailto: test@test.com">
           <MailIcon color={color.blue} />
-          testowy@mail.com
+          {email}
         </StyledAnchor>
       </ContactSection>
       <SecondaryButton size="small">
-        <LinkedinIcon size="18px" color="black" /> LinkedIn
+        <a href={linkedinUrl}>
+          <LinkedinIcon size="18px" color="black" /> LinkedIn
+        </a>
       </SecondaryButton>
     </MemberCardWrapper>
   );
