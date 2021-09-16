@@ -33,13 +33,22 @@ const StyledTileShadow = styled.div`
 `;
 
 
-function Tiles({ content, assets }) {
-  const tilesToDisplay = content.filter(
-    (tile) =>
-      tile.fields.identifier === 'homepage-tile-1' ||
-      tile.fields.identifier === 'homepage-tile-2' ||
-      tile.fields.identifier === 'homepage-tile-3',
-  );
+function Tiles({ content, assets, home }) {
+  const tilesToDisplay = home
+    ? content.filter(
+        (tile) =>
+          tile.fields.identifier === 'homepage-tile-1' ||
+          tile.fields.identifier === 'homepage-tile-2' ||
+          tile.fields.identifier === 'homepage-tile-3',
+      )
+    : content.filter(
+        (tile) =>
+          tile.fields.identifier === 'cooperation-tile-1' ||
+          tile.fields.identifier === 'cooperation-tile-2' ||
+          tile.fields.identifier === 'cooperation-tile-3' ||
+          tile.fields.identifier === 'cooperation-tile-4' ||
+          tile.fields.identifier === 'cooperation-tile-5',
+      );
   tilesToDisplay.sort((a, b) => (a.fields.identifier > b.fields.identifier ? 1 : -1));
 
   const partnersImgAndName = tilesToDisplay.map((tile) => {

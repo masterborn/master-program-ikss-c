@@ -13,18 +13,20 @@ const StyledValuesParagraph = styled.p`
   margin: 40px auto;
 `;
 
-function Highlights({ content, assets }) {
-  const headline = content.find((v) => v.fields.identifier === 'homepage-values');
+function Highlights({ content, assets, home }) {
+  const headline = home 
+  ? content.find((v) => v.fields.identifier === 'homepage-values') 
+  : content.find((v) => v.fields.identifier === 'cooperation-tiles-title');
   const headlineTitle = headline.fields.title;
-  const headlineDescription = headline.fields.text1.content
+  const headlineDescription = headline.fields.text1?.content
     .find((v) => v.nodeType === 'paragraph')
     .content.find((v) => v.nodeType === 'text').value;
 
   return (
     <StyledValues>
       <h3>{headlineTitle}</h3>
-      <StyledValuesParagraph>{headlineDescription}</StyledValuesParagraph>
-      <Tiles content={content} assets={assets} />
+      {home && <StyledValuesParagraph>{headlineDescription}</StyledValuesParagraph>}
+      <Tiles home={home} content={content} assets={assets} />
     </StyledValues>
   );
 }
