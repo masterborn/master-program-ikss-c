@@ -20,6 +20,9 @@ const CardDisplay = styled.div`
   @media (max-width: 1250px) {
     grid-template-columns: 384px 384px;
   }
+  @media (max-width: 830px) {
+    grid-template-columns: 384px;
+  }
 `;
 
 function BoardMembers({ content, board, assets }) {
