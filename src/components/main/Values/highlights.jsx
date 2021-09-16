@@ -7,6 +7,10 @@ const StyledValues = styled.div`
   margin-top: 157px;
 `;
 
+const StyledHeadline = styled.h2`
+  margin: ${(props) => (props.home ? '0 auto 32px' : '0 auto 64px')};
+`;
+
 const StyledValuesParagraph = styled.p`
   width: 551px;
   height: 64px;
@@ -24,7 +28,7 @@ function Highlights({ content, assets, displayOnHomePage }) {
 
   return (
     <StyledValues>
-      <h3>{headlineTitle}</h3>
+      <StyledHeadline>{headlineTitle}</StyledHeadline>
       {displayOnHomePage && <StyledValuesParagraph>{headlineDescription}</StyledValuesParagraph>}
       <Tiles displayOnHomePage={displayOnHomePage} content={content} assets={assets} />
     </StyledValues>
