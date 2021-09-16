@@ -5,6 +5,7 @@ import PhoneIcon from '@root/components/UI/Icons/PhoneIcone';
 import MailIcon from '@root/components/UI/Icons/MailIcon';
 import LinkedinIcon from '@root/components/UI/Icons/LinkedinIcon';
 import { SecondaryButton } from '@root/components/UI/Button/Button';
+import { extractImageUrl } from '@root/api/utils';
 
 const MemberCardWrapper = styled.div`
   display: flex;
@@ -20,7 +21,6 @@ const MemberCardWrapper = styled.div`
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
   border-radius: 16px;
-  margin: 50px auto;
 `;
 const PhotoContainter = styled.div`
   width: 164px;
@@ -67,12 +67,13 @@ const H4 = styled.h4`
   padding: 24px 0 8px;
 `;
 
-function MemberCard({ member }) {
-  const { name, role, email, phone, linkedinUrl } = member.fields || {};
+function MemberCard({ member, assets }) {
+  const { name, role, email, phone, linkedinUrl, image } = member.fields || {};
+  const photoUrl = extractImageUrl(image, assets);
 
   return (
     <MemberCardWrapper>
-      <PhotoContainter photoUrl="https://images.ctfassets.net/n21y2i4hkj4h/2SbhYPaA4CB0py9yTVYNGB/5f5c03ba0553fe56e9c439ac826972e8/Micha___Ho__ownia-min.jpg.png" />
+      <PhotoContainter photoUrl={photoUrl} />
       <H4>{name}</H4>
       <H5>{role}</H5>
       <ContactSection>

@@ -10,7 +10,7 @@ function AboutUsPage(props) {
     <>
       {/* <Mission content={content} assets={assets} />
       <History content={content} assets={assets} /> */}
-      <BoardMembers content={content} board={board} />
+      <BoardMembers content={content} board={board} assets={assets} />
     </>
   );
 }

@@ -9,10 +9,20 @@ const Describtion = styled.p`
 `;
 const CardDisplay = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  place-items: center;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  grid-template-columns: 384px 384px 384px;
+  column-gap: 24px;
+  row-gap: 24px;
+  margin-bottom: 100px;
+  @media (max-width: 1250px) {
+    grid-template-columns: 384px 384px;
+  }
 `;
 
-function BoardMembers({ content, board }) {
+function BoardMembers({ content, board, assets }) {
   const boardSectiondata = content.find(
     (entry) => entry.fields.identifier === 'about-us-board-members-text',
   );
@@ -25,7 +35,7 @@ function BoardMembers({ content, board }) {
       <Describtion>{description}</Describtion>
       <CardDisplay>
         {board.map((member) => (
-          <MemberCard member={member} />
+          <MemberCard member={member} assets={assets} />
         ))}
       </CardDisplay>
     </div>
