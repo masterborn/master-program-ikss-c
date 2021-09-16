@@ -9,10 +9,10 @@ import { SecondaryButton } from '@root/components/UI/Button/Button';
 const MemberCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 384px;
-  height: 456px;
+  min-height: 456px;
   padding: 32px 24px 40px;
   background-color: #fff;
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
@@ -33,16 +33,20 @@ const PhotoContainter = styled.div`
 `;
 const ContactSection = styled.div`
   display: flex;
-  flex-direction: column;
-  align-content: center;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
   text-decoration: none;
   color: ${color.blue};
-  margin-top: 24px;
+  margin: 24px 0;
+  height: 48px;
 `;
 const StyledAnchor = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 51%;
   text-decoration: none;
   color: ${color.blue};
   font-size: 14px;
@@ -51,18 +55,23 @@ const StyledAnchor = styled.a`
   & svg {
     margin-right: 12px;
   }
+  :last-child {
+    align-self: flex-end;
+  }
 `;
 
 const H5 = styled.h5`
   color: ${color.steel};
-  padding-top: 8px;
+`;
+const H4 = styled.h4`
+  padding: 24px 0 8px;
 `;
 
 function MemberCard() {
   return (
     <MemberCardWrapper>
       <PhotoContainter photoUrl="https://images.ctfassets.net/n21y2i4hkj4h/2SbhYPaA4CB0py9yTVYNGB/5f5c03ba0553fe56e9c439ac826972e8/Micha___Ho__ownia-min.jpg.png" />
-      <h4>Piotr Kowalski</h4>
+      <H4>Piotr Kowalski</H4>
       <H5>Członek zarządu ds. Kontaktów</H5>
       <ContactSection>
         <StyledAnchor href="tel:+48790603986">
@@ -73,10 +82,10 @@ function MemberCard() {
           <MailIcon color={color.blue} />
           testowy@mail.com
         </StyledAnchor>
-        <SecondaryButton size="small">
-          <LinkedinIcon size="18px" color="black" /> LinkedIn
-        </SecondaryButton>
       </ContactSection>
+      <SecondaryButton size="small">
+        <LinkedinIcon size="18px" color="black" /> LinkedIn
+      </SecondaryButton>
     </MemberCardWrapper>
   );
 }

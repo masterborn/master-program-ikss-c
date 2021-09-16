@@ -57,6 +57,8 @@ export const PrimaryButton = styled.button`
 `;
 
 export const SecondaryButton = styled.button`
+  padding: ${(props) =>
+    props.size === 'small' ? `${SMALL_BUTTON.padding}` : `${BIG_BUTTON.padding}`};
   background: ${SECONDARY_BUTTON.backgroundColor};
   color: black;
   height: ${(props) =>
@@ -68,6 +70,7 @@ export const SecondaryButton = styled.button`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: fit-content;
   font-family: ${BodySmall.fontFamily};
   font-size: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
