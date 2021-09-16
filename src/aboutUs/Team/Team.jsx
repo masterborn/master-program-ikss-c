@@ -7,13 +7,13 @@ function Team({ content, assets }) {
   const headlineDescription = headline.fields.text1.content
     .find((v) => v.nodeType === 'paragraph')
     .content.find((v) => v.nodeType === 'text').value;
-  const TeamImage = assets.find((v) => v.fields.title === 'Rectangle 20 (1)').fields.file.url;
+  const teamImage = assets.find((v) => v.fields.title === 'Rectangle 20 (1)').fields.file.url;
 
   return (
     <TeamContainer margin="148px auto">
         <StyledHeading>{headlineTitle}</StyledHeading>
         <TeamStyledParagraph>{headlineDescription}</TeamStyledParagraph>
-      <Image width={996} height={505} margin="auto" src={TeamImage} alt="bla" />
+      <Image width={996} height={505} margin="auto" src={teamImage} alt="bla" />
     </TeamContainer>
   );
 }
