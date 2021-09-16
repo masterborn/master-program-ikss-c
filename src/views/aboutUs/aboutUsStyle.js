@@ -13,7 +13,6 @@ export const Container = styled.div`
 export const TeamContainer = styled.div`
   max-width: 1440px;
   text-align: center;
-  ${'' /* margin-bottom: 148px; */}
   margin: ${(props) => props.margin};
 `;
 
@@ -46,7 +45,6 @@ export const TextContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  aling-items: center;
 `;
 
 export const StyledHeading = styled.h2`
