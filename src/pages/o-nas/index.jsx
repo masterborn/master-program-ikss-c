@@ -1,6 +1,6 @@
 import getAllAssets from '@root/api/assetClient';
-import Mission from '@root/aboutUs/Mission/Mission';
-import History from '@root/aboutUs/History/History';
+import Mission from '@root/views/aboutUs/Mission/Mission';
+import History from '@root/views/aboutUs/History/History';
 import { getBasicContent } from '@root/api/cmsClient';
 
 function AboutUsPage(props) {
