@@ -16,7 +16,6 @@ export const TeamContainer = styled.div`
   margin: ${(props) => props.margin};
 `;
 
-
 export const TeamStyledHeading = styled.h2`
   font-weight: 800;
   font-size: 32px;

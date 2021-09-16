@@ -1,5 +1,5 @@
 import React from 'react';
-import {TeamContainer, StyledHeading, TeamStyledParagraph, Image }from '../aboutUsStyle'
+import { TeamContainer, StyledHeading, TeamStyledParagraph, Image } from '../aboutUsStyle';
 
 function Team({ content, assets }) {
   const headline = content.find((v) => v.fields.identifier === 'about-us-content-3');
@@ -11,8 +11,8 @@ function Team({ content, assets }) {
 
   return (
     <TeamContainer margin="148px auto">
-        <StyledHeading>{headlineTitle}</StyledHeading>
-        <TeamStyledParagraph>{headlineDescription}</TeamStyledParagraph>
+      <StyledHeading>{headlineTitle}</StyledHeading>
+      <TeamStyledParagraph>{headlineDescription}</TeamStyledParagraph>
       <Image width={996} height={505} margin="auto" src={teamImage} alt="bla" />
     </TeamContainer>
   );
