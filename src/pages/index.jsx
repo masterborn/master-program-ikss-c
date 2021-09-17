@@ -13,7 +13,7 @@ function HomePage(props) {
       <Banner content={content} asset={assets} />
       <Highlights content={content} assets={assets} />
       <MainPageProjectList projects={projects} assets={assets} />
-      <MainPagePartnersList home partners={partners} assets={assets} content={content} />
+      <MainPagePartnersList onlyShowOnHomepage partners={partners} assets={assets} content={content} />
       <Form content={content} />
     </>
   );

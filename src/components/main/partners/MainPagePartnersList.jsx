@@ -29,13 +29,11 @@ const StyledPartnerLogo = styled.div`
   display: flex;
   flex-basis: 20%;
   margin-bottom: 48px;
-  -webkit-box-pack: center;
   justify-content: center;
 `;
 
-function MainPagePartnersList({ partners, assets, content, home}) {
-
-  const partnersToDisplay = home
+function MainPagePartnersList({ partners, assets, content, onlyShowOnHomepage }) {
+  const partnersToDisplay = onlyShowOnHomepage
     ? partners.filter((partner) => partner.fields.showOnHomepage)
     : partners.filter((partner) => partner.fields);
 
