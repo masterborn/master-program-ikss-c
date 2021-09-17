@@ -32,8 +32,8 @@ const StyledPartnerLogo = styled.div`
   justify-content: center;
 `;
 
-function MainPagePartnersList({ partners, assets, content, onlyShowOnHomepage }) {
-  const partnersToDisplay = onlyShowOnHomepage
+function MainPagePartnersList({ partners, assets, content, logosDisplayedOnHomepage }) {
+  const partnersToDisplay = logosDisplayedOnHomepage
     ? partners.filter((partner) => partner.fields.showOnHomepage)
     : partners.filter((partner) => partner.fields);
 
