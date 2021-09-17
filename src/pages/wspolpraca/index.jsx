@@ -9,7 +9,7 @@ function Cooperation(props) {
 
   return (
     <>
-      <Section short content={topSection} assets={assets} />
+      <Section shortTopParagraph content={topSection} assets={assets} />
       <Section content={bottomCta} />
     </>
   );
