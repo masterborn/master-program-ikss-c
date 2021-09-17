@@ -4,11 +4,13 @@ import DataContext from '@root/contextProviders/dataContext';
 import styled from 'styled-components';
 
 const Overlay = styled.div`
-  position: absolute;
-  inset: 0px;
-  transform: translateY(0px);
-  padding: 0px 24px;
-  overflow: hidden;
+  //   position: absolute;
+  //   inset: 0px;
+  //   transform: translateY(0px);
+  //   padding: 0px 24px;
+  //   overflow: hidden;
+  //   height: 907px;
+  //   width: 748px;
 `;
 
 const ModalDiv = styled.div`
@@ -16,7 +18,7 @@ const ModalDiv = styled.div`
   left: 0;
   top: -100px;
   width: 100%;
-  height: 2000px;
+  height: 100%;
   cursor: pointer;
   animation: 0.3s ease 0s 1 normal both running gsLxde;
   background-color: rgba(26, 40, 71, 0.6);
