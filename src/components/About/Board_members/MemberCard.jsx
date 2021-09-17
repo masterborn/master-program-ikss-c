@@ -33,7 +33,6 @@ const PhotoContainter = styled.div`
 `;
 const ContactSection = styled.div`
   display: flex;
-  /* flex-direction: column; */
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MemberCard from './MemberCard';
 
-const Describtion = styled.p`
+const Description = styled.p`
   max-width: 635px;
   margin: 32px auto 64px;
   text-align: center;
@@ -11,7 +11,6 @@ const CardDisplay = styled.div`
   display: grid;
   justify-content: center;
   place-items: center;
-  /* max-width: 1200px; */
   margin: 0 auto;
   grid-template-columns: 384px 384px 384px;
   column-gap: 24px;
@@ -35,10 +34,10 @@ function BoardMembers({ content, board, assets }) {
   return (
     <div>
       <h3>{headline}</h3>
-      <Describtion>{description}</Describtion>
+      <Description>{description}</Description>
       <CardDisplay>
         {board.map((member) => (
-          <MemberCard member={member} assets={assets} />
+          <MemberCard key={member.sys.id} member={member} assets={assets} />
         ))}
       </CardDisplay>
     </div>
