@@ -11,7 +11,13 @@ function Mission({ content, assets }) {
 
   return (
     <Container margin="148px 0">
-      <Image width={483} height={245} margin="0 56px 0 0" src={missionImage} alt="bla" />
+      <Image
+        width={483}
+        height={245}
+        margin="0 56px 0 0"
+        src={missionImage}
+        alt="Zdjęcie członków stowarzyszenia IKSS"
+      />
       <TextContent>
         <StyledHeading>{headlineTitle}</StyledHeading>
         <p>{headlineDescription}</p>
