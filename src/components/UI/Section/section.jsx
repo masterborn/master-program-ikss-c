@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import extractImageUrl from '@root/utils';
+import ModalContext from '@root/contextProviders/modalContext';
 import { PrimaryButton } from '../Button/Button';
+import Modal from '../Modal/modal';
 
 const StyledDiv = styled.div`
   display: flex;
@@ -16,6 +18,7 @@ const StyledParegraph = styled.p`
 `;
 
 function Section({ content, assets }) {
+  const { showModal, onCloseModal, onOpenModal } = useContext(ModalContext);
   const data = content.find((x) => x.fields);
   const { title, text1, image1, linkCaption } = data.fields;
   const description = text1.content.map((x) => x.content.find((y) => y.value).value).toString();
@@ -29,7 +32,8 @@ function Section({ content, assets }) {
       {imageUrl && <img src={imageUrl} alt={`Logo ${title}`} />}
       {linkCaption ? <h3>{title}</h3> : <h1>{title}</h1>}
       <StyledParegraph paragraphWidth={paragraphWidth}>{description}</StyledParegraph>
-      {linkCaption && <PrimaryButton>{linkCaption}</PrimaryButton>}
+      {linkCaption && <PrimaryButton onClick={onOpenModal}>{linkCaption}</PrimaryButton>}
+      <Modal show={showModal} close={onCloseModal} />
     </StyledDiv>
   );
 }

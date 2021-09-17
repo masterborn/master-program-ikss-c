@@ -1,6 +1,8 @@
-import React from 'react';
+import ModalContext from '@root/contextProviders/modalContext';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { PrimaryButton } from '../Button/Button';
+import Modal from '../Modal/modal';
 
 const InfoDiv = styled.div`
   width: 1440px;
@@ -15,12 +17,15 @@ const InfoDiv = styled.div`
 const StyledHeading = styled.h3`
   margin-top: 100px;
 `;
-
 function Info() {
+  const { showModal, onCloseModal, onOpenModal } = useContext(ModalContext);
   return (
     <InfoDiv>
       <StyledHeading>Chcesz zorganizowac z nami podobny projekt?</StyledHeading>
-      <PrimaryButton margin="20px auto">Skontaktuj sie z nami</PrimaryButton>
+      <PrimaryButton margin="20px auto" onClick={onOpenModal}>
+        Skontaktuj sie z nami
+      </PrimaryButton>
+      <Modal show={showModal} close={onCloseModal} />
     </InfoDiv>
   );
 }

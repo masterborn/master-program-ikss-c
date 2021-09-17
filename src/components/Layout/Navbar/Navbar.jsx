@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { PrimaryButton } from '@root/components/UI/Button/Button';
 import { useRouter } from 'next/dist/client/router';
+import ModalContext from '@root/contextProviders/modalContext';
+import Modal from '@root/components/UI/Modal/modal';
 import styled from 'styled-components';
 import LogoIkssFrame from '@root/components/logoIkssFrame';
 import SocialButtons from './SocialButtons';
@@ -43,6 +45,7 @@ function Navbar({ socialLinks, pathname }) {
   const [browserWindow, setBrowserWindow] = useState({});
   const [mobileView, setMobileView] = useState(false);
   const router = useRouter();
+  const { showModal, onCloseModal, onOpenModal } = useContext(ModalContext);
 
   const showAfterScroll = () => {
     const heightToShowFrom = 550;
@@ -76,7 +79,16 @@ function Navbar({ socialLinks, pathname }) {
       router.push('/');
     }
   };
-
+  const openContactForm = () => {
+    if (window.location.pathname === '/') {
+      browserWindow.scrollTo({
+        top: 3900,
+        behavior: 'smooth',
+      });
+    } else {
+      onOpenModal();
+    }
+  };
   return (
     <StyledNav>
       <Wrapper>
@@ -87,9 +99,14 @@ function Navbar({ socialLinks, pathname }) {
         <StaticWidth>
           {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
         </StaticWidth>
-        {!mobileView && <PrimaryButton size="small">Skontaktuj się</PrimaryButton>}
+        {!mobileView && (
+          <PrimaryButton size="small" onClick={openContactForm}>
+            Skontaktuj się
+          </PrimaryButton>
+        )}
       </Wrapper>
       {mobileView && <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />}
+      <Modal show={showModal} close={onCloseModal} />
     </StyledNav>
   );
 }
