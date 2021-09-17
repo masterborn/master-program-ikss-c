@@ -10,7 +10,7 @@ function Cooperation(props) {
   const bottomCta = content.filter((x) => x.fields.identifier === 'cooperation-bottom-cta');
   return (
     <>
-      <Section short content={topSection} assets={assets} />
+      <Section shortTopParagraph content={topSection} assets={assets} />
       <Highlights content={content} assets={assets} />
       <MainPagePartnersList partners={partners} assets={assets} content={content} />
       <Section content={bottomCta} />
