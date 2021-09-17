@@ -23,7 +23,6 @@ const ModalDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
 `;
 
 function Modal({ show, close }) {
@@ -50,7 +49,7 @@ function Modal({ show, close }) {
 
   return (
     <ModalDiv className="modal" onClick={close}>
-      <Overlay>
+      <Overlay onClick={(e) => e.stopPropagation()}>
         <Form content={formContent.content} />
       </Overlay>
     </ModalDiv>
