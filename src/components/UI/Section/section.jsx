@@ -16,16 +16,16 @@ const StyledParegraph = styled.p`
   max-width: ${(props) => props.paragraphWidth};
 `;
 
-function Section({ content, assets }) {
+function Section({ content, assets, shortTopParagraph }) {
   const { onOpenModal } = useContext(ModalContext);
   const data = content.find((x) => x.fields);
   const { title, text1, image1, linkCaption } = data.fields;
   const description = text1.content.map((x) => x.content.find((y) => y.value).value).toString();
   const imageUrl = extractImageUrl(image1, assets);
-
+  const shortTopSection = shortTopParagraph ? '583px' : '995px';
   const divHeight = linkCaption ? '252px' : '358px';
   const divMargin = linkCaption ? '200px 0' : '0px';
-  const paragraphWidth = linkCaption ? '635px' : '995px';
+  const paragraphWidth = linkCaption ? '635px' : `${shortTopSection}`;
   return (
     <StyledDiv divHeight={divHeight} divMargin={divMargin}>
       {imageUrl && <img src={imageUrl} alt={`Logo ${title}`} />}
