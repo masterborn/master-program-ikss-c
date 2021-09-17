@@ -13,7 +13,13 @@ function Team({ content, assets }) {
     <TeamContainer margin="148px auto">
       <StyledHeading>{headlineTitle}</StyledHeading>
       <TeamStyledParagraph>{headlineDescription}</TeamStyledParagraph>
-      <Image width={996} height={505} margin="auto" src={teamImage} alt="bla" />
+      <Image
+        width={996}
+        height={505}
+        margin="auto"
+        src={teamImage}
+        alt="Zdjęcie członków stowarzyszenia IKSS"
+      />
     </TeamContainer>
   );
 }
