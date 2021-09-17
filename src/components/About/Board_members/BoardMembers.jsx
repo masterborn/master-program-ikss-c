@@ -13,8 +13,7 @@ const CardDisplay = styled.div`
   place-items: center;
   margin: 0 auto;
   grid-template-columns: 384px 384px 384px;
-  column-gap: 24px;
-  row-gap: 24px;
+  gap: 24px;
   margin-bottom: 100px;
   @media (max-width: 1250px) {
     grid-template-columns: 384px 384px;
@@ -30,6 +29,8 @@ function BoardMembers({ content, board, assets }) {
   );
   const headline = boardSectiondata.fields.title;
   const description = boardSectiondata.fields.text1.content[0].content[0].value;
+
+  board.sort((a, b) => (a.fields.order < b.fields.order ? 1 : -1));
 
   return (
     <div>
