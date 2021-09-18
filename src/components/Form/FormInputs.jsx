@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { setDataInLocalStorage } from '@root/utils';
 import Input from '../UI/Input/Input';
 import TextArea from '../UI/TextArea/textArea';
 import CheckBox from './CheckBox';
@@ -7,13 +8,6 @@ import FormButton from './FormButton';
 import { StyledButtonContainer, StyledFormInputs } from './FormStyles';
 
 function FormInputs({ toolTip }) {
-  const setDataInLocalStorage = (key) => {
-    let result;
-    if (typeof window !== 'undefined' && window.localStorage) {
-      result = localStorage.getItem(key) || '';
-    }
-    return result;
-  };
   const toolTipText = toolTip.fields.text1.content[0].content[0].value;
   const [value, setValue] = useState({
     lname: setDataInLocalStorage('lname'),
