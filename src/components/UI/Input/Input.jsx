@@ -46,7 +46,19 @@ function InfoIcon({ disabled }) {
   return <div> {disabled ? <InfoGray /> : <Info />}</div>;
 }
 
-function Input({ id, type, labelText, placeholder, value, disabled, error, icon, onChange, name, isWide}) {
+function Input({
+  id,
+  type,
+  labelText,
+  placeholder,
+  value,
+  disabled,
+  error,
+  icon,
+  onChange,
+  name,
+  isWide,
+}) {
   return (
     <Containter isWide={isWide}>
       <Label htmlFor={id}>{labelText}</Label>

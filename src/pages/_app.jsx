@@ -20,11 +20,9 @@ const App = (props) => {
   const { Component, pageProps } = props;
   const name = { Component };
   const onCloseModal = () => {
-    console.log('close modal');
     setShowModal(false);
   };
   const onOpenModal = () => {
-    console.log('open modal');
     setShowModal(true);
   };
   return (

@@ -56,7 +56,6 @@ function Navbar({ socialLinks, pathname }) {
       setIsVisible(false);
     }
   };
-
   useEffect(() => {
     window.onresize = () => {
       if (window.innerWidth < 860) {

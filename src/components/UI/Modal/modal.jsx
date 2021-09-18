@@ -11,6 +11,8 @@ const Overlay = styled.div`
   //   overflow: hidden;
   //   height: 907px;
   //   width: 748px;
+  position: fixed;
+  top: -100px;
 `;
 
 const ModalDiv = styled.div`
@@ -18,7 +20,7 @@ const ModalDiv = styled.div`
   left: 0;
   top: -100px;
   width: 100%;
-  height: 100%;
+  height: 120%;
   cursor: pointer;
   animation: 0.3s ease 0s 1 normal both running gsLxde;
   background-color: rgba(26, 40, 71, 0.6);
@@ -48,7 +50,6 @@ function Modal({ show, close }) {
   if (!show) {
     return null;
   }
-
   return (
     <ModalDiv className="modal" onClick={close}>
       <Overlay onClick={(e) => e.stopPropagation()}>

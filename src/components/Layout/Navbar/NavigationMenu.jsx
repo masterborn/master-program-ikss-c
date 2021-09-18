@@ -39,25 +39,28 @@ const NavMenu = styled.div`
 `;
 
 function NavigationMenu({ pathname, hamburger }) {
+  const clearStorage = () => {
+    window.localStorage.clear();
+  };
   return (
     <NavMenu hamburger={hamburger}>
       <Link href="/" passHref>
-        <StyledA hamburger={hamburger} pathname={pathname}>
+        <StyledA hamburger={hamburger} pathname={pathname} onClick={clearStorage}>
           Strona główna
         </StyledA>
       </Link>
       <Link href="/projekty">
-        <StyledA pathname={pathname} href="/projekty">
+        <StyledA pathname={pathname} href="/projekty" onClick={clearStorage}>
           Projekty
         </StyledA>
       </Link>
       <Link href="/o-nas" passHref>
-        <StyledA hamburger={hamburger} pathname={pathname}>
+        <StyledA hamburger={hamburger} pathname={pathname} onClick={clearStorage}>
           O nas
         </StyledA>
       </Link>
       <Link href="/wspolpraca" passHref>
-        <StyledA hamburger={hamburger} pathname={pathname}>
+        <StyledA hamburger={hamburger} pathname={pathname} onClick={clearStorage}>
           Współpraca
         </StyledA>
       </Link>
