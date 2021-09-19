@@ -27,7 +27,7 @@ const MemberCardWrapper = styled.div`
   align-items: center;
   width: 384px;
   padding: 32px 24px 40px;
-  background-color: ${(props) => props.theme.color.white}
+  background-color: ${(props) => props.theme.color.white};
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
@@ -69,7 +69,7 @@ const ContactSection = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   text-decoration: none;
-  color: ${(props) => props.theme.color.blue}
+  color: ${(props) => props.theme.color.blue};
   margin: 24px 0;
   height: 48px;
 `;
@@ -96,8 +96,8 @@ const H4 = styled.h4`
 `;
 
 const H5 = styled.h5`
-  color: ${(props) => props.theme.color.steel}
-  ${({ isOpen }) => (isOpen ? '' : ButtonSmall)}
+  color: ${(props) => props.theme.color.steel};
+  ${({ isOpen }) => (isOpen ? '' : ButtonSmall)};
   text-align: ${({ isOpen }) => (isOpen ? 'center' : 'left')};
 `;
 
