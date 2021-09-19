@@ -116,17 +116,17 @@ const GlobalStyles = createGlobalStyle`
   .fa-times-circle {
     width: 21px;
     height: 21px;
-    color: #61798B;
+    color: #FFFFFF;
   };
   .fa-check-circle {
     width: 20px;
     height: 20px;
-    color: #61798B;
+    color: #FFFFFF;
   };
   .fa-spinner {
     width: 24px;
     height: 24px;
-    color: #61798B;
+    color: #FFFFFF;
   };
   .fa-facebook-f {
     width: 10.2px;
@@ -193,49 +193,19 @@ input, textarea {
     line-height: 28px;
     padding: 12px 10px;
   };
-
-
-input[type="checkbox"] {
-    height: 24px;
-    width: 24px;
-    padding: 0;
-  }
-input[type="checkbox"]:not(:disabled):hover {
+  input:focus, textarea:focus {
     border-color:#1889E9;
-}
+    outline: none;
+  }
+  label{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: -0.015em;
+    color: #1A2847;
+  };
 
-input[type="checkbox"]:active:not(:disabled) {
-    border-color:#1889E9; 
-}
-input:focus {
-  border-color:#1889E9;
-  outline: none;
-}
-
-input[type="checkbox"]:checked {
-    border-color: #1889E9;
-    background-color: #1889E9;
-}
-
-input[type="checkbox"]:checked:before {
-content: '';
-display: block;
-width: 6px;
-height: 15px;
-border: solid #fff;
-border-width: 0 2px 2px 0;
--webkit-transform: rotate(45deg);
-transform: rotate(45deg);
-margin: 1px 5px 6px 6px;
-}
-label{
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 28px;
-  letter-spacing: -0.015em;
-  color: #1A2847;
-}
 `;
 
 export const color = {

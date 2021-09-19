@@ -63,8 +63,6 @@ export const SecondaryButton = styled.button`
   color: black;
   height: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.height}` : `${BIG_BUTTON.height}`};
-  left: 59px;
-  top: 43px;
   cursor: pointer;
   display: flex;
   flex-direction: row;

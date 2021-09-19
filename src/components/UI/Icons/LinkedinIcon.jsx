@@ -5,12 +5,13 @@ import styled from 'styled-components';
 const Body = styled.div`
   display: inline-block !important;
   font-size: ${(props) => props.size};
+  /* color: ${(props) => props.color}; */
 `;
 
 export default function LinkedinIcon({ color, size }) {
   return (
     <Body className="iconBody" size={size}>
-      <FontAwesomeIcon icon={faLinkedin} style={{ color: `${color}` || 'white' }} />
+      <FontAwesomeIcon icon={faLinkedin} style={{ color: `${color}` }} />
     </Body>
   );
 }

@@ -26,6 +26,10 @@ const CardDisplay = styled.div`
   }
 `;
 
+const BoardMembersSection = styled.section`
+  margin-top: 148px;
+`;
+
 function BoardMembers({ content, board, assets }) {
   const boardSectiondata = content.find(
     (entry) => entry.fields.identifier === 'about-us-board-members-text',
@@ -36,7 +40,7 @@ function BoardMembers({ content, board, assets }) {
   board.sort((a, b) => (a.fields.order < b.fields.order ? 1 : -1));
 
   return (
-    <div>
+    <BoardMembersSection>
       <h3>{headline}</h3>
       <Description>{description}</Description>
       <CardDisplay>
@@ -44,7 +48,7 @@ function BoardMembers({ content, board, assets }) {
           <MemberCard key={member.sys.id} member={member} assets={assets} />
         ))}
       </CardDisplay>
-    </div>
+    </BoardMembersSection>
   );
 }
 

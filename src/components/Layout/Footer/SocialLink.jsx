@@ -12,7 +12,7 @@ function SocialLink({ socialUrl }) {
     } else if (url.includes('instagram')) {
       icon = <InstagramIcon />;
     } else if (url.includes('lin')) {
-      icon = <LinkedinIcon color='white'/>;
+      icon = <LinkedinIcon color="white" />;
     } else if (url.includes('youtu')) {
       icon = <YoutubeIcon />;
     }
