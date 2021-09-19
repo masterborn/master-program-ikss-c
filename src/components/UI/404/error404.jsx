@@ -4,7 +4,7 @@ import CloseSVG from '../../../assets/error/ikss404.svg';
 
 const StyledErrorSVG = styled.div`
   max-width: 1440px;
-  margin: 116px auto 57px;
+  margin: 61px auto 2px;
 `;
 
 function Error404() {
