@@ -140,11 +140,11 @@ function MemberCard({ member, assets }) {
       <Collapse isOpen={isOpen}>
         <ContactSection>
           <StyledAnchor href="tel:+48790603986">
-            <PhoneIcon color={color.blue} />
+            <PhoneIcon color={(props) => props.theme.color.blue} />
             {phone}
           </StyledAnchor>
           <StyledAnchor href="mailto: test@test.com">
-            <MailIcon color={color.blue} />
+            <MailIcon color={(props) => props.theme.color.blue} />
             {email}
           </StyledAnchor>
         </ContactSection>
