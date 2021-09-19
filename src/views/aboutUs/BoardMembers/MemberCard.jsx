@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import Collapse from '@kunukn/react-collapse';
-import { ButtonSmall, color } from '@root/styles/GlobalStyles';
+import { ButtonSmall } from '@root/styles/GlobalStyles';
 import PhoneIcon from '@root/components/UI/Icons/PhoneIcone';
 import MailIcon from '@root/components/UI/Icons/MailIcon';
 import LinkedinIcon from '@root/components/UI/Icons/LinkedinIcon';
