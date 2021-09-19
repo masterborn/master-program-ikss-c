@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import Collapse from '@kunukn/react-collapse';
-import { blueTints, ButtonSmall, color } from '@root/styles/GlobalStyles';
+import { ButtonSmall, color } from '@root/styles/GlobalStyles';
 import PhoneIcon from '@root/components/UI/Icons/PhoneIcone';
 import MailIcon from '@root/components/UI/Icons/MailIcon';
 import LinkedinIcon from '@root/components/UI/Icons/LinkedinIcon';
@@ -27,7 +27,7 @@ const MemberCardWrapper = styled.div`
   align-items: center;
   width: 384px;
   padding: 32px 24px 40px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.color.white}
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
@@ -56,7 +56,7 @@ const mobileSizePhoto = css`
 const PhotoContainter = styled.div`
   flex: none;
   background-image: ${(props) => `url(${props.photoUrl})`};
-  background-color: ${blueTints.blue_20};
+  background-color: ${(props) => props.theme.color.blue_20};
   background-repeat: no-repeat;
   background-size: cover;
   ${({ isOpen }) => (isOpen ? normalSizePhoto : mobileSizePhoto)}
@@ -69,7 +69,7 @@ const ContactSection = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   text-decoration: none;
-  color: ${color.blue};
+  color: ${(props) => props.theme.color.blue}
   margin: 24px 0;
   height: 48px;
 `;
@@ -79,7 +79,7 @@ const StyledAnchor = styled.a`
   justify-content: center;
   min-width: 51%;
   text-decoration: none;
-  color: ${color.blue};
+  color: ${(props) => props.theme.color.blue};
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
@@ -96,7 +96,7 @@ const H4 = styled.h4`
 `;
 
 const H5 = styled.h5`
-  color: ${color.steel};
+  color: ${(props) => props.theme.color.steel}
   ${({ isOpen }) => (isOpen ? '' : ButtonSmall)}
   text-align: ${({ isOpen }) => (isOpen ? 'center' : 'left')};
 `;
