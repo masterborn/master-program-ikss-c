@@ -10,8 +10,8 @@ const Description = styled.p`
 const CardDisplay = styled.div`
   display: grid;
   justify-content: center;
-  place-items: center;
-  margin: 0 auto;
+  justify-items: center;
+  align-items: start;
   grid-template-columns: 384px 384px 384px;
   gap: 24px;
   margin-bottom: 100px;
@@ -19,7 +19,10 @@ const CardDisplay = styled.div`
     grid-template-columns: 384px 384px;
   }
   @media (max-width: 830px) {
-    grid-template-columns: 384px;
+    grid-template-columns: 1fr;
+  }
+  @media (max-width: 400px) {
+    max-width: 90vw;
   }
 `;
 

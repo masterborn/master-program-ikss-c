@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function MailIcon({color}) {
   return (
     <div className="iconBody">
-      <FontAwesomeIcon style={{color: `${color}`}} icon={faPaperPlane} />
+      <FontAwesomeIcon style={{color: `${color}` || 'gray'}} icon={faPaperPlane} />
     </div>
   );
 }

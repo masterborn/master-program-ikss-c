@@ -177,6 +177,9 @@ const GlobalStyles = createGlobalStyle`
     align-items: center;
     box-shadow: 0px 16px 31px rgba(26, 40, 71, 0.1), 0px 6.16296px 9.87407px rgba(26, 40, 71, 0.0607407), 0px 1.3037px 2.52593px rgba(26, 40, 71, 0.0392593);
   };
+  .collapse-css-transition {
+    transition: height 480ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 input, textarea {
     font-family: Mulish;
     border: 1.5px solid #C0C9D1;
@@ -268,6 +271,15 @@ export const BodySmall = {
   lineHeight: '28px',
   letterSpacing: '-0.015em',
   color: '#61798B',
+};
+export const ButtonSmall = {
+  fontFamily: 'Mulish',
+  fontSize: '14px',
+  fontStyle: 'normal',
+  fontWeight: '700',
+  lineHeight: '18px',
+  letterSpacing: '0em',
+  textAlign: 'center',
 };
 
 export default GlobalStyles;
