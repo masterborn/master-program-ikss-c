@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
   };
   main {
     max-width: 1440px;
-    margin: 88px auto 0;
+    margin:0 auto 0;
   }
   h1 {
     font-family: Mulish;
