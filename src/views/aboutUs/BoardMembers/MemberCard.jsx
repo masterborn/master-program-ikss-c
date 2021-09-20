@@ -85,6 +85,7 @@ const StyledAnchor = styled.a`
   line-height: 18px;
   & svg {
     margin-right: 12px;
+    color: ${(props) => props.theme.color.blue};
   }
   :last-child {
     align-self: flex-end;
@@ -139,12 +140,12 @@ function MemberCard({ member, assets }) {
       </NameSection>
       <Collapse isOpen={isOpen}>
         <ContactSection>
-          <StyledAnchor href="tel:+48790603986">
-            <PhoneIcon color={(props) => props.theme.color.blue} />
+          <StyledAnchor href={`tel:+48${phone}`}>
+            <PhoneIcon />
             {phone}
           </StyledAnchor>
-          <StyledAnchor href="mailto: test@test.com">
-            <MailIcon color={(props) => props.theme.color.blue} />
+          <StyledAnchor href={`mailto: ${email}`}>
+            <MailIcon />
             {email}
           </StyledAnchor>
         </ContactSection>

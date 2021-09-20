@@ -10,7 +10,7 @@ const Body = styled.div`
 export default function LinkedinIcon({ color, size }) {
   return (
     <Body className="iconBody" size={size}>
-      <FontAwesomeIcon icon={faLinkedin} style={{ color: `${color}` }} />
+      <FontAwesomeIcon icon={faLinkedin} style={{ color }} />
     </Body>
   );
 }
