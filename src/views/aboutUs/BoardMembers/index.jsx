@@ -7,7 +7,7 @@ const Description = styled.p`
   margin: 32px auto 64px;
   text-align: center;
 `;
-const CardDisplay = styled.div`
+const CardDisplayGrid = styled.div`
   display: grid;
   justify-content: center;
   justify-items: center;
@@ -15,19 +15,19 @@ const CardDisplay = styled.div`
   grid-template-columns: 384px 384px;
   gap: 0px 24px;
   margin-bottom: 100px;
+  @media (min-width: 1250px) {
+    display: none;
+  }
   @media (max-width: 830px) {
     grid-template-columns: 1fr;
-  }
-  @media (max-width: 400px) {
-    max-width: 90vw;
   }
 `;
 const CardDisplayColumns = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
-  @media (max-width: 400px) {
-    max-width: 90vw;
+  @media (max-width: 1250px) {
+    display: none;
   }
 `;
 
@@ -77,11 +77,11 @@ function BoardMembers({ content, board, assets }) {
           ))}
         </Column>
       </CardDisplayColumns>
-      <CardDisplay>
+      <CardDisplayGrid>
         {board.map((member) => (
           <MemberCard key={member.sys.id} member={member} assets={assets} />
         ))}
-      </CardDisplay>
+      </CardDisplayGrid>
     </BoardMembersSection>
   );
 }
