@@ -8,7 +8,7 @@ const StyledValues = styled.div`
 `;
 
 const StyledHeadline = styled.h2`
-  margin: ${(props) => (props.home ? '0 auto 32px' : '0 auto 64px')};
+  margin: ${(props) => (props.displayOnHomePage ? '0 auto 32px' : '0 auto 64px')};
 `;
 
 const StyledValuesParagraph = styled.p`

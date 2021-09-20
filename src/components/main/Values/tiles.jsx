@@ -14,7 +14,7 @@ const StyledTiles = styled.div`
 `;
 
 const StyledTile = styled.div`
-  height: ${(props) => (props.home ? '456px' : '382px')};
+  height: ${(props) => (props.displayOnHomePage ? '456px' : '382px')};
   width: 384px;
   position: relative;
   background-color: ${color.white};
@@ -23,12 +23,12 @@ const StyledTile = styled.div`
     margin: 20px 24px 0 24px;
   }
   & p {
-    margin: ${(props) => (props.home ? '16px 24px 48px' : '16px 24px 32px')};
+    margin: ${(props) => (props.displayOnHomePage ? '16px 24px 48px' : '16px 24px 32px')};
   }
 `;
 
 const StyledTileShadow = styled.div`
-  height: ${(props) => (props.home ? '394px' : '382px')};
+  height: ${(props) => (props.displayOnHomePage ? '394px' : '382px')};
   width: 384px;
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
