@@ -20,7 +20,6 @@ const collapsed = css`
 `;
 
 const MemberCardWrapper = styled.div`
-  border: 1px solid purple;
   position: relative;
   display: flex;
   flex-direction: column;
