@@ -20,13 +20,15 @@ const collapsed = css`
 `;
 
 const MemberCardWrapper = styled.div`
+  border: 1px solid purple;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 384px;
   padding: 32px 24px 40px;
+  margin: 12px;
   background-color: ${(props) => props.theme.color.white};
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
@@ -37,6 +39,9 @@ const MemberCardWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  @media (max-width: 1250px) and (min-width: 830px) {
+    min-height: 484px;
   }
   ${({ isOpen }) => (isOpen ? '' : collapsed)}
 `;
@@ -119,6 +124,9 @@ const OpenCloseBtn = styled.button`
 const NameSection = styled.div`
   text-align: ${({ isOpen }) => (isOpen ? 'center' : 'left')};
   margin-right: ${({ isOpen }) => (isOpen ? '0' : '50px')};
+  @media (min-width: 830px) {
+    min-height: 112px;
+  }
 `;
 
 function MemberCard({ member, assets }) {
