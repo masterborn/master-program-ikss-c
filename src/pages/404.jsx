@@ -14,6 +14,7 @@ const StyledErrorPage = styled.div`
 
 const StyledParagraph = styled.p`
   margin: 32px auto;
+  font-size: 20px;
 `;
 
 function NotFound() {
@@ -22,7 +23,7 @@ function NotFound() {
       <Navbar />
       <Error404 />
       <h1>ups, 404</h1>
-      <StyledParagraph style={{ fontSize: '20px' }}>Za każdym razem kiedy trafiasz na tę stronę, ktoś wymawia „i-ka-ka-es” zamiast „ikss”.</StyledParagraph>
+      <StyledParagraph >Za każdym razem kiedy trafiasz na tę stronę, ktoś wymawia „i-ka-ka-es” zamiast „ikss”.</StyledParagraph>
       <Button content='Uciekam stąd' link="/" />
     </StyledErrorPage>
   );
