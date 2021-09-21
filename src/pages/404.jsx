@@ -14,7 +14,7 @@ const StyledErrorPage = styled.div`
 const StyledParagraph = styled.p`
   margin: 32px 25px;
   font-size: 20px;
-  @media (max-width: 768px) {
+  @media (max-width: 860px) {
     font-size: 14px;
     line-height: 28px;
     margin: 24px 25px;
