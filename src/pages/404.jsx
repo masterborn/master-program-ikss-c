@@ -12,16 +12,28 @@ const StyledErrorPage = styled.div`
 `;
 
 const StyledParagraph = styled.p`
-  margin: 32px auto;
+  margin: 32px 25px;
   font-size: 20px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    line-height: 28px;
+    margin: 24px 25px;
+  }
+`;
+
+const StyledHeadline = styled.h1`
+  @media (max-width: 860px) {
+    font-size: 40px;
+    line-height: 56px;
+  }
 `;
 
 function NotFound() {
   return (
     <StyledErrorPage> 
       <Error404 />
-      <h1>ups, 404</h1>
-      <StyledParagraph >Za każdym razem kiedy trafiasz na tę stronę, ktoś wymawia „i-ka-ka-es” zamiast „ikss”.</StyledParagraph>
+      <StyledHeadline>ups, 404</StyledHeadline>
+      <StyledParagraph>Za każdym razem kiedy trafiasz na tę stronę, ktoś wymawia „i-ka-ka-es” zamiast „ikss”.</StyledParagraph>
       <Button content='Uciekam stąd' link="/" />
     </StyledErrorPage>
   );
