@@ -69,6 +69,7 @@ function Section({ content, assets, shortTopParagraph }) {
   const description = text1.content.map((x) => x.content.find((y) => y.value).value).toString();
   const imageUrl = extractImageUrl(image1, assets);
   const shortTopSection = shortTopParagraph ? '583px' : '995px';
+  // eslint-disable-next-line no-unneeded-ternary
   const styleBottomTopSection = linkCaption ? true : false;
   const paragraphWidth = linkCaption ? '635px' : `${shortTopSection}`;
   return (
