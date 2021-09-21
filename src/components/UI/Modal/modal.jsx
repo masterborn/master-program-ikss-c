@@ -4,13 +4,6 @@ import DataContext from '@root/contextProviders/dataContext';
 import styled from 'styled-components';
 
 const Overlay = styled.div`
-  //   position: absolute;
-  //   inset: 0px;
-  //   transform: translateY(0px);
-  //   padding: 0px 24px;
-  //   overflow: hidden;
-  //   height: 907px;
-  //   width: 748px;
   position: fixed;
   top: -100px;
 `;

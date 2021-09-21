@@ -45,7 +45,7 @@ function Navbar({ socialLinks, pathname }) {
   const [browserWindow, setBrowserWindow] = useState({});
   const [mobileView, setMobileView] = useState(false);
   const router = useRouter();
-  const { showModal, onCloseModal, onOpenModal } = useContext(ModalContext);
+  const { isModalOpen, onCloseModal, onOpenModal } = useContext(ModalContext);
 
   const showAfterScroll = () => {
     const heightToShowFrom = 550;
@@ -79,7 +79,7 @@ function Navbar({ socialLinks, pathname }) {
     }
   };
   const openContactForm = () => {
-    if (window.location.pathname === '/') {
+    if (router.pathname === '/') {
       browserWindow.scrollTo({
         top: 3900,
         behavior: 'smooth',
@@ -105,7 +105,7 @@ function Navbar({ socialLinks, pathname }) {
         )}
       </Wrapper>
       {mobileView && <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />}
-      <Modal show={showModal} close={onCloseModal} />
+      <Modal show={isModalOpen} close={onCloseModal} />
     </StyledNav>
   );
 }

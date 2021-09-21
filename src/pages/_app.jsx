@@ -12,7 +12,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import ModalContext from '@root/contextProviders/modalContext';
 
 const App = (props) => {
-  const [showModal, setShowModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const queryClientRef = useRef();
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient();
@@ -20,16 +20,16 @@ const App = (props) => {
   const { Component, pageProps } = props;
   const name = { Component };
   const onCloseModal = () => {
-    setShowModal(false);
+    setIsModalOpen(false);
   };
   const onOpenModal = () => {
-    setShowModal(true);
+    setIsModalOpen(true);
   };
   return (
     <>
       <Meta />
       <DataContext.Provider value={pageProps}>
-        <ModalContext.Provider value={{ showModal, onCloseModal, onOpenModal }}>
+        <ModalContext.Provider value={{ isModalOpen, onCloseModal, onOpenModal }}>
           <ThemeProvider theme={theme}>
             <QueryClientProvider client={queryClientRef.current}>
               <Hydrate state={pageProps.dehydratedState}>

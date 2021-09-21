@@ -15,6 +15,13 @@ export const StyledForm = styled.div`
   border-radius: 16px;
   position: relative;
   z-index: 50;
+  padding-top: 50px;
+`;
+
+export const ClosedButton = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
 `;
 
 export const StyledFormInputs = styled.form`
@@ -115,7 +122,7 @@ export const StyledToolTip = styled.span`
 function handleColorType(colorType) {
   switch (colorType) {
     case 'pending':
-        return color.blue;      
+      return color.blue;
     case 'success':
       return color.success;
     case 'error':
