@@ -4,7 +4,7 @@ import { color } from '@root/styles/GlobalStyles';
 
 const StyledTiles = styled.div`
   max-width: 1200px;
-  margin: 32px auto 24px;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
