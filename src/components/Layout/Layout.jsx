@@ -14,7 +14,7 @@ function Layout({ children, props }) {
 
   return (
     <>
-      {pathname !== '/404' && <Navbar socialLinks={socialLinks} pathname={pathname} />}
+      {pathname && <Navbar socialLinks={socialLinks} pathname={pathname} />}
       <main>{children}</main>
       {pathname !== '/404' && (
         <Footer socialLinks={socialLinks} footerText={footerText} pathname={pathname} />
