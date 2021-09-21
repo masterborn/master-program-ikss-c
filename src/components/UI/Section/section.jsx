@@ -22,7 +22,7 @@ function Section({ content, assets, shortTopParagraph }) {
   const imageUrl = extractImageUrl(image1, assets);
   const shortTopSection = shortTopParagraph ? '583px' : '995px';
   const divHeight = linkCaption ? '252px' : '358px';
-  const divMargin = linkCaption ? '200px 0' : '0px';
+  const divMargin = linkCaption ? '148px 0' : '64px 0';
   const paragraphWidth = linkCaption ? '635px' : `${shortTopSection}`;
   return (
     <StyledDiv divHeight={divHeight} divMargin={divMargin}>
