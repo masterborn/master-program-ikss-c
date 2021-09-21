@@ -8,7 +8,6 @@ const StyledErrorPage = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(180deg, #f4faff 0%, rgba(255, 255, 255, 0) 100%);
 `;
 
 const StyledParagraph = styled.p`
