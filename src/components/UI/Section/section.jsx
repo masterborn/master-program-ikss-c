@@ -8,21 +8,21 @@ const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin: ${(props) => (props.styleBottomTopSection ? '148px 0' : '64px 0 0')};
+  margin: ${(props) => (props.linkCaption ? '148px 0' : '64px 0 0')};
   @media (max-width: 860px) {
-    margin: ${(props) => (props.styleBottomTopSection ? '100px 0 130px' : '32px 0 0')};
+    margin: ${(props) => (props.linkCaption ? '100px 0 130px' : '32px 0 0')};
   }
 `;
 const StyledParegraph = styled.p`
   max-width: ${(props) => props.paragraphWidth};
   margin: auto 24.5px;
   @media (max-width: 860px) {
-    font-size: ${(props) => (props.styleBottomTopSection ? '16px' : '14px')};
-    line-height: ${(props) => (props.styleBottomTopSection ? '32px' : '28px')};
+    font-size: ${(props) => (props.linkCaption ? '16px' : '14px')};
+    line-height: ${(props) => (props.linkCaption ? '32px' : '28px')};
   }
 `;
 
-const StyledTopHeadline = styled.h1`
+const StyledTopTitle = styled.h1`
   margin: 16px auto 32px;
   @media (max-width: 860px) {
     font-size: 32px;
@@ -31,7 +31,7 @@ const StyledTopHeadline = styled.h1`
   }
 `;
 
-const StyledBottomHeadline = styled.h3`
+const StyledBottomTitle = styled.h3`
   margin: 0 auto 32px;
   @media (max-width: 860px) {
     font-size: 24px;
@@ -69,21 +69,16 @@ function Section({ content, assets, shortTopParagraph }) {
   const description = text1.content.map((x) => x.content.find((y) => y.value).value).toString();
   const imageUrl = extractImageUrl(image1, assets);
   const shortTopSection = shortTopParagraph ? '583px' : '995px';
-  // eslint-disable-next-line no-unneeded-ternary
-  const styleBottomTopSection = linkCaption ? true : false;
   const paragraphWidth = linkCaption ? '635px' : `${shortTopSection}`;
   return (
-    <StyledDiv styleBottomTopSection={styleBottomTopSection}>
+    <StyledDiv linkCaption={linkCaption}>
       {imageUrl && <StyledTopLogo src={imageUrl} alt={`Logo ${title}`} />}
       {linkCaption ? (
-        <StyledBottomHeadline>{title}</StyledBottomHeadline>
+        <StyledBottomTitle>{title}</StyledBottomTitle>
       ) : (
-        <StyledTopHeadline>{title}</StyledTopHeadline>
+        <StyledTopTitle>{title}</StyledTopTitle>
       )}
-      <StyledParegraph
-        styleBottomTopSection={styleBottomTopSection}
-        paragraphWidth={paragraphWidth}
-      >
+      <StyledParegraph linkCaption={linkCaption} paragraphWidth={paragraphWidth} >
         {description}
       </StyledParegraph>
       {linkCaption && <SectionButton>{linkCaption}</SectionButton>}
