@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BodySmall } from '../../../styles/GlobalStyles';
+import { BodySmall, ButtonSmall } from '../../../styles/GlobalStyles';
 
 const BIG_BUTTON = {
   height: '40px',
@@ -39,6 +39,7 @@ export const PrimaryButton = styled.button`
   align-items: center;
   border: none;
   font-family: ${BodySmall.fontFamily};
+  font-weight: ${BodySmall.fontWeight};
   font-size: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
   &:hover {
@@ -70,6 +71,7 @@ export const SecondaryButton = styled.button`
   justify-content: center;
   width: fit-content;
   font-family: ${BodySmall.fontFamily};
+  font-weight: ${ButtonSmall.fontWeight};
   font-size: ${(props) =>
     props.size === 'small' ? `${SMALL_BUTTON.fontSize}` : `${BIG_BUTTON.fontSize}`};
   border: 2px solid #1a2847;
