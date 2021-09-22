@@ -10,6 +10,7 @@ const StyledDiv = styled.div`
   justify-content: space-between;
   height: ${(props) => props.divHeight};
   margin: ${(props) => props.divMargin};
+  margin-top: 88px;
 `;
 const StyledParegraph = styled.p`
   max-width: ${(props) => props.paragraphWidth};

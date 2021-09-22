@@ -17,10 +17,11 @@ const GlobalStyles = createGlobalStyle`
     color: #61798B;
     height: 100vh;
     text-align: center;
+    background: linear-gradient(180deg, #f4faff 0%, rgba(255, 255, 255, 0) 100%) no-repeat fixed;
   };
   main {
     max-width: 1440px;
-    margin: 88px auto 0;
+    margin:0 auto 0;
   }
   h1 {
     font-family: Mulish;
