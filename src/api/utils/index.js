@@ -17,3 +17,12 @@ export default async function getResource(collection = '') {
   const response = await axios.get(getUrl('assets'));
   return response.data.items;
 }
+
+export function extractImageUrlFromAssets(image1, assets) {
+  let URL;
+  if (image1) {
+    URL = assets.find((image) => image.sys.id === image1.sys.id).fields.file.url;
+    return URL;
+  }
+  return null;
+}
