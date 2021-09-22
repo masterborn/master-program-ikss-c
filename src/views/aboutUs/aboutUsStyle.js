@@ -5,27 +5,60 @@ export const Container = styled.div`
   text-align: left;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
-  margin: ${(props) => props.margin};
+  margin: 148px 0;
+  @media (max-width: 1000px) {
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 148px auto;
+  }
+  @media (max-width: 860px) {
+    margin: 80px auto;
+  }
+`;
+
+export const MobileHistoryContainer = styled(Container)`
+  display: none;
+  @media (max-width: 1000px) {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 148px auto;
+  }
+  width: 375px;
+`;
+export const DesktopHistoryContainer = styled(Container)`
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const TeamContainer = styled.div`
   max-width: 1440px;
   text-align: center;
-  margin: ${(props) => props.margin};
+  margin: 164px auto 0;
+  @media (max-width: 1000px) {
+    margin: 80px auto 0;
+  }
 `;
 
-export const TeamStyledHeading = styled.h2`
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 44px;
-  padding-bottom: 32px;
+export const TeamStyledHeading = styled.h3`
+  margin: 0 auto 32px;
+  @media (max-width: 1000px) {
+    font-size: 24px;
+    line-height: 32px;
+    margin: 0 auto 16px;
+  }
 `;
 
 export const TeamStyledParagraph = styled.p`
   width: 635px;
   margin: 0 auto 64px;
+  @media (max-width: 1000px) {
+    width: 327px;
+    margin: 0 auto 32px;
+  }
 `;
 
 export const Image = styled.img`
@@ -39,20 +72,58 @@ export const Image = styled.img`
   margin: ${(props) => props.margin};
 `;
 
+export const HistoryImage = styled(Image)`
+  @media (max-width: 1000px) {
+    margin: 16px auto 32px;
+  }
+`;
+
+export const MissionImage = styled(Image)`
+  width: 483px;
+  height: 245px;
+  margin: 0 56px 0 24px;
+  @media (max-width: 1000px) {
+    width: 327px;
+    height: 201px;
+    margin: 0px auto 32px;
+  }
+`;
+
+export const TeamImage = styled(Image)`
+  width: 996px;
+  height: 505px;
+  margin: auto;
+  @media (max-width: 1000px) {
+    width: 327px;
+    height: 169px;
+    margin: auto;
+  }
+`;
+
 export const TextContent = styled.div`
   width: 46%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media (max-width: 1000px) {
+    width: 327px;
+    margin: 0px;
+  }
 `;
 
 export const StyledHeading = styled.h2`
   padding-bottom: 24px;
+  @media (max-width: 1000px) {
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 32px;
+  }
 `;
 
 export const ContentContainer = styled.div`
   width: 46%;
   display: flex;
+  margin-left: 24px;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -65,4 +136,9 @@ export const ImageContainer = styled.div`
 
 export const StyledParagraph = styled.p`
   padding-bottom: 24px;
+  @media (max-width: 1000px) {
+    font-size: 14px;
+    line-height: 28px;
+    width: 327px;
+  }
 `;

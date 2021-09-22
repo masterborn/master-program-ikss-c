@@ -1,10 +1,12 @@
 import React from 'react';
 import {
-  Container,
+  DesktopHistoryContainer,
+  MobileHistoryContainer,
   ContentContainer,
   StyledHeading,
   StyledParagraph,
   ImageContainer,
+  HistoryImage,
   Image,
 } from '../aboutUsStyle';
 
@@ -18,30 +20,52 @@ function History({ content, assets }) {
   const historyImage2 = assets.find((v) => v.fields.title === 'Rectangle 22').fields.file.url;
 
   return (
-    <Container>
-      <ContentContainer>
-        <StyledHeading>{headlineTitle}</StyledHeading>
-        <StyledParagraph>{headlineDescription1Part}</StyledParagraph>
-        <StyledParagraph>{headlineDescription2Part}</StyledParagraph>
-        <StyledParagraph>{headlineDescription3Part}</StyledParagraph>
-      </ContentContainer>
-      <ImageContainer>
+    <>
+      <MobileHistoryContainer>
         <Image
-          width={483}
-          height={352}
-          margin="0 0 32px 56px"
+          width={327}
+          height={238}
+          margin="0 auto 32px"
           src={historyImage1}
           alt="Zdjęcie członków stowarzyszenia IKSS"
         />
-        <Image
-          width={483}
-          height={265}
-          margin="0 0 0 56px"
+        <StyledHeading>{headlineTitle}</StyledHeading>
+        <StyledParagraph>{headlineDescription1Part}</StyledParagraph>
+        <HistoryImage
+          width={327}
+          height={190}
+          margin="40px auto 32px"
           src={historyImage2}
           alt="Zdjęcie członków stowarzyszenia IKSS"
         />
-      </ImageContainer>
-    </Container>
+        <StyledParagraph>{headlineDescription2Part}</StyledParagraph>
+        <StyledParagraph>{headlineDescription3Part}</StyledParagraph>
+      </MobileHistoryContainer>
+      <DesktopHistoryContainer>
+        <ContentContainer>
+          <StyledHeading>{headlineTitle}</StyledHeading>
+          <StyledParagraph>{headlineDescription1Part}</StyledParagraph>
+          <StyledParagraph>{headlineDescription2Part}</StyledParagraph>
+          <StyledParagraph>{headlineDescription3Part}</StyledParagraph>
+        </ContentContainer>
+        <ImageContainer>
+          <Image
+            width={483}
+            height={352}
+            margin="0 0 32px 56px"
+            src={historyImage1}
+            alt="Zdjęcie członków stowarzyszenia IKSS"
+          />
+          <Image
+            width={483}
+            height={265}
+            margin="0 0 0 56px"
+            src={historyImage2}
+            alt="Zdjęcie członków stowarzyszenia IKSS"
+          />
+        </ImageContainer>
+      </DesktopHistoryContainer>
+    </>
   );
 }
 export default History;
