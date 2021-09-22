@@ -4,17 +4,16 @@ import Tiles from './tiles';
 
 const StyledValues = styled.div`
   text-align: center;
-  margin-top: 157px;
 `;
 
 const StyledHeadline = styled.h2`
-  margin: ${(props) => (props.displayOnHomePage ? '0 auto 32px' : '0 auto 64px')};
+  margin: ${(props) => (props.displayOnHomePage ? '157px auto 32px' : '148px auto 64px')};
 `;
 
 const StyledValuesParagraph = styled.p`
   width: 551px;
   height: 64px;
-  margin: 40px auto;
+  margin: 0 auto 40px;
 `;
 
 function Highlights({ content, assets, displayOnHomePage }) {
@@ -28,7 +27,7 @@ function Highlights({ content, assets, displayOnHomePage }) {
 
   return (
     <StyledValues>
-      <StyledHeadline>{headlineTitle}</StyledHeadline>
+      <StyledHeadline displayOnHomePage={displayOnHomePage}>{headlineTitle}</StyledHeadline>
       {displayOnHomePage && <StyledValuesParagraph>{headlineDescription}</StyledValuesParagraph>}
       <Tiles displayOnHomePage={displayOnHomePage} content={content} assets={assets} />
     </StyledValues>

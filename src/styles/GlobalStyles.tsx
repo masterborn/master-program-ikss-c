@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
   };
   main {
     max-width: 1440px;
-    margin:0 auto 0;
+    margin: auto;
   }
   h1 {
     font-family: Mulish;
