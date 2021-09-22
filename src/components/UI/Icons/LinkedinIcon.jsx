@@ -1,10 +1,16 @@
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
 
-export default function LinkedinIcon() {
+const Body = styled.div`
+  display: inline-block !important;
+  font-size: ${(props) => props.size};
+`;
+
+export default function LinkedinIcon({ color, size }) {
   return (
-    <div className="iconBody">
-      <FontAwesomeIcon icon={faLinkedin} style={{ color: 'white' }} />
-    </div>
+    <Body className="iconBody" size={size}>
+      <FontAwesomeIcon icon={faLinkedin} style={{ color }} />
+    </Body>
   );
 }
