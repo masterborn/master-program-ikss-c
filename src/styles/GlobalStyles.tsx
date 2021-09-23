@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
     height: 100vh;
     text-align: center;
     background: linear-gradient(180deg, #f4faff 0%, rgba(255, 255, 255, 0) 100%) no-repeat fixed;
+    overflow-x: hidden;
   };
   main {
     max-width: 1440px;
