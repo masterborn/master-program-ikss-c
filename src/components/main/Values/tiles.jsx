@@ -21,10 +21,19 @@ const StyledTile = styled.div`
   border-radius: 16px;
   & h5 {
     margin: 20px 24px 0 24px;
-  }
+  };
   & p {
-    margin: ${(props) => (props.displayOnHomePage ? '16px 24px 48px' : '16px 24px 32px')};
+    margin: ${(props) => (props.displayOnHomePage ? '16px 24px 48px' : '16px 24px')};
+    @media (max-width: 1000px) {
+      font-size: 14px;
+      line-height: 28px;
+      margin: 12px 24px 32px;
+    };
   }
+  @media (max-width: 1000px) {
+    height: ${(props) => (props.displayOnHomePage ? '394px' : '350px')};
+    width: 327px;
+  };
 `;
 
 const StyledTileShadow = styled.div`
@@ -38,6 +47,24 @@ const StyledTileShadow = styled.div`
   position: absolute;
   left: 0;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 1000px) {
+    height: ${(props) => (props.displayOnHomePage ? '394px' : '350px')};
+    width: 327px;
+  };
+`;
+
+const StyledLogo = styled.img`
+  width: 230px;
+  height: 142px;
+  @media (max-width: 1000px) {
+    width: 197px;
+    height: 121px;
+    margin: 32px auto 0;
+  };
 `;
 
 
@@ -75,17 +102,17 @@ function Tiles({ content, assets, displayOnHomePage }) {
   return (
     <StyledTiles>
       {partnersImgAndName.map((tile) => (
-        <StyledTile displayOnHomePage key={tile.key}>
+        <StyledTile displayOnHomePage={displayOnHomePage} key={tile.key}>
           {displayOnHomePage ? (
             <>
               <img src={tile.imgUrl} alt={tile.title} />
               <h5>{tile.title}</h5>
               <p>{tile.description}</p>
-              <StyledTileShadow displayOnHomePage> </StyledTileShadow>
+              <StyledTileShadow displayOnHomePage={displayOnHomePage}> </StyledTileShadow>
             </>
           ) : (
             <StyledTileShadow>
-              <img src={tile.imgUrl} alt={tile.title} />
+              <StyledLogo src={tile.imgUrl} alt={tile.title} />
               <h5>{tile.title}</h5>
               <p>{tile.description}</p>
             </StyledTileShadow>
