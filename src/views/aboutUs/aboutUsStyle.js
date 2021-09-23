@@ -18,6 +18,22 @@ export const Container = styled.div`
   }
 `;
 
+export const MobileHistoryContainer = styled(Container)`
+  display: none;
+  @media (max-width: 1000px) {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 148px auto;
+  }
+  width: 375px;
+`;
+export const DesktopHistoryContainer = styled(Container)`
+  @media (max-width: 1000px) {
+    display: none;
+  }
+`;
+
 export const TeamContainer = styled.div`
   max-width: 1440px;
   text-align: center;
@@ -46,11 +62,14 @@ export const TeamStyledParagraph = styled.p`
 `;
 
 export const Image = styled.img`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   filter: drop-shadow(3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07))
     drop-shadow(1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725))
     drop-shadow(0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035))
     drop-shadow(0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275));
   border-radius: 16px;
+  margin: ${(props) => props.margin};
 `;
 
 export const MissionImage = styled(Image)`
@@ -72,6 +91,12 @@ export const TeamImage = styled(Image)`
     width: 327px;
     height: 169px;
     margin: auto;
+  }
+`;
+
+export const HistoryImage = styled(Image)`
+  @media (max-width: 1000px) {
+    margin: 16px auto 32px;
   }
 `;
 
@@ -98,6 +123,7 @@ export const StyledHeading = styled.h2`
 export const ContentContainer = styled.div`
   width: 46%;
   display: flex;
+  margin-left: 24px;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -113,5 +139,6 @@ export const StyledParagraph = styled.p`
   @media (max-width: 1000px) {
     font-size: 14px;
     line-height: 28px;
+    width: 327px;
   }
 `;
