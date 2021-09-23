@@ -74,6 +74,12 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
   };
 
+  .iconBodyCircle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #EAF5FF;
   /* .iconBody {
     width: 24px;
     height: 24px;
@@ -81,14 +87,6 @@ const GlobalStyles = createGlobalStyle`
     justify-content: center;
     align-items: center;
   };
-  .iconBodyCircle {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: #EAF5FF;
   };
   .fa-times {
     width: 14px;
