@@ -72,12 +72,6 @@ export const Image = styled.img`
   margin: ${(props) => props.margin};
 `;
 
-export const HistoryImage = styled(Image)`
-  @media (max-width: 1000px) {
-    margin: 16px auto 32px;
-  }
-`;
-
 export const MissionImage = styled(Image)`
   width: 483px;
   height: 245px;
@@ -97,6 +91,12 @@ export const TeamImage = styled(Image)`
     width: 327px;
     height: 169px;
     margin: auto;
+  }
+`;
+
+export const HistoryImage = styled(Image)`
+  @media (max-width: 1000px) {
+    margin: 16px auto 32px;
   }
 `;
 

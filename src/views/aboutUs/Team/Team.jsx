@@ -1,5 +1,5 @@
 import React from 'react';
-import { TeamContainer, StyledHeading, TeamStyledParagraph, Image } from '../aboutUsStyle';
+import { TeamContainer, TeamStyledHeading, TeamStyledParagraph, TeamImage } from '../aboutUsStyle';
 
 function Team({ content, assets }) {
   const headline = content.find((v) => v.fields.identifier === 'about-us-content-3');
@@ -10,13 +10,10 @@ function Team({ content, assets }) {
   const teamImage = assets.find((v) => v.fields.title === 'Rectangle 20 (1)').fields.file.url;
 
   return (
-    <TeamContainer margin="148px auto">
-      <StyledHeading>{headlineTitle}</StyledHeading>
+    <TeamContainer>
+      <TeamStyledHeading>{headlineTitle}</TeamStyledHeading>
       <TeamStyledParagraph>{headlineDescription}</TeamStyledParagraph>
-      <Image
-        width={996}
-        height={505}
-        margin="auto"
+      <TeamImage
         src={teamImage}
         alt="Zdjęcie członków stowarzyszenia IKSS"
       />
