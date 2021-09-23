@@ -37,6 +37,9 @@ const Wrapper = styled.div`
     line-height: 28px;
     letter-spacing: -0.015em;
   }
+  & li > a {
+    font-size: 20px;
+  }
   & ul {
     list-style-type: none;
     margin-bottom: 48px;

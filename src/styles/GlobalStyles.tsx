@@ -74,7 +74,7 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
   };
 
-  .iconBody {
+  /* .iconBody {
     width: 24px;
     height: 24px;
     display: flex;
@@ -169,7 +169,7 @@ const GlobalStyles = createGlobalStyle`
     width: 12px;
     height: 12px;
     color: #1889E9;
-  };
+  }; */
   .ScrollUpButtonBody {
     width: 64px;
     height: 64px;
