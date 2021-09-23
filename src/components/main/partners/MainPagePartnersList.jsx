@@ -5,15 +5,30 @@ const StyledPartners = styled.div`
   text-align: center;
   max-width: 1188px;
   max-height: 796px;
-  margin: 148px auto 132px;
+  margin: ${(props) => (props.logosDisplayedOnHomepage ? '148px auto 0' : '156px auto 0')};
   & h3 {
-    margin: 32px;
+    margin: 0 auto 32px;
+    @media (max-width: 1000px) {
+      margin: 0 auto 16px;
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
   & p {
-    margin: 0 auto 80px;
+    margin: 0 auto 64px;
     width: 635px;
     height: 64px;
+    @media (max-width: 1000px) {
+      width: 327px;
+      height: 112px;
+      margin: 0 auto 32px;
+      font-size: 14px;
+      line-height: 28px;
+    }
   }
+  @media (max-width: 1000px) {
+    margin: ${(props) => (props.logosDisplayedOnHomepage ? '80px auto 0' : '100px auto 0')};
+  };
 `;
 
 const StyledPartner = styled.div`
@@ -23,13 +38,28 @@ const StyledPartner = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
+  gap: 48px 72px;
+  @media (max-width: 1000px) {
+    gap: 24px;
+  }
 `;
 
 const StyledPartnerLogo = styled.div`
   display: flex;
-  flex-basis: 20%;
-  margin-bottom: 48px;
+  width: 180px;
+  height: 80px;
   justify-content: center;
+  align-items: center;
+  @media (max-width: 1000px) {
+    width: 90px;
+    height: 40px;
+  };
+`;
+const StyledPartnerImg = styled.img`
+  @media (max-width: 1000px) {
+    width: 90px;
+    height: 40px;
+  } ;
 `;
 
 function MainPagePartnersList({ partners, assets, content, logosDisplayedOnHomepage }) {
@@ -56,14 +86,14 @@ function MainPagePartnersList({ partners, assets, content, logosDisplayedOnHomep
   partnersImgAndName.sort((a, b) => (a.order > b.order ? -1 : 1));
 
   return (
-    <StyledPartners>
+    <StyledPartners logosDisplayedOnHomepage={logosDisplayedOnHomepage}>
       <h3>{headlineTitle}</h3>
       <p>{headlineDescription}</p>
       <StyledPartner>
         {partnersImgAndName.map((partner) => (
           <StyledPartnerLogo key={partner.key}>
             <a href={partner.link}>
-              <img src={partner.imgUrl} alt={`Logo ${partner.link}`} />
+              <StyledPartnerImg src={partner.imgUrl} alt={`Logo ${partner.link}`} />
             </a>
           </StyledPartnerLogo>
         ))}

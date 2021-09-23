@@ -12,7 +12,7 @@ const StyledHeadline = styled.h3`
     margin: ${(props) => (props.displayOnHomePage ? '157px auto 32px' : '80px auto 24px')};
     font-size: 24px;
     line-height: 32px;
-  } ;
+  };
 `;
 
 const StyledValuesParagraph = styled.p`
