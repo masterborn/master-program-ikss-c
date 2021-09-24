@@ -6,8 +6,13 @@ const StyledValues = styled.div`
   text-align: center;
 `;
 
-const StyledHeadline = styled.h2`
+const StyledHeadline = styled.h3`
   margin: ${(props) => (props.displayOnHomePage ? '157px auto 32px' : '148px auto 64px')};
+  @media (max-width: 1000px) {
+    margin: ${(props) => (props.displayOnHomePage ? '157px auto 32px' : '80px auto 24px')};
+    font-size: 24px;
+    line-height: 32px;
+  };
 `;
 
 const StyledValuesParagraph = styled.p`
