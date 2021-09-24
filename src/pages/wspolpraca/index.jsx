@@ -1,15 +1,18 @@
-import getAllAssets from '@root/api/assetClient';
 import Section from '@root/components/UI/Section/section';
-import { getBasicContent } from '@root/api/cmsClient';
+import MainPagePartnersList from '@root/components/main/partners/MainPagePartnersList';
+import Highlights from '@root/components/main/Values/highlights';
+import { getBasicContent, getPartnerLogos } from '@root/api/cmsClient';
+import getAllAssets from '../../api/assetClient/index';
 
 function Cooperation(props) {
-  const { assets, content } = props;
+  const { assets, content, partners } = props;
   const topSection = content.filter((x) => x.fields.identifier === 'cooperation-top-section');
   const bottomCta = content.filter((x) => x.fields.identifier === 'cooperation-bottom-cta');
-
   return (
     <>
       <Section shortTopParagraph content={topSection} assets={assets} />
+      <Highlights content={content} assets={assets} />
+      <MainPagePartnersList partners={partners} assets={assets} content={content} />
       <Section content={bottomCta} />
     </>
   );
@@ -17,13 +20,14 @@ function Cooperation(props) {
 export default Cooperation;
 
 export async function getStaticProps() {
-  const content = await getBasicContent();
+  const partners = await getPartnerLogos();
   const assets = await getAllAssets();
-
+  const content = await getBasicContent();
   return {
     props: {
-      content,
+      partners,
       assets,
+      content,
     },
   };
 }
