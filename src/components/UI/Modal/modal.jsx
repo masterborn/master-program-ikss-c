@@ -2,6 +2,7 @@ import Form from '@root/components/Form/Form';
 import React, { useEffect, useCallback, useContext } from 'react';
 import DataContext from '@root/contextProviders/dataContext';
 import styled from 'styled-components';
+import { ModalContext } from '@root/contextProviders/modalContext';
 
 const Overlay = styled.div`
   position: fixed;
@@ -22,15 +23,16 @@ const ModalDiv = styled.div`
   justify-content: center;
 `;
 
-function Modal({ show, close }) {
+function Modal() {
   const formContent = useContext(DataContext);
+  const { onCloseModal, isModalOpen } = useContext(ModalContext);
   const closeOnEscapeKeyDown = useCallback(
     (e) => {
       if ((e.charCode || e.keyCode) === 27) {
-        close();
+        onCloseModal();
       }
     },
-    [close],
+    [onCloseModal],
   );
 
   useEffect(() => {
@@ -40,11 +42,11 @@ function Modal({ show, close }) {
     };
   }, [closeOnEscapeKeyDown]);
 
-  if (!show) {
+  if (!isModalOpen) {
     return null;
   }
   return (
-    <ModalDiv className="modal" onClick={close}>
+    <ModalDiv className="modal" onClick={onCloseModal}>
       <Overlay onClick={(e) => e.stopPropagation()}>
         <Form content={formContent.content} />
       </Overlay>

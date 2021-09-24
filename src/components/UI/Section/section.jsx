@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import extractImageUrl from '@root/utils';
-import ModalContext from '@root/contextProviders/modalContext';
+import { ModalContext } from '@root/contextProviders/modalContext';
 import { PrimaryButton } from '../Button/Button';
 
 const StyledDiv = styled.div`
@@ -68,7 +68,7 @@ function Section({ content, assets, shortTopParagraph }) {
   const { onOpenModal } = useContext(ModalContext);
   const data = content.find((x) => x.fields);
   const { title, text1, image1, linkCaption } = data.fields;
-  const description = text1.content.map((x) => x.content.find((y) => y.value).value).toString();
+  const description = text1?.content.map((x) => x.content.find((y) => y.value).value).toString();
   const imageUrl = extractImageUrl(image1, assets);
   const shortTopSection = shortTopParagraph ? '583px' : '995px';
   const paragraphWidth = linkCaption ? '635px' : `${shortTopSection}`;
@@ -83,7 +83,7 @@ function Section({ content, assets, shortTopParagraph }) {
       <StyledParegraph linkCaption={linkCaption} paragraphWidth={paragraphWidth}>
         {description}
       </StyledParegraph>
-      {linkCaption && <SectionButton>{linkCaption}</SectionButton>}
+      {linkCaption && <SectionButton onClick={onOpenModal}>{linkCaption}</SectionButton>}
     </StyledDiv>
   );
 }

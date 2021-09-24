@@ -44,7 +44,7 @@ export const StyledButtonContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-end;
-  margin-top: 37px;
+  margin-top: 15px;
 `;
 
 export const StyledCheckboxLabel = styled.label`

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { PrimaryButton } from '@root/components/UI/Button/Button';
 import { useRouter } from 'next/dist/client/router';
-import ModalContext from '@root/contextProviders/modalContext';
+import { ModalContext } from '@root/contextProviders/modalContext';
 import Modal from '@root/components/UI/Modal/modal';
 import styled from 'styled-components';
 import LogoIkssFrame from '@root/components/logoIkssFrame';
@@ -45,7 +45,7 @@ function Navbar({ socialLinks, pathname }) {
   const [browserWindow, setBrowserWindow] = useState({});
   const [mobileView, setMobileView] = useState(false);
   const router = useRouter();
-  const { isModalOpen, onCloseModal, onOpenModal } = useContext(ModalContext);
+  const { onOpenModal } = useContext(ModalContext);
 
   const showAfterScroll = () => {
     const heightToShowFrom = 550;
@@ -105,7 +105,7 @@ function Navbar({ socialLinks, pathname }) {
         )}
       </Wrapper>
       {mobileView && <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />}
-      <Modal show={isModalOpen} close={onCloseModal} />
+      <Modal />
     </StyledNav>
   );
 }

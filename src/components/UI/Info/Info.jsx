@@ -1,4 +1,4 @@
-import ModalContext from '@root/contextProviders/modalContext';
+import { ModalContext } from '@root/contextProviders/modalContext';
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { PrimaryButton } from '../Button/Button';

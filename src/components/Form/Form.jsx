@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import ModalContext from '@root/contextProviders/modalContext';
+import { ModalContext } from '@root/contextProviders/modalContext';
 import FormInputs from './FormInputs';
 import CloseBtn from '../../assets/closeBtn/coolicon.svg';
 import { StyledForm, StyledFormParagraph, ClosedButton } from './FormStyles';

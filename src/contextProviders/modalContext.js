@@ -1,4 +1,18 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
-const ModalContext = createContext(false);
-export default ModalContext;
+export const ModalContext = createContext();
+
+function ModalProvider({ children }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const onCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  const onOpenModal = () => {
+    setIsModalOpen(true);
+  };
+  const value = { isModalOpen, onCloseModal, onOpenModal };
+
+  return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>;
+}
+
+export default ModalProvider;

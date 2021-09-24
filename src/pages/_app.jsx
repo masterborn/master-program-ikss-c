@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Hydrate } from 'react-query/hydration';
@@ -9,27 +9,20 @@ import GlobalStyles from '@styles/GlobalStyles';
 import theme from '@styles/theme';
 import Layout from '@root/components/Layout/Layout';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import ModalContext from '@root/contextProviders/modalContext';
+import ModalProvider from '@root/contextProviders/modalContext';
 
 const App = (props) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const queryClientRef = useRef();
   if (!queryClientRef.current) {
     queryClientRef.current = new QueryClient();
   }
   const { Component, pageProps } = props;
   const name = { Component };
-  const onCloseModal = () => {
-    setIsModalOpen(false);
-  };
-  const onOpenModal = () => {
-    setIsModalOpen(true);
-  };
   return (
     <>
-      <Meta />
-      <DataContext.Provider value={pageProps}>
-        <ModalContext.Provider value={{ isModalOpen, onCloseModal, onOpenModal }}>
+      <ModalProvider>
+        <Meta />
+        <DataContext.Provider value={pageProps}>
           <ThemeProvider theme={theme}>
             <QueryClientProvider client={queryClientRef.current}>
               <Hydrate state={pageProps.dehydratedState}>
@@ -41,8 +34,8 @@ const App = (props) => {
             </QueryClientProvider>
             <GlobalStyles />
           </ThemeProvider>
-        </ModalContext.Provider>
-      </DataContext.Provider>
+        </DataContext.Provider>
+      </ModalProvider>
     </>
   );
 };
