@@ -66,7 +66,7 @@ const SectionButton = styled(PrimaryButton)`
 function Section({ content, assets, shortTopParagraph }) {
   const data = content.find((x) => x.fields);
   const { title, text1, image1, linkCaption } = data.fields;
-  const description = text1.content.map((x) => x.content.find((y) => y.value).value).toString();
+  const description = text1?.content.map((x) => x.content.find((y) => y.value).value).toString();
   const imageUrl = extractImageUrl(image1, assets);
   const shortTopSection = shortTopParagraph ? '583px' : '995px';
   const paragraphWidth = linkCaption ? '635px' : `${shortTopSection}`;

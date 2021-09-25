@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
     color: #61798B;
     height: 100vh;
     text-align: center;
-    background: linear-gradient(180deg, #f4faff 0%, rgba(255, 255, 255, 0) 100%) no-repeat fixed;
+    // background: linear-gradient(180deg, #f4faff 0%, rgba(255, 255, 255, 0) 100%) no-repeat fixed;
   };
   main {
     max-width: 1440px;
@@ -206,6 +206,37 @@ input, textarea {
     letter-spacing: -0.015em;
     color: #1A2847;
   };
+
+
+  .navigation-wrapper {
+  position: relative;
+}
+
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.dot {
+  margin: 0 10px;
+  padding: 5px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgb(24, 137, 233);
+  background-color: #fff;
+  content: "";
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background-color: rgb(24, 137, 233);
+}
 
 `;
 

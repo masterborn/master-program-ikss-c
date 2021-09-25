@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Tiles from './tiles';
+import HomepageTiles from './homepageTiles';
 
 const StyledValues = styled.div`
   text-align: center;
 `;
 
 const StyledHeadline = styled.h3`
-  margin: 148px auto 64px;
+  margin: 157px auto 32px;
   @media (max-width: 1000px) {
     margin: 80px auto 24px;
     font-size: 24px;
@@ -21,8 +21,8 @@ const StyledValuesParagraph = styled.p`
   margin: 0 auto 40px;
 `;
 
-function Highlights({ content, assets }) {
-  const headline = content.find((v) => v.fields.identifier === 'cooperation-tiles-title');
+function HomepageValues({ content, assets }) {
+  const headline = content.find((v) => v.fields.identifier === 'homepage-values');
   const headlineTitle = headline.fields.title;
   const headlineDescription = headline.fields.text1?.content
     .find((v) => v.nodeType === 'paragraph')
@@ -32,9 +32,9 @@ function Highlights({ content, assets }) {
     <StyledValues>
       <StyledHeadline>{headlineTitle}</StyledHeadline>
       {headlineDescription && <StyledValuesParagraph>{headlineDescription}</StyledValuesParagraph>}
-      <Tiles content={content} assets={assets} />
+      <HomepageTiles content={content} assets={assets} />
     </StyledValues>
   );
 }
 
-export default Highlights;
+export default HomepageValues;
