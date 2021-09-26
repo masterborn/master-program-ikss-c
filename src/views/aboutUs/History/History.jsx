@@ -13,9 +13,9 @@ import {
 function History({ content, assets }) {
   const headline = content.find((v) => v.fields.identifier === 'about-us-content-2');
   const headlineTitle = headline.fields.title;
-  const headlineDescription1Part = headline.fields.text1.content[0].content[0].value;
-  const headlineDescription2Part = headline.fields.text2.content[0].content[0].value;
-  const headlineDescription3Part = headline.fields.text2.content[1].content[0].value;
+  const headlineDescription1Part = headline.fields.text1?.content[0].content[0].value;
+  const headlineDescription2Part = headline.fields.text2?.content[0].content[0].value;
+  const headlineDescription3Part = headline.fields.text2?.content[1].content[0].value;
   const historyImage1 = assets.find((v) => v.fields.title === 'Rectangle 21').fields.file.url;
   const historyImage2 = assets.find((v) => v.fields.title === 'Rectangle 22').fields.file.url;
 

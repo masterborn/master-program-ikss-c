@@ -127,14 +127,12 @@ function handleColorType(colorType) {
 
 export const StyledFormButton = styled(PrimaryButton)`
   justify-content: center;
-  height: 40px;
+  height: 48px;
   fontsize: 16px;
   lineheight: 20px;
-  width: ${(props) =>
-    props.status === 'success' || props.status === 'error' ? '100%' : 'fit-content'};
+  width: ${(props) => (props.status === 'success' || props.status === 'error' ? '100%' : '187px')};
   background: ${(props) => handleColorType(props.status)};
-  pointer-events: ${(props) =>
-    props.status === 'success' || props.status === 'error' ? 'none' : 'auto'};
+  pointer-events: ${(props) => (props.status === 'success' ? 'none' : 'auto')};
   &:focus {
     background: ${(props) => handleColorType(props.status)};
   }

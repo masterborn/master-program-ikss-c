@@ -69,7 +69,7 @@ function MainPagePartnersList({ partners, assets, content, logosDisplayedOnHomep
 
   const headline = content.find((v) => v.fields.identifier === 'cooperation-logos-text');
   const headlineTitle = headline.fields.title;
-  const headlineDescription = headline.fields.text1.content
+  const headlineDescription = headline.fields.text1?.content
     .find((v) => v.nodeType === 'paragraph')
     .content.find((v) => v.nodeType === 'text').value;
   const partnersImgAndName = partnersToDisplay.map((partner) => {

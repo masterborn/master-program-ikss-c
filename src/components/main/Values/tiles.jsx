@@ -88,7 +88,7 @@ function Tiles({ content, assets, displayOnHomePage }) {
 
   const partnersImgAndName = tilesToDisplay.map((tile) => {
     const tileImg = assets.find((asset) => tile.fields.image1.sys.id === asset.sys.id);
-    const tileDescription = tile.fields.text1.content
+    const tileDescription = tile.fields.text1?.content
       .find((v) => v.nodeType === 'paragraph')
       .content.find((v) => v.nodeType === 'text').value;
     return {
