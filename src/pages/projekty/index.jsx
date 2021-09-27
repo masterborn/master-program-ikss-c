@@ -13,6 +13,11 @@ const StyledDiv = styled.div`
   column-count: ${(props) => (props.countOfItems === 1 ? '1' : '2')};
   width: ${(props) => (props.countOfItems === 1 ? '50%' : '100%')};
   column-gap: 24px;
+  @media (max-width: 860px) {
+    column-count: 1;
+    width: 95%;
+    column-gap: 24px;
+  }
 `;
 
 const ButtonDiv = styled.div`

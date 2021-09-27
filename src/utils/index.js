@@ -6,3 +6,11 @@ export default function extractImageUrl(image1, assets) {
   }
   return null;
 }
+
+export const setDataInLocalStorage = (key) => {
+  let result;
+  if (typeof window !== 'undefined' && window.localStorage) {
+    result = localStorage.getItem(key) || '';
+  }
+  return result;
+};

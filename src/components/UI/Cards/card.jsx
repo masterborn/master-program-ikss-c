@@ -14,6 +14,11 @@ const CardStyled = styled.div`
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
     0.676885px 11.1795px 13px rgba(97, 121, 139, 0.035),
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
+
+  @media (max-width: 860px) {
+    width: 95%;
+    margin: auto;
+  }
 `;
 
 const Container = styled.div`
@@ -39,6 +44,13 @@ const Headline = styled.div`
 `;
 const Content = styled.div`
   padding: 32px;
+`;
+const ButtonDiv = styled.div`
+  @media (max-width: 860px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
 const StyledImg = styled.img`
@@ -97,7 +109,9 @@ function Card({ children }) {
             <StyledHeading>{date}</StyledHeading>
           </Headline>
           <StyledParagraph>{description}</StyledParagraph>
-          <EventButton caption={linkCaption} linkUrl={linkUrl} />
+          <ButtonDiv>
+            <EventButton caption={linkCaption} linkUrl={linkUrl} />
+          </ButtonDiv>
         </Content>
       </CardStyled>
     </Div>
