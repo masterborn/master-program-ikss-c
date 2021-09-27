@@ -20,6 +20,9 @@ const StyledNav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 100;
+  @media (max-width: 550px) {
+    height: 56px;
+  }
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -35,6 +38,11 @@ const LogoButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
+  @media (max-width: 550px) {
+    & svg {
+      height: 35px;
+    }
+  }
 `;
 
 function Navbar({ socialLinks, pathname }) {
