@@ -16,7 +16,11 @@ const StyledFooter = styled.footer`
   background-color: ${color.blue};
   width: 100vw;
   height: ${(props) => (props.pathname === '/' ? '728px' : '404px')};
-  padding: 0 0 56px 0;
+  padding: 0 0 51px 0;
+  @media (max-width: 550px) {
+    height: ${(props) => (props.pathname === '/' ? '726px' : '507px')};
+    padding: 0 0 40px 0;
+  }
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -40,23 +44,39 @@ const Wrapper = styled.div`
   & li > a {
     font-size: 20px;
   }
+  & li {
+    line-height: 20px;
+    height: 20px;
+  }
   & ul {
+    height: 20px;
     list-style-type: none;
-    margin-bottom: 48px;
+    line-height: 20px;
+    margin-bottom: 46px;
     padding: 0;
     display: flex;
     width: 185px;
     justify-content: space-between;
   }
   & .ScrollUpButtonBody {
+    color: ${(props) => props.theme.color.blue};
     position: absolute;
-    margin-right: 20px;
     top: -32px;
-    right: 0;
+    right: 128px;
     background-color: #fff;
     font-size: 22px;
     border: none;
     cursor: pointer;
+    @media (max-width: 1250px) {
+      right: 5%;
+    }
+    @media (max-width: 990px) {
+      top: ${(props) => (props.pathname === '/' ? '196px' : '-20px')};
+      right: 50%;
+      transform: translate(50%, 0);
+      height: 40px;
+      width: 40px;
+    }
   }
 `;
 
@@ -64,7 +84,8 @@ const LinksContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 413px;
-  margin-bottom: 50px;
+  height: 22px;
+  margin-bottom: 48px;
   & a {
     font-size: 16px;
     font-style: normal;
@@ -72,18 +93,32 @@ const LinksContainer = styled.div`
     line-height: 20px;
     letter-spacing: 0em;
   }
+  @media (max-width: 550px) {
+    flex-direction: column;
+    margin-bottom: 16px;
+    height: auto;
+  }
+  & a {
+    margin-bottom: 24px;
+  }
 `;
 
 const LogoContainer = styled.a`
-  margin-bottom: 56px;
+  margin-bottom: 54px;
   line-height: 0px;
+  @media (max-width: 550px) {
+    margin-bottom: 40px;
+    & svg {
+      height: 38px;
+    }
+  }
 `;
 
 function Footer({ socialLinks, footerText, pathname }) {
   return (
     <StyledFooter pathname={pathname}>
       <Wrapper>
-        <ScrollUpButton />
+        <ScrollUpButton pathname={pathname} />
         <LinksContainer>
           <Link href="/">
             <a>Strona główna</a>

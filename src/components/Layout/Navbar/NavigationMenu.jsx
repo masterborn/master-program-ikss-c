@@ -50,7 +50,7 @@ function NavigationMenu({ pathname, hamburger }) {
         </StyledA>
       </Link>
       <Link href="/projekty" passHref>
-        <StyledA pathname={pathname} onClick={clearStorage}>
+        <StyledA pathname={pathname} hamburger={hamburger} onClick={clearStorage}>
           Projekty
         </StyledA>
       </Link>

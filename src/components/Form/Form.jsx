@@ -15,6 +15,7 @@ function Form({ content }) {
   const { pathname } = useRouter();
   const isMainPage = pathname === '/';
   const { onCloseModal } = React.useContext(ModalContext);
+
   return (
     <StyledForm>
       {!isMainPage && (
