@@ -18,11 +18,14 @@ const GlobalStyles = createGlobalStyle`
     height: 100vh;
     text-align: center;
     background: linear-gradient(180deg, #f4faff 0%, rgba(255, 255, 255, 0) 100%) no-repeat fixed;
-    overflow-x: hidden;
   };
+  body {
+    overflow-x: hidden;
+  }
   main {
     max-width: 1440px;
     margin: auto;
+
   }
   h1 {
     font-family: Mulish;
@@ -79,7 +82,7 @@ const GlobalStyles = createGlobalStyle`
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: #EAF5FF;
+    background-color: #EAF5FF;}
   /* .iconBody {
     width: 24px;
     height: 24px;

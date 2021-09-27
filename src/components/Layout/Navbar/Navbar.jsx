@@ -34,9 +34,6 @@ const LogoButton = styled.button`
   background: none;
   cursor: pointer;
 `;
-const StaticWidth = styled.div`
-  width: 325px;
-`;
 
 function Navbar({ socialLinks, pathname }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -55,8 +52,13 @@ function Navbar({ socialLinks, pathname }) {
   };
 
   useEffect(() => {
+    window.onload = () => {
+      if (window.innerWidth < 910) {
+        setMobileView(true);
+      } else setMobileView(false);
+    };
     window.onresize = () => {
-      if (window.innerWidth < 860) {
+      if (window.innerWidth < 910) {
         setMobileView(true);
       } else setMobileView(false);
     };
@@ -83,11 +85,18 @@ function Navbar({ socialLinks, pathname }) {
         <LogoButton onClick={handleLogoClick}>
           <LogoIkssFrame />
         </LogoButton>
-        {!mobileView && <NavigationMenu pathname={pathname} />}
-        <StaticWidth>
-          {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
-        </StaticWidth>
-        {!mobileView && <PrimaryButton size="small">Skontaktuj się</PrimaryButton>}
+        {!mobileView && (
+          <>
+            <NavigationMenu pathname={pathname} />
+            <SocialButtons
+              isVisible={isVisible}
+              socialLinks={socialLinks}
+              size="12px"
+              body="24px"
+            />
+            <PrimaryButton size="small">Skontaktuj się</PrimaryButton>
+          </>
+        )}
       </Wrapper>
       {mobileView && <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />}
     </StyledNav>
