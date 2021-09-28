@@ -94,6 +94,7 @@ const Dots = styled.div `
   display: flex;
   padding: 10px 0;
   justify-content: center;
+  background: transparent;
 `;
 
 const Dot = styled.button`

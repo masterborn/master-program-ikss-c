@@ -210,6 +210,11 @@ input, textarea {
 
   .navigation-wrapper {
   position: relative;
+
+
+.keen-slider, .keen-slider__slide {
+    overflow: visible !important;
+  }
 }
 
 `;
