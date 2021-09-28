@@ -11,6 +11,12 @@ const Div = styled.div`
   align-items: center;
   margin-top: 180px;
 `;
+const Wrapper = styled.div`
+  @media (max-width: 860px) {
+    margin-top: 270px;
+    z-index: 100;
+  }
+`;
 
 function extractHomeProjectImage(imagesId, assets) {
   const url = [];
@@ -49,9 +55,11 @@ function MainPageProjectList({ projects, assets }) {
       <h3>Najnowsze projekty</h3>
       <ButtonGroup titles={titles} parentCallback={callbackToChild} activeProjectId={projectShow} />
       <ProjectToDisplay project={projectsWithImages[projectShow]} activeProject={projectShow} />
-      <SecondaryButton marginTop="30px" as="a" href="/projekty">
-        Zobacz wszystkie projekty
-      </SecondaryButton>
+      <Wrapper>
+        <SecondaryButton marginTop="30px" as="a" href="/projekty">
+          Zobacz wszystkie projekty
+        </SecondaryButton>
+      </Wrapper>
     </Div>
   );
 }
