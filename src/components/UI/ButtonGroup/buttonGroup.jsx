@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 
 const ButtonGroup = ({ titles, parentCallback, activeProjectId }) => {
   const btnGroup = titles.map((title, index) => (
-    <Wrapper>
+    <Wrapper key={title}>
       <Button
         key={title}
         type="button"
