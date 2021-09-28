@@ -68,9 +68,14 @@ const Wrapper = styled.div`
     border: none;
     cursor: pointer;
     @media (max-width: 1250px) {
-      right: 5%;
+      right: 2%;
     }
     @media (max-width: 990px) {
+      top: ${(props) => (props.pathname === '/' ? '220px' : '-20px')};
+      right: 50%;
+      transform: translate(50%, 0);
+    }
+    @media (max-width: 550px) {
       top: ${(props) => (props.pathname === '/' ? '196px' : '-20px')};
       right: 50%;
       transform: translate(50%, 0);
@@ -117,7 +122,7 @@ const LogoContainer = styled.a`
 function Footer({ socialLinks, footerText, pathname }) {
   return (
     <StyledFooter pathname={pathname}>
-      <Wrapper>
+      <Wrapper pathname={pathname}>
         <ScrollUpButton pathname={pathname} />
         <LinksContainer>
           <Link href="/">
