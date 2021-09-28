@@ -2,7 +2,7 @@ import getAllAssets from '@root/api/assetClient';
 import MainPagePartnersList from '@root/components/main/partners/MainPagePartnersList';
 import Banner from '@root/components/main/projects/Banner/banner';
 import MainPageProjectList from '@root/components/main/projects/MainPageProjectList';
-import HomepageValues from '@root/components/main/Values/Homopage/homepageValues';
+import HomepageValues from '@root/components/main/Values/Homopage/values';
 import Form from '@root/components/Form/Form';
 import { getBasicContent, getPartnerLogos, getProjects } from '../api/cmsClient/index';
 

@@ -212,32 +212,6 @@ input, textarea {
   position: relative;
 }
 
-.dots {
-  display: flex;
-  padding: 10px 0;
-  justify-content: center;
-}
-
-.dot {
-  margin: 0 10px;
-  padding: 5px;
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 1px solid rgb(24, 137, 233);
-  background-color: #fff;
-  content: "";
-}
-
-.dot:focus {
-  outline: none;
-}
-
-.dot.active {
-  background-color: rgb(24, 137, 233);
-}
-
 `;
 
 export const color = {

@@ -90,6 +90,29 @@ const StyledLogoHomePage = styled.img`
   } ;
 `;
 
+const Dots = styled.div `
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+`;
+
+const Dot = styled.button`
+  margin: 0 10px;
+  padding: 5px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgb(24, 137, 233);
+  background-color: #fff;
+  content: "";
+  background-color: ${(props) =>
+    props.currentSlide === props.currentIdx ? 'rgb(24, 137, 233)' : ''};
+  &:focus {
+    outline: none;
+  }
+`;
+
 function HomepageTiles({ content, assets }) {
 
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -124,7 +147,7 @@ function HomepageTiles({ content, assets }) {
   return (
     <>
       <MobileView>
-        <div style={{marginBottom: "24px"}} className="navigation-wrapper">
+        <div style={{ marginBottom: '24px' }} className="navigation-wrapper">
           <div ref={sliderRef} className="keen-slider">
             <div className="keen-slider__slide">
               <StyledTile key={partnersImgAndName[0].key}>
@@ -134,7 +157,7 @@ function HomepageTiles({ content, assets }) {
                 />
                 <h5>{partnersImgAndName[0].title}</h5>
                 <p>{partnersImgAndName[0].description}</p>
-                <MobileStyledTileShadow > </MobileStyledTileShadow>
+                <MobileStyledTileShadow> </MobileStyledTileShadow>
               </StyledTile>
             </div>
             <div className="keen-slider__slide">
@@ -145,7 +168,7 @@ function HomepageTiles({ content, assets }) {
                 />
                 <h5>{partnersImgAndName[1].title}</h5>
                 <p>{partnersImgAndName[1].description}</p>
-                <MobileStyledTileShadow > </MobileStyledTileShadow>
+                <MobileStyledTileShadow> </MobileStyledTileShadow>
               </StyledTile>
             </div>
             <div className="keen-slider__slide">
@@ -156,25 +179,26 @@ function HomepageTiles({ content, assets }) {
                 />
                 <h5>{partnersImgAndName[2].title}</h5>
                 <p>{partnersImgAndName[2].description}</p>
-                <MobileStyledTileShadow > </MobileStyledTileShadow>
+                <MobileStyledTileShadow> </MobileStyledTileShadow>
               </StyledTile>
             </div>
           </div>
           {slider && (
-            <div className="dots">
+            <Dots>
               {[...Array(slider.details().size).keys()].map((idx) => (
-                // eslint-disable-next-line react/button-has-type
-                <button
+                <Dot
+                  currentSlide={currentSlide}
+                  currentIdx={idx}
+                  type="button"
                   key={idx}
                   onClick={() => {
                     slider.moveToSlideRelative(idx);
                   }}
-                  className={`dot${currentSlide === idx ? ' active' : ''}`}
                 >
                   {' '}
-                </button>
+                </Dot>
               ))}
-            </div>
+            </Dots>
           )}
         </div>
       </MobileView>

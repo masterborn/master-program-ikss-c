@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import HomepageTiles from './homepageTiles';
+import HomepageTiles from './tiles';
 
 const StyledValues = styled.div`
   text-align: center;
