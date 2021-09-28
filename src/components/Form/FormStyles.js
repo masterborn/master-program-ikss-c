@@ -21,6 +21,12 @@ export const StyledForm = styled.div`
   align-items:center;
 `;
 
+export const ClosedButton = styled.div`
+  position: absolute;
+  top: 30px;
+  right: 50px;
+`;
+
 export const StyledFormInputs = styled.form`
   width: 588px;
   display: flex;
@@ -39,7 +45,7 @@ export const StyledButtonContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-end;
-  margin-top: 37px;
+  margin-top: 15px;
 `;
 
 export const StyledCheckboxLabel = styled.label`
@@ -115,7 +121,7 @@ export const StyledToolTip = styled.span`
 function handleColorType(colorType) {
   switch (colorType) {
     case 'pending':
-        return color.blue;      
+      return color.blue;
     case 'success':
       return color.success;
     case 'error':
