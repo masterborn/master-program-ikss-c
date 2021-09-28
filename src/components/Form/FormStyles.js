@@ -5,7 +5,7 @@ import { PrimaryButton } from '../UI/Button/Button';
 export const StyledForm = styled.div`
   text-align: center;
   width: 748px;
-  height: 907px;
+  min-height: 907px;
   margin: 108px auto -259px auto;
   background: ${color.white};
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
@@ -15,12 +15,14 @@ export const StyledForm = styled.div`
   border-radius: 16px;
   position: relative;
   z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
 `;
 
 export const StyledFormInputs = styled.form`
   width: 588px;
-  height: 556px;
-  margin: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -30,7 +32,7 @@ export const StyledFormInputs = styled.form`
 export const StyledFormParagraph = styled.p`
   width: 584px;
   height: 64px;
-  margin: 40px auto;
+  margin: 25px auto 37px;
 `;
 
 export const StyledButtonContainer = styled.div`
@@ -79,7 +81,6 @@ export const StyledCheckbox = styled.input`
 export const ToolTipText = styled.span`
   visibility: hidden;
   width: 347px;
-  height: 110px;
   font-size: 10px;
   line-height: 18px;
   font-weight: 400;
@@ -99,15 +100,14 @@ export const StyledToolTip = styled.span`
   position: relative;
   display: inline-block;
   padding-left: 5px;
-  text-decoration: underline;
   font-family: Mulish;
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
   line-height: 28px;
   letter-spacing: -0.015em;
-  color: ${steelTints.steel_70};
-  &:hover span {
+  color: ${color.blue};
+  &:hover span, :active span {
     visibility: visible;
   }
 `;
@@ -136,4 +136,11 @@ export const StyledFormButton = styled(PrimaryButton)`
   &:focus {
     background: ${(props) => handleColorType(props.status)};
   }
+`;
+
+export const StyledValidation = styled.p`
+  font-size: 14px;
+  line-height: 28px;
+  text-align: 'left';
+  color: ${color.error}
 `;

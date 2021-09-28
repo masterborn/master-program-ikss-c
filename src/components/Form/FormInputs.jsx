@@ -4,7 +4,8 @@ import Input from '../UI/Input/Input';
 import TextArea from '../UI/TextArea/textArea';
 import CheckBox from './CheckBox';
 import FormButton from './FormButton';
-import { StyledButtonContainer, StyledFormInputs } from './FormStyles';
+import config from '../../../config';
+import { StyledButtonContainer, StyledFormInputs, StyledValidation } from './FormStyles';
 
 function FormInputs({ toolTip }) {
 
@@ -134,23 +135,22 @@ function FormInputs({ toolTip }) {
           setStatus('pending');
           setSubmitButtonText('');
           axios
-          // TODO Move URL to env.local(after adding environment variable to Vercel)
-          .post('https://formcarry.com/s/W2_tnOLNhqA', value, {
-            headers: { Accept: 'application/json' },
-          })
-        .then((response) => {
-          if (response.data.status === 'success') {
-            setStatus('success');
-            setSubmitButtonText('Wiadomość wysłana! Odpowiemy wkrótce.');
-            resetInputsState();
-            setIsClicked(true);
-            resetForm();
-          }
-        })
-        .catch(() => {
-          setStatus('error');
-          setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
-        });
+            .post(config.FORMCARRY_URL, value, {
+              headers: { Accept: 'application/json' },
+            })
+            .then((response) => {
+              if (response.data.status === 'success') {
+                setStatus('success');
+                setSubmitButtonText('Wiadomość wysłana! Odpowiemy wkrótce.');
+                resetInputsState();
+                setIsClicked(true);
+                resetForm();
+              }
+            })
+            .catch(() => {
+              setStatus('error');
+              setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
+            });
       }
     }
     
@@ -172,7 +172,7 @@ function FormInputs({ toolTip }) {
               isWide={false}
             />
             {err.fname && (
-              <p style={{ textAlign: 'left', color: 'red' }}>Imię jest wymagane(min. 3 znaki)</p>
+              <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Imię jest wymagane(min. 3 znaki)</StyledValidation>
             )}
           </div>
           <div>
@@ -189,9 +189,9 @@ function FormInputs({ toolTip }) {
               isWide={false}
             />
             {err.lname && (
-              <p style={{ textAlign: 'left', color: 'red' }}>
+              <StyledValidation style={{ textAlign: 'left', color: 'red' }}>
                 Nazwisko jest wymagane(min. 3 znaki)
-              </p>
+              </StyledValidation>
             )}
           </div>
         </div>
@@ -207,9 +207,9 @@ function FormInputs({ toolTip }) {
           icon={err.email}
           isWide
         />
-        {err.email && <p style={{ textAlign: 'left', color: 'red' }}>Email jest wymagany</p>}
+        {err.email && <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Email jest wymagany</StyledValidation>}
         {err.wrongEmail && (
-          <p style={{ textAlign: 'left', color: 'red' }}>Email jest nieprawidłowy</p>
+          <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Email jest nieprawidłowy</StyledValidation>
         )}
         <Input
           id="topic"
@@ -224,7 +224,7 @@ function FormInputs({ toolTip }) {
           isWide
         />
         {err.topic && (
-          <p style={{ textAlign: 'left', color: 'red' }}>Temat jest wymagany(min. 5 znaków)</p>
+          <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Temat jest wymagany(min. 5 znaków)</StyledValidation>
         )}
         <TextArea
           id="contents"
@@ -239,7 +239,7 @@ function FormInputs({ toolTip }) {
           icon={err.contents}
         />
         {err.contents && (
-          <p style={{ textAlign: 'left', color: 'red' }}>Wiadomość jest wymagana(min. 10 znaków)</p>
+          <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Wiadomość jest wymagana(min. 10 znaków)</StyledValidation>
         )}
         <CheckBox
           id="check"
@@ -247,7 +247,7 @@ function FormInputs({ toolTip }) {
           onChange={(e) => handleChangeCheckbox(e)}
           toolTipText={toolTipText}
         />
-        {err.check && <p style={{ textAlign: 'left', color: 'red' }}>Checbox jest wymagany</p>}
+        {err.check && <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Checbox jest wymagany</StyledValidation>}
         <StyledButtonContainer>
           <FormButton
             type="submit"
