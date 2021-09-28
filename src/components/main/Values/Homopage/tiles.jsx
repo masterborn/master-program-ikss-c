@@ -4,23 +4,17 @@ import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 
 const MobileView = styled.div`
-  display: none;
+  visibility: hidden;
   @media (max-width: 1000px) {
-    display: inline-block;
-    margin: auto;
-    width: 600px;
-  }
-  @media (max-width: 600px) {
-    display: inline-block;
+    visibility: visible;
     margin: auto;
     width: 375px;
   }
 `;
 
-
 const StyledTiles = styled.div`
   max-width: 1200px;
-  margin: 0 auto;
+  margin: -492px auto 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -94,7 +88,6 @@ const Dots = styled.div `
   display: flex;
   padding: 10px 0;
   justify-content: center;
-  background: transparent;
 `;
 
 const Dot = styled.button`
@@ -119,6 +112,7 @@ function HomepageTiles({ content, assets }) {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [sliderRef, slider] = useKeenSlider({
     initial: 0,
+    spacing: 400,
     slideChanged(s) {
       setCurrentSlide(s.details().relativeSlide);
     },
