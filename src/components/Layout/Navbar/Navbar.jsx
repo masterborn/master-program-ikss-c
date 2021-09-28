@@ -54,7 +54,7 @@ function Navbar({ socialLinks, pathname }) {
 
   const showAfterScroll = () => {
     let heightToShowFrom;
-    if (router.pathname !== '/') {
+    if (router.pathname === '/') {
       heightToShowFrom = 550;
     } else {
       heightToShowFrom = 0;
@@ -69,7 +69,8 @@ function Navbar({ socialLinks, pathname }) {
   useEffect(() => {
     if (router.pathname !== '/') {
       setIsVisible(true);
-    }
+    } else setIsVisible(false);
+
     window.onload = () => {
       if (window.innerWidth < 910) {
         setMobileView(true);
@@ -84,7 +85,7 @@ function Navbar({ socialLinks, pathname }) {
     setBrowserWindow(window);
     window.addEventListener('scroll', showAfterScroll);
     return () => window.removeEventListener('scroll', showAfterScroll);
-  }, []);
+  }, [router.pathname]);
 
   const handleLogoClick = () => {
     if (pathname === '/') {
