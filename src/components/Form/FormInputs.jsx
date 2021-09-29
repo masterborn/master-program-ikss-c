@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { setDataInLocalStorage } from '@root/utils';
 import Input from '../UI/Input/Input';
 import TextArea from '../UI/TextArea/textArea';
 import CheckBox from './CheckBox';
 import FormButton from './FormButton';
-import { StyledButtonContainer, StyledFormInputs } from './FormStyles';
+import config from '../../../config';
+import {
+  StyledButtonContainer,
+  StyledFormInputs,
+  StyledValidation,
+  StyledNameInputs,
+  StyledStaticInputHeight,
+  StyledStaticTextareaHeight,
+  StyledStaticCheckboxHeight,
+} from './FormStyles';
 
 function FormInputs({ toolTip }) {
+
+  const [isChecked, setIsChecked] = useState(null);
+  const [isClicked, setIsClicked] = useState(null);
   const toolTipText = toolTip.fields.text1.content[0].content[0].value;
+  const [isMobile, setIsMobile] = useState(false);
   const [value, setValue] = useState({
     lname: setDataInLocalStorage('lname'),
     fname: setDataInLocalStorage('fname'),
@@ -22,36 +35,40 @@ function FormInputs({ toolTip }) {
     fname: false,
     lname: false,
     email: false,
+    wrongEmail: false,
     topic: false,
     contents: false,
+    check: false,
   });
+  
+  useEffect(() => {
 
-  const [placeholder, setPlaceholder] = useState({
-    fname: 'Wpisz swoje imię',
-    lname: 'Wpisz swoje nazwisko',
-    email: 'Wpisz swój email',
-    topic: 'Temat wiadomości',
-    contents: 'O czym chcesz z nami porozmawiać?',
-  });
+    window.onload = () => {
+      if (window.innerWidth < 860) {
+        setIsMobile(true);
+      } else setIsMobile(false);
+    };
+    window.onresize = () => {
+      if (window.innerWidth < 860) {
+        setIsMobile(true);
+      } else setIsMobile(false);
+    };
+  }, [isMobile]);
 
-  const clearPlaceholder = {
-    fname: 'Wpisz swoje imię',
-    lname: 'Wpisz swoje nazwisko',
-    email: 'Wpisz swój email',
-    topic: 'Temat wiadomości',
-    contents: 'O czym chcesz z nami porozmawiać?',
-  };
-
-  function setButtonError() {
+  function setButtonError(){
     setStatus('error');
-    setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
+    if (!isMobile) {
+      setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
+    } else if (isMobile) {
+      setSubmitButtonText('Spróbuj jeszcze raz.');
+    }
   }
-
+  
   function clearButton() {
     setStatus('');
     setSubmitButtonText('Wyślij wiadomość');
   }
-
+  
   function resetInputsState() {
     setValue({
       lname: '',
@@ -61,157 +78,236 @@ function FormInputs({ toolTip }) {
       contents: '',
     });
   }
-
+  
   function handleChange(e) {
     setErr((prev) => ({ ...prev, [e.target.id]: false }));
     setValue((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-    setPlaceholder((prev) => ({ ...prev, [e.target.id]: clearPlaceholder[e.target.id] }));
+    if(e.target.id==='email'){
+      setErr((prev) => ({ ...prev, wrongEmail: false }));
+    }
+    clearButton();
+  }
+  
+  function handleChangeCheckbox(e){
+    setIsChecked(!isChecked);
+    setErr((prev) => ({ ...prev, [e.target.id]: isChecked }));
     clearButton();
   }
 
+  function handleClickCheckbox(e) {
+    if(isClicked === true)
+    setIsChecked(true);
+    setErr((prev) => ({ ...prev, [e.target.id]: false }));
+    clearButton();
+    setIsClicked(false);
+  }
+  
+
   function validation() {
-    if (!value.fname) {
+    if (!value.fname || value.fname.length<3) {
       setErr((prev) => ({ ...prev, fname: true }));
       setButtonError();
-      setPlaceholder((prev) => ({ ...prev, fname: 'Imię jest wymagane' }));
     }
-
-    if (!value.lname) {
+    
+    if (!value.lname || value.lname.length < 3) {
       setErr((prev) => ({ ...prev, lname: true }));
       setButtonError();
-      setPlaceholder((prev) => ({ ...prev, lname: 'Nazwisko jest wymagane' }));
     }
-
+    
     if (!value.email) {
       setErr((prev) => ({ ...prev, email: true }));
       setButtonError();
-      setPlaceholder((prev) => ({ ...prev, email: 'Email jest wymagany' }));
+    }
+    if(value.email) {
+      const pattern = new RegExp(
+        /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i,
+        );
+        if(!pattern.test(value.email)){
+          setErr((prev) => ({ ...prev, wrongEmail: true }));
+          setButtonError();
+        }
+      }
+      if(!isChecked){
+        setErr((prev) => ({ ...prev, check: true }));
+        setButtonError();
+      }
+      
+      if (!value.topic || value.topic.length < 5) {
+        setErr((prev) => ({ ...prev, topic: true }));
+        setButtonError();
+      }
+      
+      if (!value.contents || value.contents.length < 10) {
+        setErr((prev) => ({ ...prev, contents: true }));
+        setButtonError();
+      }
     }
 
-    if (!value.topic) {
-      setErr((prev) => ({ ...prev, topic: true }));
-      setButtonError();
-      setPlaceholder((prev) => ({ ...prev, topic: 'Temat jest wymagany' }));
-    }
-
-    if (!value.contents) {
-      setErr((prev) => ({ ...prev, contents: true }));
-      setButtonError();
-      setPlaceholder((prev) => ({ ...prev, contents: 'Treść jest wymagana' }));
-    }
-  }
-  function setToLocalStorage(data) {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('lname', data.lname);
-      localStorage.setItem('fname', data.fname);
-      localStorage.setItem('topic', data.topic);
-      localStorage.setItem('email', data.email);
-      localStorage.setItem('contents', data.contents);
-    }
-  }
-  setToLocalStorage(value);
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const resetForm = () => {
-      document.getElementById('form').reset();
-    };
-
-    if (!err.fname && !err.lname && !err.email && !err.topic && !err.contents) {
-      setStatus('pending');
-      setSubmitButtonText('');
-      axios
-        // TODO Move URL to env.local(after adding environment variable to Vercel)
-        .post('https://formcarry.com/s/W2_tnOLNhqA', value, {
-          headers: { Accept: 'application/json' },
-        })
-        .then((response) => {
-          if (response.data.status === 'success') {
-            setStatus('success');
-            setSubmitButtonText('Wiadomość wysłana! Odpowiemy wkrótce.');
-            resetInputsState();
-            resetForm();
+    function handleSubmit(event) {
+      
+      event.preventDefault();
+      
+      const resetForm = () => {
+        document.getElementById('form').reset();
+      };
+      
+      if (
+        !err.fname &&
+        !err.lname &&
+        !err.email &&
+        !err.wrongEmail &&
+        !err.check &&
+        !err.topic &&
+        !err.contents
+        ) {
+          setStatus('pending');
+          setSubmitButtonText('');
+          axios
+            .post(config.FORMCARRY_URL, value, {
+              headers: { Accept: 'application/json' },
+            })
+            .then((response) => {
+              if (response.data.status === 'success') {
+                setStatus('success');
+                if(!isMobile) {
+                  setSubmitButtonText('Wiadomość wysłana! Odpowiemy wkrótce.');
+                } else if(isMobile){
+                  setSubmitButtonText('Wiadomość wysłana!');
+                }
+                resetInputsState();
+                setIsClicked(true);
+                resetForm();
+              }
+            })
+            .catch(() => {
+              setStatus('error');
+              if(!isMobile) {
+                setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
+              } else if(isMobile){
+                setSubmitButtonText('Spróbuj jeszcze raz.');
+              }
+            });
           }
-        })
-        .catch(() => {
-          setStatus('error');
-          setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
-        });
-    }
-  }
+        }
+          
+      function setToLocalStorage(data) {
+        if (typeof window !== 'undefined' && window.localStorage) {
+          localStorage.setItem('lname', data.lname);
+          localStorage.setItem('fname', data.fname);
+          localStorage.setItem('topic', data.topic);
+          localStorage.setItem('email', data.email);
+          localStorage.setItem('contents', data.contents);
+        }
+      }
+      setToLocalStorage(value);
 
-  return (
-    <StyledFormInputs autoComplete="off" id="form" onSubmit={handleSubmit}>
-      <Input
-        id="fname"
-        name="fname"
-        type="text"
-        labelText="Imię"
-        value={value.fname}
-        placeholder={placeholder.fname}
-        onChange={(e) => handleChange(e)}
-        error={err.fname}
-        icon={err.fname}
-        isWide={false}
-      />
-      <Input
-        id="lname"
-        name="lname"
-        type="text"
-        labelText="Nazwisko"
-        value={value.lname}
-        placeholder={placeholder.lname}
-        onChange={(e) => handleChange(e)}
-        error={err.lname}
-        icon={err.lname}
-        isWide={false}
-      />
-      <Input
-        id="email"
-        name="email"
-        type="email"
-        labelText="Adres email"
-        value={value.email}
-        placeholder={placeholder.email}
-        onChange={(e) => handleChange(e)}
-        error={err.email}
-        icon={err.email}
-        isWide
-      />
-      <Input
-        id="topic"
-        name="topic"
-        type="text"
-        labelText="Temat"
-        value={value.topic}
-        placeholder={placeholder.topic}
-        onChange={(e) => handleChange(e)}
-        error={err.topic}
-        icon={err.topic}
-        isWide
-      />
-      <TextArea
-        id="contents"
-        name="contents"
-        type="textarea"
-        rows={7}
-        labelText="Treść"
-        value={value.contents}
-        placeholder={placeholder.contents}
-        onChange={(e) => handleChange(e)}
-        error={err.contents}
-        icon={err.contents}
-      />
-      <CheckBox toolTipText={toolTipText} />
-      <StyledButtonContainer>
-        <FormButton
-          type="submit"
-          onClick={validation}
-          status={status}
-          submitButtonText={submitButtonText}
+
+    return (
+      <StyledFormInputs autoComplete="off" id="form" onSubmit={handleSubmit}>
+        <StyledNameInputs>
+          <StyledStaticInputHeight>
+            <Input
+              id="fname"
+              name="fname"
+              type="text"
+              labelText="Imię"
+              value={value.fname}
+              placeholder="Wpisz swoje imię"
+              onChange={(e) => handleChange(e)}
+              error={err.fname}
+              icon={err.fname}
+              isWide={false}
+            />
+            {err.fname && (
+              <StyledValidation>Imię jest wymagane(min. 3 znaki)</StyledValidation>
+            )}
+          </StyledStaticInputHeight>
+          <StyledStaticInputHeight>
+            <Input
+              id="lname"
+              name="lname"
+              type="text"
+              labelText="Nazwisko"
+              value={value.lname}
+              placeholder="Wpisz swoje nazwisko"
+              onChange={(e) => handleChange(e)}
+              error={err.lname}
+              icon={err.lname}
+              isWide={false}
+            />
+            {err.lname && (
+              <StyledValidation> Nazwisko jest wymagane(min. 3 znaki) </StyledValidation>
+            )}
+          </StyledStaticInputHeight>
+        </StyledNameInputs>
+        <StyledStaticInputHeight>
+        <Input
+          id="email"
+          name="email"
+          type="text"
+          labelText="Adres email"
+          value={value.email}
+          placeholder="Wpisz swój adres-email"
+          onChange={(e) => handleChange(e)}
+          error={err.email}
+          icon={err.email}
+          isWide
         />
-      </StyledButtonContainer>
-    </StyledFormInputs>
-  );
+        {err.email && <StyledValidation>Email jest wymagany</StyledValidation>}
+        {err.wrongEmail && ( <StyledValidation>Email jest nieprawidłowy</StyledValidation> )}
+        </StyledStaticInputHeight>
+        <StyledStaticInputHeight>
+        <Input
+          id="topic"
+          name="topic"
+          type="text"
+          labelText="Temat"
+          value={value.topic}
+          placeholder="Temat wiadomości"
+          onChange={(e) => handleChange(e)}
+          error={err.topic}
+          icon={err.topic}
+          isWide
+        />
+        {err.topic && (
+          <StyledValidation>Temat jest wymagany(min. 5 znaków)</StyledValidation>
+        )}
+        </StyledStaticInputHeight>
+        <StyledStaticTextareaHeight>
+        <TextArea
+          id="contents"
+          name="contents"
+          type="textarea"
+          rows={3}
+          labelText="Treść"
+          value={value.contents}
+          placeholder="O czym chcesz z nami porozmawiać?"
+          onChange={(e) => handleChange(e)}
+          error={err.contents}
+          icon={err.contents}
+        />
+        {err.contents && (<StyledValidation>Wiadomość jest wymagana(min. 10 znaków)</StyledValidation>)}
+        </StyledStaticTextareaHeight>
+        <StyledStaticCheckboxHeight>
+        <CheckBox
+          id="check"
+          onClick={(e) => handleClickCheckbox(e)}
+          onChange={(e) => handleChangeCheckbox(e)}
+          toolTipText={toolTipText}
+        />
+        {err.check && <StyledValidation>Checbox jest wymagany</StyledValidation>}
+        </StyledStaticCheckboxHeight>
+        <StyledButtonContainer>
+          <FormButton
+            type="submit"
+            onClick={validation}
+            status={status}
+            submitButtonText={submitButtonText}
+          />
+        </StyledButtonContainer>
+      </StyledFormInputs>
+    );
 }
+
+
 export default FormInputs;

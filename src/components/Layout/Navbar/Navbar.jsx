@@ -81,7 +81,7 @@ function Navbar({ socialLinks, pathname }) {
   const openContactForm = () => {
     if (router.pathname === '/') {
       browserWindow.scrollTo({
-        top: 3900,
+        top: 3500,
         behavior: 'smooth',
       });
     } else {

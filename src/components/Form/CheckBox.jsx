@@ -2,16 +2,15 @@ import React from 'react';
 import { StyledCheckboxLabel, StyledCheckbox } from './FormStyles';
 import ToolTip from './ToolTip';
 
-function CheckBox({toolTipText}) {
+function CheckBox({toolTipText, onChange, onClick}) {
     return (
       <StyledCheckboxLabel htmlFor="check">
-        <StyledCheckbox id="check" type="checkbox" required />
-        Zapoznałem się z
-        <a href="https://uodo.gov.pl/">
-          <ToolTip toolTipText={toolTipText}>
-            informacją o administratorze i przetwarzaniu danych.
-          </ToolTip>
-        </a>
+        <StyledCheckbox id="check" onChange={onChange} onClick={onClick} type="checkbox" />
+        <span>Zapoznałem się z
+        <ToolTip toolTipText={toolTipText}>
+          informacją o administratorze i przetwarzaniu danych.
+        </ToolTip>
+        </span>
       </StyledCheckboxLabel>
     );
 };
