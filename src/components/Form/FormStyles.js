@@ -176,7 +176,7 @@ function handleColorType(colorType) {
 export const StyledFormButton = styled(PrimaryButton)`
   justify-content: center;
   height: 48px;
-  fontsize: 16px;
+  font-size: 16px;
   line-height: 20px;
   width: ${(props) => (props.status === 'success' || props.status === 'error' ? '100%' : '187px')};
   background: ${(props) => handleColorType(props.status)};
