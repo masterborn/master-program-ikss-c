@@ -129,7 +129,7 @@ const NameSection = styled.div`
   }
 `;
 
-function MemberCard({ member, assets, pushOpen }) {
+function MemberCard({ member, assets }) {
   const [isOpen, setIsOpen] = useState(true);
   const { name, role, email, phone, linkedinUrl, image } = member.fields || {};
   const photoUrl = extractImageUrlFromAssets(image, assets);
