@@ -42,18 +42,7 @@ function FormInputs({ toolTip }) {
     check: false,
   });
 
-  let isMobile = false;
-
-  const MobileButton = () => {
-    const isWide = useMedia('(max-width: 860px)');
-      if (isWide) {
-        isMobile=true;
-      }else {
-        isMobile=false;
-      }
-  };
-  
-  MobileButton();
+  const isMobile = useMedia('(max-width: 860px)');
 
   function setButtonError(){
     setStatus('error');
