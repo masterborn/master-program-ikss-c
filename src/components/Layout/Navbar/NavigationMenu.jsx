@@ -44,7 +44,6 @@ function NavigationMenu({ pathname, hamburger, handleMenuOpen }) {
   };
 
   const handleClick = () => {
-    console.log('handleCLick');
     clearStorage();
     handleMenuOpen();
   };
@@ -57,17 +56,17 @@ function NavigationMenu({ pathname, hamburger, handleMenuOpen }) {
         </StyledA>
       </Link>
       <Link href="/projekty" passHref>
-        <StyledA pathname={pathname} hamburger={hamburger} onClick={clearStorage}>
+        <StyledA pathname={pathname} hamburger={hamburger} onClick={() => handleClick()}>
           Projekty
         </StyledA>
       </Link>
       <Link href="/o-nas" passHref>
-        <StyledA hamburger={hamburger} pathname={pathname} onClick={clearStorage}>
+        <StyledA hamburger={hamburger} pathname={pathname} onClick={() => handleClick()}>
           O nas
         </StyledA>
       </Link>
       <Link href="/wspolpraca" passHref>
-        <StyledA hamburger={hamburger} pathname={pathname} onClick={clearStorage}>
+        <StyledA hamburger={hamburger} pathname={pathname} onClick={() => handleClick()}>
           Współpraca
         </StyledA>
       </Link>

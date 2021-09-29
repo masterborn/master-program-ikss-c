@@ -1,5 +1,6 @@
 import { PrimaryButton } from '@root/components/UI/Button/Button';
-import React, { useState } from 'react';
+import { ModalContext } from '@root/contextProviders/modalContext';
+import React, { useContext, useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import NavigationMenu from './NavigationMenu';
 import SocialButtons from './SocialButtons';
@@ -58,14 +59,19 @@ const styles = {
 };
 
 function HamburgerMenu({ pathname, socialLinks }) {
+  const { onOpenModal } = useContext(ModalContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleMenuOpen = () => {
-    console.log('jestem w hamburgerze');
     setMenuOpen(false);
   };
   const handleStateChange = (state) => {
     setMenuOpen(state.isOpen);
+  };
+
+  const openContactForm = () => {
+    setMenuOpen(false);
+    onOpenModal();
   };
 
   return (
@@ -95,7 +101,13 @@ function HamburgerMenu({ pathname, socialLinks }) {
         className="menu-item"
         hamburger
       />
-      <PrimaryButton className="menu-item" margin="40px" alignSelf="center" size="small">
+      <PrimaryButton
+        onClick={openContactForm}
+        className="menu-item"
+        margin="40px"
+        alignSelf="center"
+        size="small"
+      >
         Skontaktuj się
       </PrimaryButton>
       <SocialButtons socialLinks={socialLinks} size="16px" body="32px" hamburger />
