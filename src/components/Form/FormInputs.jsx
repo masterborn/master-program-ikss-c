@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { setDataInLocalStorage } from '@root/utils';
 import Input from '../UI/Input/Input';
@@ -6,14 +6,22 @@ import TextArea from '../UI/TextArea/textArea';
 import CheckBox from './CheckBox';
 import FormButton from './FormButton';
 import config from '../../../config';
-import { StyledButtonContainer, StyledFormInputs, StyledValidation } from './FormStyles';
+import {
+  StyledButtonContainer,
+  StyledFormInputs,
+  StyledValidation,
+  StyledNameInputs,
+  StyledStaticInputHeight,
+  StyledStaticTextareaHeight,
+  StyledStaticCheckboxHeight,
+} from './FormStyles';
 
 function FormInputs({ toolTip }) {
 
   const [isChecked, setIsChecked] = useState(null);
   const [isClicked, setIsClicked] = useState(null);
   const toolTipText = toolTip.fields.text1.content[0].content[0].value;
-  
+  const [isMobile, setIsMobile] = useState(false);
   const [value, setValue] = useState({
     lname: setDataInLocalStorage('lname'),
     fname: setDataInLocalStorage('fname'),
@@ -33,9 +41,27 @@ function FormInputs({ toolTip }) {
     check: false,
   });
   
+  useEffect(() => {
+
+    window.onload = () => {
+      if (window.innerWidth < 860) {
+        setIsMobile(true);
+      } else setIsMobile(false);
+    };
+    window.onresize = () => {
+      if (window.innerWidth < 860) {
+        setIsMobile(true);
+      } else setIsMobile(false);
+    };
+  }, [isMobile]);
+
   function setButtonError(){
     setStatus('error');
-    setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
+    if (!isMobile) {
+      setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
+    } else if (isMobile) {
+      setSubmitButtonText('Spróbuj jeszcze raz.');
+    }
   }
   
   function clearButton() {
@@ -76,6 +102,7 @@ function FormInputs({ toolTip }) {
     setIsClicked(false);
   }
   
+
   function validation() {
     if (!value.fname || value.fname.length<3) {
       setErr((prev) => ({ ...prev, fname: true }));
@@ -142,7 +169,11 @@ function FormInputs({ toolTip }) {
             .then((response) => {
               if (response.data.status === 'success') {
                 setStatus('success');
-                setSubmitButtonText('Wiadomość wysłana! Odpowiemy wkrótce.');
+                if(!isMobile) {
+                  setSubmitButtonText('Wiadomość wysłana! Odpowiemy wkrótce.');
+                } else if(isMobile){
+                  setSubmitButtonText('Wiadomość wysłana!');
+                }
                 resetInputsState();
                 setIsClicked(true);
                 resetForm();
@@ -150,7 +181,11 @@ function FormInputs({ toolTip }) {
             })
             .catch(() => {
               setStatus('error');
-              setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
+              if(!isMobile) {
+                setSubmitButtonText('Coś poszło nie tak. Spróbuj jeszcze raz.');
+              } else if(isMobile){
+                setSubmitButtonText('Spróbuj jeszcze raz.');
+              }
             });
           }
         }
@@ -166,10 +201,11 @@ function FormInputs({ toolTip }) {
       }
       setToLocalStorage(value);
 
+
     return (
       <StyledFormInputs autoComplete="off" id="form" onSubmit={handleSubmit}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-          <div>
+        <StyledNameInputs>
+          <StyledStaticInputHeight>
             <Input
               id="fname"
               name="fname"
@@ -183,10 +219,10 @@ function FormInputs({ toolTip }) {
               isWide={false}
             />
             {err.fname && (
-              <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Imię jest wymagane(min. 3 znaki)</StyledValidation>
+              <StyledValidation>Imię jest wymagane(min. 3 znaki)</StyledValidation>
             )}
-          </div>
-          <div>
+          </StyledStaticInputHeight>
+          <StyledStaticInputHeight>
             <Input
               id="lname"
               name="lname"
@@ -200,12 +236,11 @@ function FormInputs({ toolTip }) {
               isWide={false}
             />
             {err.lname && (
-              <StyledValidation style={{ textAlign: 'left', color: 'red' }}>
-                Nazwisko jest wymagane(min. 3 znaki)
-              </StyledValidation>
+              <StyledValidation> Nazwisko jest wymagane(min. 3 znaki) </StyledValidation>
             )}
-          </div>
-        </div>
+          </StyledStaticInputHeight>
+        </StyledNameInputs>
+        <StyledStaticInputHeight>
         <Input
           id="email"
           name="email"
@@ -218,10 +253,10 @@ function FormInputs({ toolTip }) {
           icon={err.email}
           isWide
         />
-        {err.email && <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Email jest wymagany</StyledValidation>}
-        {err.wrongEmail && (
-          <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Email jest nieprawidłowy</StyledValidation>
-        )}
+        {err.email && <StyledValidation>Email jest wymagany</StyledValidation>}
+        {err.wrongEmail && ( <StyledValidation>Email jest nieprawidłowy</StyledValidation> )}
+        </StyledStaticInputHeight>
+        <StyledStaticInputHeight>
         <Input
           id="topic"
           name="topic"
@@ -235,8 +270,10 @@ function FormInputs({ toolTip }) {
           isWide
         />
         {err.topic && (
-          <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Temat jest wymagany(min. 5 znaków)</StyledValidation>
+          <StyledValidation>Temat jest wymagany(min. 5 znaków)</StyledValidation>
         )}
+        </StyledStaticInputHeight>
+        <StyledStaticTextareaHeight>
         <TextArea
           id="contents"
           name="contents"
@@ -249,16 +286,17 @@ function FormInputs({ toolTip }) {
           error={err.contents}
           icon={err.contents}
         />
-        {err.contents && (
-          <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Wiadomość jest wymagana(min. 10 znaków)</StyledValidation>
-        )}
+        {err.contents && (<StyledValidation>Wiadomość jest wymagana(min. 10 znaków)</StyledValidation>)}
+        </StyledStaticTextareaHeight>
+        <StyledStaticCheckboxHeight>
         <CheckBox
           id="check"
           onClick={(e) => handleClickCheckbox(e)}
           onChange={(e) => handleChangeCheckbox(e)}
           toolTipText={toolTipText}
         />
-        {err.check && <StyledValidation style={{ textAlign: 'left', color: 'red' }}>Checbox jest wymagany</StyledValidation>}
+        {err.check && <StyledValidation>Checbox jest wymagany</StyledValidation>}
+        </StyledStaticCheckboxHeight>
         <StyledButtonContainer>
           <FormButton
             type="submit"

@@ -5,7 +5,7 @@ import { PrimaryButton } from '../UI/Button/Button';
 export const StyledForm = styled.div`
   text-align: center;
   width: 748px;
-  min-height: 907px;
+  height: 907px;
   margin: 108px auto -259px auto;
   background: ${color.white};
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
@@ -18,13 +18,25 @@ export const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
+  align-items: center;
+  @media (max-width: 860px) {
+    width: 327px;
+    height: 1030px;
+    & h3 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
 `;
 
 export const ClosedButton = styled.div`
   position: absolute;
   top: 30px;
   right: 50px;
+  @media (max-width: 860px) {
+    top: 10px;
+    right: 20px;
+  }
 `;
 
 export const StyledFormInputs = styled.form`
@@ -33,19 +45,34 @@ export const StyledFormInputs = styled.form`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  text-align: left;
+  @media (max-width: 860px) {
+    width: 327px;
+    justify-content: center;
+    & p {
+      justify-content: flex-start;
+    }
+  }
 `;
 
 export const StyledFormParagraph = styled.p`
-  width: 584px;
-  height: 64px;
-  margin: 25px auto 37px;
+  margin: 25px 82px 37px;
+  @media (max-width: 860px) {
+    font-size: 14px;
+    line-height: 28px;
+    margin: 24px 16px;
+  }
 `;
 
 export const StyledButtonContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-end;
+  align-items: center;
   margin-top: 15px;
+  @media (max-width: 860px) {
+    justify-content: center;
+  }
 `;
 
 export const StyledCheckboxLabel = styled.label`
@@ -53,6 +80,11 @@ export const StyledCheckboxLabel = styled.label`
   align-items: center;
   color: ${steelTints.steel_70};
   margin-top: 25px;
+  @media (max-width: 860px) {
+    font-size: 14px;
+    line-height: 15px;
+    margin: 12px 16px 15px;
+  }
 `;
 
 export const StyledCheckbox = styled.input`
@@ -82,6 +114,11 @@ export const StyledCheckbox = styled.input`
     transform: rotate(45deg);
     margin: 1px 5px 6px 6px;
   }
+  @media (max-width: 860px) {
+    height: 24px;
+    width: 24px;
+    flex-shrink: 0;
+  }
 `;
 
 export const ToolTipText = styled.span`
@@ -104,7 +141,7 @@ export const ToolTipText = styled.span`
 
 export const StyledToolTip = styled.span`
   position: relative;
-  display: inline-block;
+  display: inline;
   padding-left: 5px;
   font-family: Mulish;
   font-style: normal;
@@ -113,8 +150,13 @@ export const StyledToolTip = styled.span`
   line-height: 28px;
   letter-spacing: -0.015em;
   color: ${color.blue};
-  &:hover span, :active span {
+  &:hover span,
+  :active span {
     visibility: visible;
+  }
+  @media (max-width: 860px) {
+    font-size: 12px;
+    line-height: 15px;
   }
 `;
 
@@ -135,12 +177,20 @@ export const StyledFormButton = styled(PrimaryButton)`
   justify-content: center;
   height: 48px;
   fontsize: 16px;
-  lineheight: 20px;
+  line-height: 20px;
   width: ${(props) => (props.status === 'success' || props.status === 'error' ? '100%' : '187px')};
   background: ${(props) => handleColorType(props.status)};
   pointer-events: ${(props) => (props.status === 'success' ? 'none' : 'auto')};
   &:focus {
     background: ${(props) => handleColorType(props.status)};
+  }
+  @media (max-width: 860px) {
+    width: ${(props) =>
+      props.status === 'success' || props.status === 'error' ? 'fit-content' : '154px'};
+    font-size: 14px;
+    line-height: 18px;
+    height: 36px;
+    padding: 9px 16px;
   }
 `;
 
@@ -149,4 +199,29 @@ export const StyledValidation = styled.p`
   line-height: 28px;
   text-align: 'left';
   color: ${color.error}
+`;
+
+export const StyledNameInputs = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  @media (max-width: 860px) {
+    justify-content: center;
+  }
+`;
+
+export const StyledStaticInputHeight = styled.div`
+  height: 115px;
+`;
+
+export const StyledStaticTextareaHeight = styled.div`
+  height: 170px;
+`;
+
+export const StyledStaticCheckboxHeight = styled.div`
+  height: 80px;
+  @media (max-width: 860px) {
+    margin: 12px 16px 24px;
+  }
 `;

@@ -6,10 +6,11 @@ function CheckBox({toolTipText, onChange, onClick}) {
     return (
       <StyledCheckboxLabel htmlFor="check">
         <StyledCheckbox id="check" onChange={onChange} onClick={onClick} type="checkbox" />
-        Zapoznałem się z
+        <span>Zapoznałem się z
         <ToolTip toolTipText={toolTipText}>
           informacją o administratorze i przetwarzaniu danych.
         </ToolTip>
+        </span>
       </StyledCheckboxLabel>
     );
 };
