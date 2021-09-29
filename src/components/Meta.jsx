@@ -15,7 +15,6 @@ function Meta() {
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/keen-slider@latest/keen-slider.min.css"
       />
-      <title>Ikss</title>
     </Head>
   );
 }
