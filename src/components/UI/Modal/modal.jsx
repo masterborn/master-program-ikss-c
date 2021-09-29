@@ -7,6 +7,8 @@ import { ModalContext } from '@root/contextProviders/modalContext';
 const Overlay = styled.div`
   position: fixed;
   top: -100px;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const ModalDiv = styled.div`
@@ -21,6 +23,8 @@ const ModalDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10000000000;
+  overflow-y: initial !important;
 `;
 
 function Modal() {

@@ -14,30 +14,31 @@ const StyledTiles = styled.div`
 `;
 
 const StyledTile = styled.div`
-  height: ${(props) => (props.displayOnHomePage ? '456px' : '382px')};
+  height: 382px;
   width: 384px;
   position: relative;
   background-color: ${color.white};
   border-radius: 16px;
+  margin: 0;
   & h5 {
-    margin: 20px 24px 0 24px;
-  };
+    margin: 20px 24px 0;
+  }
   & p {
-    margin: ${(props) => (props.displayOnHomePage ? '16px 24px 48px' : '16px 24px')};
+    margin: 16px 24px;
     @media (max-width: 1000px) {
       font-size: 14px;
       line-height: 28px;
       margin: 12px 24px 32px;
-    };
+    }
   }
   @media (max-width: 1000px) {
-    height: ${(props) => (props.displayOnHomePage ? '394px' : '350px')};
+    height: 350px;
     width: 327px;
-  };
+  } ;
 `;
 
 const StyledTileShadow = styled.div`
-  height: ${(props) => (props.displayOnHomePage ? '394px' : '382px')};
+  height: 382px;
   width: 384px;
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),
@@ -52,7 +53,7 @@ const StyledTileShadow = styled.div`
   align-items: center;
   justify-content: center;
   @media (max-width: 1000px) {
-    height: ${(props) => (props.displayOnHomePage ? '394px' : '350px')};
+    height: 350px;
     width: 327px;
   };
 `;
@@ -67,28 +68,21 @@ const StyledLogo = styled.img`
   };
 `;
 
+function Tiles({ content, assets }) {
 
-function Tiles({ content, assets, displayOnHomePage }) {
-  const tilesToDisplay = displayOnHomePage
-    ? content.filter(
-        (tile) =>
-          tile.fields.identifier === 'homepage-tile-1' ||
-          tile.fields.identifier === 'homepage-tile-2' ||
-          tile.fields.identifier === 'homepage-tile-3',
-      )
-    : content.filter(
-        (tile) =>
-          tile.fields.identifier === 'cooperation-tile-1' ||
-          tile.fields.identifier === 'cooperation-tile-2' ||
-          tile.fields.identifier === 'cooperation-tile-3' ||
-          tile.fields.identifier === 'cooperation-tile-4' ||
-          tile.fields.identifier === 'cooperation-tile-5',
-      );
+  const tilesToDisplay = content.filter(
+    (tile) =>
+      tile.fields.identifier === 'cooperation-tile-1' ||
+      tile.fields.identifier === 'cooperation-tile-2' ||
+      tile.fields.identifier === 'cooperation-tile-3' ||
+      tile.fields.identifier === 'cooperation-tile-4' ||
+      tile.fields.identifier === 'cooperation-tile-5',
+  );
   tilesToDisplay.sort((a, b) => (a.fields.identifier > b.fields.identifier ? 1 : -1));
 
   const partnersImgAndName = tilesToDisplay.map((tile) => {
     const tileImg = assets.find((asset) => tile.fields.image1.sys.id === asset.sys.id);
-    const tileDescription = tile.fields.text1.content
+    const tileDescription = tile.fields.text1?.content
       .find((v) => v.nodeType === 'paragraph')
       .content.find((v) => v.nodeType === 'text').value;
     return {
@@ -100,26 +94,19 @@ function Tiles({ content, assets, displayOnHomePage }) {
   });
 
   return (
-    <StyledTiles>
-      {partnersImgAndName.map((tile) => (
-        <StyledTile displayOnHomePage={displayOnHomePage} key={tile.key}>
-          {displayOnHomePage ? (
-            <>
-              <img src={tile.imgUrl} alt={tile.title} />
-              <h5>{tile.title}</h5>
-              <p>{tile.description}</p>
-              <StyledTileShadow displayOnHomePage={displayOnHomePage}> </StyledTileShadow>
-            </>
-          ) : (
-            <StyledTileShadow>
-              <StyledLogo src={tile.imgUrl} alt={tile.title} />
-              <h5>{tile.title}</h5>
-              <p>{tile.description}</p>
-            </StyledTileShadow>
-          )}
-        </StyledTile>
-      ))}
-    </StyledTiles>
+    <>
+      <StyledTiles>
+        {partnersImgAndName.map((tile) => (
+          <StyledTile key={tile.key}>
+              <StyledTileShadow>
+                <StyledLogo src={tile.imgUrl} alt={tile.title} />
+                <h5>{tile.title}</h5>
+                <p>{tile.description}</p>
+              </StyledTileShadow>
+          </StyledTile>
+        ))}
+      </StyledTiles>
+    </>
   );
 }
 
