@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PageHead from '@root/components/Head';
 import ProjectItem from '@root/components/projects/ProjectItem/ProjectItem';
 import styled from 'styled-components';
 import Section from '@root/components/UI/Section/section';
@@ -45,6 +46,7 @@ function ProjectList({ projects, assets, content }) {
   const projectsWithYears = extractProjectsDataFromProps(projects);
   const topSection = content.filter((x) => x.fields.identifier === 'projects-top-section');
   const bottomCta = content.filter((x) => x.fields.identifier === 'projects-bottom-cta-text');
+  const head = content.filter((x) => x.fields.identifier === 'projects-meta');
   const presentedProjectByYear = projectsWithYears.proj.filter(
     (project) => project?.year === selectedYear,
   );
@@ -53,6 +55,7 @@ function ProjectList({ projects, assets, content }) {
   ));
   return (
     <>
+      <PageHead head={head} />
       <Section content={topSection} assets={assets} />
       <ButtonDiv>
         <ButtonYear
