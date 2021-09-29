@@ -11,6 +11,10 @@ function Meta() {
         href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;800;900&display=swap"
         rel="stylesheet"
       />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/keen-slider@latest/keen-slider.min.css"
+      />
       <title>Ikss</title>
     </Head>
   );
