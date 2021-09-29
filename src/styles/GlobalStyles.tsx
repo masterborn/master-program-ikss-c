@@ -19,9 +19,13 @@ const GlobalStyles = createGlobalStyle`
     text-align: center;
     background: linear-gradient(180deg, #f4faff 0%, rgba(255, 255, 255, 0) 20%) no-repeat fixed;
   };
+  body {
+    overflow-x: hidden;
+  }
   main {
     max-width: 1440px;
     margin: auto;
+
   }
   h1 {
     font-family: Mulish;
@@ -73,102 +77,22 @@ const GlobalStyles = createGlobalStyle`
     color: inherit;
   };
 
-  .iconBody {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  };
   .iconBodyCircle {
-    width: 24px;
-    height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: #EAF5FF;
-  };
-  .fa-times {
-    width: 14px;
-    height: 14px;
-    color: #61798B;
-  };
-  .fa-phone-alt {
-    width: 16px;
-    height: 16px;
-    color: #61798B;
-  };
-  .fa-paper-plane {
-    width: 14.5px;
-    height: 14px;
-    color: #61798B;
-  };
-  .fa-chevron-down {
-    width: 8px;
-    height: 16px;
-    color: #61798B;
-  };
-  .fa-chevron-up {
-    width: 30px;
-    height: 25px;
-    color: #1889E9;
-  };
-  .fa-times-circle {
-    width: 21px;
-    height: 21px;
-    color: #FFFFFF;
-  };
-  .fa-check-circle {
-    width: 20px;
-    height: 20px;
-    color: #FFFFFF;
-  };
-  .fa-spinner {
-    width: 24px;
-    height: 24px;
-    color: #FFFFFF;
-  };
-  .fa-facebook-f {
-    width: 10.2px;
-    height: 19.2px;
-    color: #1A2847;
-  };
-  .fa-instagram {
-    width: 21px;
-    height: 21px;
-    color: #1A2847;
-  };
-  .fa-youtube {
-    width: 19.21px;
-    height: 13.54px;
-    color: #1A2847;
-  };
-  .fa-linkedin {
-    width: 18px;
-    height: 18px;
-    color: #1A2847;
-  };
-  .iconBodyCircle .fa-facebook-f {
-    width: 6.8px;
-    height: 12.8px;
-    color: #1889E9;
-  };
-  .iconBodyCircle .fa-instagram {
-    width: 12px;
-    height: 12px;
-    color: #1889E9;
-  };
-  .iconBodyCircle .fa-youtube {
-    width: 12.81px;
-    height: 9.02px;
-    color: #1889E9;
-  };
-  .iconBodyCircle .fa-linkedin {
-    width: 12px;
-    height: 12px;
-    color: #1889E9;
-  };
+    background-color: #EAF5FF;}
+
+
+  @media(min-width: 551px) {
+    .bm-burger-button{
+      width: 28px !important;
+      height: 22px !important;
+      right: 37px !important;
+      top: 30px !important;
+    }
+    }
   .ScrollUpButtonBody {
     width: 64px;
     height: 64px;

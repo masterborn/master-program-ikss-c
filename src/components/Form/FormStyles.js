@@ -6,7 +6,7 @@ export const StyledForm = styled.div`
   text-align: center;
   width: 748px;
   height: 950px;
-  margin: 108px auto -259px auto;
+  margin: 108px auto -277px auto;
   background: ${color.white};
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
     1.71337px 28.2982px 34.875px rgba(97, 121, 139, 0.04725),

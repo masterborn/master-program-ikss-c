@@ -6,7 +6,8 @@ import LinkedinCircleIcon from '@root/components/UI/Icons/LinkedinCircleIcon';
 import styled from 'styled-components';
 import { steelTints } from '../../../../../styles/GlobalStyles';
 
-const ICON_SIZE = '30px';
+const ICON_SIZE = '24px';
+const CIRCLE_SIZE = '48px';
 
 const StyledAnchor = styled.a`
   display: flex;
@@ -17,8 +18,8 @@ const StyledAnchor = styled.a`
   max-width: auto;
   margin: 0;
   padding: 0;
-  role: button;
   z-index: 10;
+  color: ${(props) => props.theme.color.blue};
 `;
 
 const BannerDiv = styled.div`
@@ -41,19 +42,19 @@ function SocialBanner({ yt, insta, lin, fb }) {
   return (
     <BannerDiv>
       <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={fb} target="_blank">
-        <FacebookCircleIcon size={ICON_SIZE} />
+        <FacebookCircleIcon size={ICON_SIZE} body={CIRCLE_SIZE} />
         <H5>Facebook</H5>
       </StyledAnchor>
       <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={insta} target="_blank">
-        <InstagramCircleIcon size={ICON_SIZE} />
+        <InstagramCircleIcon size={ICON_SIZE} body={CIRCLE_SIZE} />
         <H5>Instagram</H5>
       </StyledAnchor>
       <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={yt} target="_blank">
-        <YoutubeCircleIcon size={ICON_SIZE} />
+        <YoutubeCircleIcon size={ICON_SIZE} body={CIRCLE_SIZE} />
         <H5>YouTube</H5>
       </StyledAnchor>
       <StyledAnchor onKeyPress={keyDownHandler} tabIndex={0} href={lin} target="_blank">
-        <LinkedinCircleIcon size={ICON_SIZE} />
+        <LinkedinCircleIcon size={ICON_SIZE} body={CIRCLE_SIZE} />
         <H5>LinkedIn</H5>
       </StyledAnchor>
     </BannerDiv>

@@ -10,8 +10,8 @@ const styles = {
     position: 'fixed',
     width: '18px',
     height: '12px',
-    right: '22px',
-    top: '27px',
+    right: '27px',
+    top: '20px',
   },
   bmBurgerBars: {
     background: '#1889E9',

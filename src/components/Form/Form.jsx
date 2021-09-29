@@ -9,12 +9,13 @@ function Form({ content }) {
   const headline = content.find((v) => v.fields.identifier === 'contact-form-text');
   const toolTip = content.find((v) => v.fields.identifier === 'contact-form-tooltip');
   const headlineTitle = headline.fields.title;
-  const headlineDescription = headline.fields.text1.content
+  const headlineDescription = headline.fields.text1?.content
     .find((v) => v.nodeType === 'paragraph')
     .content.find((v) => v.nodeType === 'text').value;
   const { pathname } = useRouter();
   const isMainPage = pathname === '/';
   const { onCloseModal } = React.useContext(ModalContext);
+
   return (
     <StyledForm>
       {!isMainPage && (

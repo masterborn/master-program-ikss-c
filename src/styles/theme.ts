@@ -4,6 +4,18 @@ export const fontFamily = {} as const;
 
 export const fontWeight = {};
 
+const breakPoints = {
+  mobile: '375px',
+  tablet: '768px',
+  desktop: '1440px',
+};
+
+export const devices = {
+  mobile: `(max-width: ${breakPoints.mobile})`,
+  tablet: `(max-width: ${breakPoints.tablet})`,
+  desktop: `(max-width: ${breakPoints.desktop})`,
+};
+
 export const color = {
   blue_50: '#8CC4F4',
   blue_40: '#A3D0F6',
@@ -20,13 +32,11 @@ export const color = {
   card: '#61798B',
 } as const;
 
-export const medias = {};
-
 const theme: DefaultTheme = {
   fontFamily,
   fontWeight,
   color,
-  medias,
+  devices,
 } as const;
 
 export default theme;

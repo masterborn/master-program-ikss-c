@@ -20,6 +20,9 @@ const StyledNav = styled.nav`
   position: sticky;
   top: 0;
   z-index: 100;
+  @media (max-width: 550px) {
+    height: 56px;
+  }
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -35,9 +38,11 @@ const LogoButton = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-`;
-const StaticWidth = styled.div`
-  width: 325px;
+  @media (max-width: 550px) {
+    & svg {
+      height: 35px;
+    }
+  }
 `;
 
 function Navbar({ socialLinks, pathname }) {
@@ -48,17 +53,31 @@ function Navbar({ socialLinks, pathname }) {
   const { onOpenModal } = useContext(ModalContext);
 
   const showAfterScroll = () => {
-    const heightToShowFrom = 550;
+    let heightToShowFrom;
+    if (router.pathname === '/') {
+      heightToShowFrom = 550;
+    } else {
+      heightToShowFrom = 0;
+    }
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     if (winScroll > heightToShowFrom) {
       setIsVisible(true);
-    } else {
+    } else if (router.pathname === '/') {
       setIsVisible(false);
     }
   };
   useEffect(() => {
+    if (router.pathname !== '/') {
+      setIsVisible(true);
+    } else setIsVisible(false);
+
+    window.onload = () => {
+      if (window.innerWidth < 910) {
+        setMobileView(true);
+      } else setMobileView(false);
+    };
     window.onresize = () => {
-      if (window.innerWidth < 860) {
+      if (window.innerWidth < 910) {
         setMobileView(true);
       } else setMobileView(false);
     };
@@ -66,7 +85,8 @@ function Navbar({ socialLinks, pathname }) {
     setBrowserWindow(window);
     window.addEventListener('scroll', showAfterScroll);
     return () => window.removeEventListener('scroll', showAfterScroll);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.pathname]);
 
   const handleLogoClick = () => {
     if (pathname === '/') {
@@ -78,8 +98,9 @@ function Navbar({ socialLinks, pathname }) {
       router.push('/');
     }
   };
+
   const openContactForm = () => {
-    if (router.pathname === '/') {
+    if (pathname === '/') {
       browserWindow.scrollTo({
         top: 3500,
         behavior: 'smooth',
@@ -94,14 +115,19 @@ function Navbar({ socialLinks, pathname }) {
         <LogoButton onClick={handleLogoClick}>
           <LogoIkssFrame />
         </LogoButton>
-        {!mobileView && <NavigationMenu pathname={pathname} />}
-        <StaticWidth>
-          {isVisible && <SocialButtons socialLinks={socialLinks} size="12px" body="24px" />}
-        </StaticWidth>
         {!mobileView && (
-          <PrimaryButton size="small" onClick={openContactForm}>
-            Skontaktuj się
-          </PrimaryButton>
+          <>
+            <NavigationMenu pathname={pathname} />
+            <SocialButtons
+              isVisible={isVisible}
+              socialLinks={socialLinks}
+              size="12px"
+              body="24px"
+            />
+            <PrimaryButton size="small" onClick={() => openContactForm()}>
+              Skontaktuj się
+            </PrimaryButton>
+          </>
         )}
       </Wrapper>
       {mobileView && <HamburgerMenu socialLinks={socialLinks} pathname={pathname} />}
