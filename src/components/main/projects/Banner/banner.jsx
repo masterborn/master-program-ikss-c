@@ -5,11 +5,15 @@ import SocialBanner from './SocialBanner/socialBanner';
 import BanerVideo from './banerVideo/banerVideo';
 
 const Div = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  height: 505px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 1440px;
+  @media (max-width: 1150px) {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+  }
 `;
 
 function Banner({ content, asset }) {
