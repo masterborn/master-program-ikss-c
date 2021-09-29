@@ -85,6 +85,7 @@ function Navbar({ socialLinks, pathname }) {
     setBrowserWindow(window);
     window.addEventListener('scroll', showAfterScroll);
     return () => window.removeEventListener('scroll', showAfterScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname]);
 
   const handleLogoClick = () => {
