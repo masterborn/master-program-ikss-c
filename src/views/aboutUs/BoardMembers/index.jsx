@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MemberCard from './MemberCard';
 
@@ -44,6 +44,7 @@ const BoardMembersSection = styled.section`
 `;
 
 function BoardMembers({ content, board, assets }) {
+  const [pushOpen, setPushOpen] = useState(false);
   const boardSectiondata = content.find(
     (entry) => entry.fields.identifier === 'about-us-board-members-text',
   );
@@ -55,6 +56,7 @@ function BoardMembers({ content, board, assets }) {
   const firstColumnMembers = [board[1], board[4]];
   const secondColumnMembers = [board[0], board[3], board[6]];
   const thirdColumnMembers = [board[2], board[5]];
+
 
   return (
     <BoardMembersSection>
@@ -79,7 +81,7 @@ function BoardMembers({ content, board, assets }) {
       </CardDisplayColumns>
       <CardDisplayGrid>
         {board.map((member) => (
-          <MemberCard key={member.sys.id} member={member} assets={assets} />
+          <MemberCard pushOpen={pushOpen} key={member.sys.id} member={member} assets={assets} />
         ))}
       </CardDisplayGrid>
     </BoardMembersSection>

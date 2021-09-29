@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import Collapse from '@kunukn/react-collapse';
 import { ButtonSmall } from '@root/styles/GlobalStyles';
@@ -8,6 +8,7 @@ import LinkedinIcon from '@root/components/UI/Icons/LinkedinIcon';
 import { SecondaryButton } from '@root/components/UI/Button/Button';
 import { extractImageUrlFromAssets } from '@root/api/utils';
 import Vector from '@root/components/UI/Icons/Vector';
+import { useMedia } from 'react-use';
 
 const collapsed = css`
   flex-direction: row;
@@ -128,10 +129,18 @@ const NameSection = styled.div`
   }
 `;
 
-function MemberCard({ member, assets }) {
+function MemberCard({ member, assets, pushOpen }) {
   const [isOpen, setIsOpen] = useState(true);
   const { name, role, email, phone, linkedinUrl, image } = member.fields || {};
   const photoUrl = extractImageUrlFromAssets(image, assets);
+
+  const isMobile = useMedia('(max-width: 830px)');
+
+  useEffect(() => {
+    if (isMobile) {
+      setIsOpen(false);
+    } else setIsOpen(true);
+  }, [isMobile]);
 
   return (
     <MemberCardWrapper isOpen={isOpen}>
