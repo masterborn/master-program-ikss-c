@@ -5,7 +5,7 @@ import { PrimaryButton } from '../UI/Button/Button';
 export const StyledForm = styled.div`
   text-align: center;
   width: 748px;
-  height: 907px;
+  height: 950px;
   margin: 108px auto -259px auto;
   background: ${color.white};
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
