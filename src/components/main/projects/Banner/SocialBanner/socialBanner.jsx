@@ -31,10 +31,20 @@ const BannerDiv = styled.div`
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   box-shadow: 13px 15px 22px ${steelTints.steel_20};
+  margin-top: -10px;
+  @media (max-width: 1150px) {
+    width: 100%;
+    margin: 0 24px 0;
+    border-radius: 20px;
+    height: 80px;
+  }
 `;
 
 const H5 = styled.h5`
   margin-left: 15px;
+  @media (max-width: 750px) {
+    display: none;
+  }
 `;
 function SocialBanner({ yt, insta, lin, fb }) {
   const keyDownHandler = () => {};
