@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useMedia } from 'react-use';
 import axios from 'axios';
 import { setDataInLocalStorage } from '@root/utils';
 import Input from '../UI/Input/Input';
@@ -21,7 +22,7 @@ function FormInputs({ toolTip }) {
   const [isChecked, setIsChecked] = useState(null);
   const [isClicked, setIsClicked] = useState(null);
   const toolTipText = toolTip.fields.text1.content[0].content[0].value;
-  const [isMobile, setIsMobile] = useState(false);
+
   const [value, setValue] = useState({
     lname: setDataInLocalStorage('lname'),
     fname: setDataInLocalStorage('fname'),
@@ -40,20 +41,8 @@ function FormInputs({ toolTip }) {
     contents: false,
     check: false,
   });
-  
-  useEffect(() => {
 
-    window.onload = () => {
-      if (window.innerWidth < 860) {
-        setIsMobile(true);
-      } else setIsMobile(false);
-    };
-    window.onresize = () => {
-      if (window.innerWidth < 860) {
-        setIsMobile(true);
-      } else setIsMobile(false);
-    };
-  }, [isMobile]);
+  const isMobile = useMedia('(max-width: 860px)');
 
   function setButtonError(){
     setStatus('error');
