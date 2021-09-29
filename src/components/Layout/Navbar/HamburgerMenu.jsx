@@ -1,5 +1,5 @@
 import { PrimaryButton } from '@root/components/UI/Button/Button';
-import React from 'react';
+import React, { useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import NavigationMenu from './NavigationMenu';
 import SocialButtons from './SocialButtons';
@@ -58,8 +58,20 @@ const styles = {
 };
 
 function HamburgerMenu({ pathname, socialLinks }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuOpen = () => {
+    console.log('jestem w hamburgerze');
+    setMenuOpen(false);
+  };
+  const handleStateChange = (state) => {
+    setMenuOpen(state.isOpen);
+  };
+
   return (
     <Menu
+      isOpen={menuOpen}
+      onStateChange={(state) => handleStateChange(state)}
       right
       styles={styles}
       customCrossIcon={
@@ -77,7 +89,12 @@ function HamburgerMenu({ pathname, socialLinks }) {
         </svg>
       }
     >
-      <NavigationMenu pathname={pathname} className="menu-item" hamburger />
+      <NavigationMenu
+        handleMenuOpen={handleMenuOpen}
+        pathname={pathname}
+        className="menu-item"
+        hamburger
+      />
       <PrimaryButton className="menu-item" margin="40px" alignSelf="center" size="small">
         Skontaktuj się
       </PrimaryButton>

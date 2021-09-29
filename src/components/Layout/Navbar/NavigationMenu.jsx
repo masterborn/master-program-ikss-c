@@ -38,14 +38,21 @@ const NavMenu = styled.div`
   ${({ hamburger }) => (hamburger ? hamburgerMenu : navbarMenu)}
 `;
 
-function NavigationMenu({ pathname, hamburger }) {
+function NavigationMenu({ pathname, hamburger, handleMenuOpen }) {
   const clearStorage = () => {
     window.localStorage.clear();
   };
+
+  const handleClick = () => {
+    console.log('handleCLick');
+    clearStorage();
+    handleMenuOpen();
+  };
+
   return (
     <NavMenu hamburger={hamburger}>
       <Link href="/" passHref>
-        <StyledA hamburger={hamburger} pathname={pathname} onClick={clearStorage}>
+        <StyledA onClick={() => handleClick()} hamburger={hamburger} pathname={pathname}>
           Strona główna
         </StyledA>
       </Link>

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import YoutubeEmbed from './YoutubeEmbed/youtubeEmbed';
 import Headline from './Headline/headline';
 import SocialBanner from './SocialBanner/socialBanner';
+import BanerVideo from './banerVideo/banerVideo';
 
 const Div = styled.div`
   display: grid;
@@ -25,7 +25,7 @@ function Banner({ content, asset }) {
     <>
       <Div id="hero">
         <Headline content={banner} />
-        <YoutubeEmbed url={videoUrl} />
+        <BanerVideo url={videoUrl} />
       </Div>
       <></>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>
