@@ -31,11 +31,11 @@ export const StyledForm = styled.div`
 
 export const ClosedButton = styled.div`
   position: absolute;
-  top: 30px;
-  right: 50px;
+  top: 37px;
+  right: 37px;
   @media (max-width: 860px) {
-    top: 10px;
-    right: 20px;
+    top: 20px;
+    right: 24px;
   }
 `;
 
