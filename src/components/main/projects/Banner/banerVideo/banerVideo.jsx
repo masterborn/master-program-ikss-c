@@ -13,7 +13,7 @@ const Div = styled.div`
 
 const BanerVideo = ({ url, paddingBottom }) => (
   <Div paddingBottom={paddingBottom}>
-    <video width="320" height="240" autoPlay controls>
+    <video width="320" height="240" autoPlay muted>
       <source src={url} type="video/mp4" />
     </video>
   </Div>

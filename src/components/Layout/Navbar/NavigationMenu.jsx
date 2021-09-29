@@ -45,7 +45,9 @@ function NavigationMenu({ pathname, hamburger, handleMenuOpen }) {
 
   const handleClick = () => {
     clearStorage();
-    handleMenuOpen();
+    if (handleMenuOpen) {
+      handleMenuOpen();
+    }
   };
 
   return (
