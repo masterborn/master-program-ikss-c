@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Error404 from '@root/components/UI/404/error404';
 import { Button } from '@root/components/UI/Button/FaButton';
+import { getBasicContent } from '@root/api/cmsClient';
 
 const StyledErrorPage = styled.div`
   max-width: 1440px;
@@ -27,14 +28,26 @@ const StyledHeadline = styled.h1`
   }
 `;
 
-function NotFound() {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function NotFound(props) {
   return (
-    <StyledErrorPage> 
+    <StyledErrorPage>
       <Error404 />
       <StyledHeadline>ups, 404</StyledHeadline>
-      <StyledParagraph>Za każdym razem kiedy trafiasz na tę stronę, ktoś wymawia „i-ka-ka-es” zamiast „ikss”.</StyledParagraph>
-      <Button content='Uciekam stąd' link="/" />
+      <StyledParagraph>
+        Za każdym razem kiedy trafiasz na tę stronę, ktoś wymawia „i-ka-ka-es” zamiast „ikss”.
+      </StyledParagraph>
+      <Button content="Uciekam stąd" link="/" />
     </StyledErrorPage>
   );
 }
 export default NotFound;
+
+export async function getStaticProps() {
+  const content = await getBasicContent();
+  return {
+    props: {
+      content,
+    },
+  };
+}

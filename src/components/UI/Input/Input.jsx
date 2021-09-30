@@ -36,6 +36,10 @@ const Containter = styled.div`
     top: 45px;
     right: 14px;
   }
+  @media (max-width: 860px) {
+    width: 295px;
+    margin-top: 12px;
+  }
 `;
 const Label = styled.label`
   display: block;

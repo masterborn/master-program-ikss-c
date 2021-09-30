@@ -28,7 +28,7 @@ const StyledPartners = styled.div`
   }
   @media (max-width: 1000px) {
     margin: ${(props) => (props.logosDisplayedOnHomepage ? '80px auto 0' : '100px auto 0')};
-  };
+  } ;
 `;
 
 const StyledPartner = styled.div`
@@ -53,7 +53,7 @@ const StyledPartnerLogo = styled.div`
   @media (max-width: 1000px) {
     width: 90px;
     height: 40px;
-  };
+  } ;
 `;
 const StyledPartnerImg = styled.img`
   @media (max-width: 1000px) {
@@ -69,7 +69,7 @@ function MainPagePartnersList({ partners, assets, content, logosDisplayedOnHomep
 
   const headline = content.find((v) => v.fields.identifier === 'cooperation-logos-text');
   const headlineTitle = headline.fields.title;
-  const headlineDescription = headline.fields.text1?.content
+  const headlineDescription = headline?.fields?.text1?.content
     .find((v) => v.nodeType === 'paragraph')
     .content.find((v) => v.nodeType === 'text').value;
   const partnersImgAndName = partnersToDisplay.map((partner) => {

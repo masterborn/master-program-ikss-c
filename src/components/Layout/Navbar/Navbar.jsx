@@ -53,15 +53,24 @@ function Navbar({ socialLinks, pathname }) {
   const { onOpenModal } = useContext(ModalContext);
 
   const showAfterScroll = () => {
-    const heightToShowFrom = 550;
+    let heightToShowFrom;
+    if (router.pathname === '/') {
+      heightToShowFrom = 550;
+    } else {
+      heightToShowFrom = 0;
+    }
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     if (winScroll > heightToShowFrom) {
       setIsVisible(true);
-    } else {
+    } else if (router.pathname === '/') {
       setIsVisible(false);
     }
   };
   useEffect(() => {
+    if (router.pathname !== '/') {
+      setIsVisible(true);
+    } else setIsVisible(false);
+
     window.onload = () => {
       if (window.innerWidth < 910) {
         setMobileView(true);
@@ -76,7 +85,8 @@ function Navbar({ socialLinks, pathname }) {
     setBrowserWindow(window);
     window.addEventListener('scroll', showAfterScroll);
     return () => window.removeEventListener('scroll', showAfterScroll);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.pathname]);
 
   const handleLogoClick = () => {
     if (pathname === '/') {
@@ -88,10 +98,11 @@ function Navbar({ socialLinks, pathname }) {
       router.push('/');
     }
   };
+
   const openContactForm = () => {
     if (pathname === '/') {
       browserWindow.scrollTo({
-        top: 3900,
+        top: 3500,
         behavior: 'smooth',
       });
     } else {

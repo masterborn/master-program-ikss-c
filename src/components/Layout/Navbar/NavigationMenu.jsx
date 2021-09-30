@@ -38,29 +38,37 @@ const NavMenu = styled.div`
   ${({ hamburger }) => (hamburger ? hamburgerMenu : navbarMenu)}
 `;
 
-function NavigationMenu({ pathname, hamburger }) {
+function NavigationMenu({ pathname, hamburger, handleMenuOpen }) {
   const clearStorage = () => {
     window.localStorage.clear();
   };
+
+  const handleClick = () => {
+    clearStorage();
+    if (handleMenuOpen) {
+      handleMenuOpen();
+    }
+  };
+
   return (
     <NavMenu hamburger={hamburger}>
       <Link href="/" passHref>
-        <StyledA hamburger={hamburger} pathname={pathname} onClick={clearStorage}>
+        <StyledA onClick={() => handleClick()} hamburger={hamburger} pathname={pathname}>
           Strona główna
         </StyledA>
       </Link>
       <Link href="/projekty" passHref>
-        <StyledA pathname={pathname} hamburger={hamburger} onClick={clearStorage}>
+        <StyledA pathname={pathname} hamburger={hamburger} onClick={() => handleClick()}>
           Projekty
         </StyledA>
       </Link>
       <Link href="/o-nas" passHref>
-        <StyledA hamburger={hamburger} pathname={pathname} onClick={clearStorage}>
+        <StyledA hamburger={hamburger} pathname={pathname} onClick={() => handleClick()}>
           O nas
         </StyledA>
       </Link>
       <Link href="/wspolpraca" passHref>
-        <StyledA hamburger={hamburger} pathname={pathname} onClick={clearStorage}>
+        <StyledA hamburger={hamburger} pathname={pathname} onClick={() => handleClick()}>
           Współpraca
         </StyledA>
       </Link>

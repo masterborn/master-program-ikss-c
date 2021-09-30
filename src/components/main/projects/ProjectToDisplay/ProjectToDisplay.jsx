@@ -97,6 +97,18 @@ function YoutubeEmbed2({ url }){
   )
 }
 
+const Wrapper = styled.div`
+  @media (max-width: 860px) {
+    margin: 20px auto;
+  }
+`;
+const Wrapper2 = styled.div`
+  @media (max-width: 860px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+`;
+
 function extractEmbededId(project) {
   const { imageUrl } = project;
   if (project.isVideo) {
@@ -124,14 +136,15 @@ function ProjectToDisplay({ project }) {
     <Div>
       {isMobile? <YoutubeEmbed2 url={combineUrlForIframe}/> : <Container>{renderVideoOrImage}</Container>}
       <ContentDiv>
-        <TitleDiv>
-          <h4 style={{fontSize: '18px', margin: '0'}}>{title}</h4> <H5 style={{fontSize: '16px'}}>{date}</H5>
-        </TitleDiv>
-        <DescriptionDiv>{description}</DescriptionDiv>
-        <ButtonDiv>
-        <FaPrimaryButton content={linkCaption} link={linkUrl} />
-        </ButtonDiv>
-        
+      <Wrapper2>
+          <TitleDiv>
+            <h4 style={{fontSize: '18px', margin: '0'}}>{title}</h4> <H5>{date}</H5>
+          </TitleDiv>
+          <DescriptionDiv>{description}</DescriptionDiv>
+        </Wrapper2>
+        <Wrapper>
+          <FaPrimaryButton content={linkCaption} link={linkUrl} />
+        </Wrapper>
       </ContentDiv>
       
 

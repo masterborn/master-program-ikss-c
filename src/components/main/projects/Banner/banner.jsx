@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import YoutubeEmbed from './YoutubeEmbed/youtubeEmbed';
 import Headline from './Headline/headline';
 import SocialBanner from './SocialBanner/socialBanner';
+import BanerVideo from './banerVideo/banerVideo';
 
 const Div = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  height: 505px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 1440px;
+  @media (max-width: 1150px) {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+  }
 `;
 
 function Banner({ content, asset }) {
@@ -25,7 +29,7 @@ function Banner({ content, asset }) {
     <>
       <Div id="hero">
         <Headline content={banner} />
-        <YoutubeEmbed url={videoUrl} />
+        <BanerVideo url={videoUrl} />
       </Div>
       <></>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-end' }}>

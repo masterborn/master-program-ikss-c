@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
     color: #61798B;
     height: 100vh;
     text-align: center;
-    background: linear-gradient(180deg, #f4faff 0%, rgba(255, 255, 255, 0) 100%) no-repeat fixed;
+    background: linear-gradient(180deg, #f4faff 0%, rgba(255, 255, 255, 0) 20%) no-repeat fixed;
   };
   body {
     overflow-x: hidden;
@@ -130,6 +130,16 @@ input, textarea {
     letter-spacing: -0.015em;
     color: #1A2847;
   };
+
+
+  .navigation-wrapper {
+  position: relative;
+
+
+.keen-slider, .keen-slider__slide {
+    overflow: visible !important;
+  }
+}
 
 `;
 
