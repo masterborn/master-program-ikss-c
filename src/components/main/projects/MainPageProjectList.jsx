@@ -39,7 +39,7 @@ function MainPageProjectList({ projects, assets }) {
   const imageAssetId = imagesAsset.map((el) => el.fields.image.sys.id);
   const imagesUrl = extractHomeProjectImage(imageAssetId, assets);
   const projectsWithImages = mapProjectsWithImageUrl(homepageProjects, imagesUrl);
-  const titles = homepageProjects.map((t) => t.fields.title);
+  const titles = homepageProjects.map((t) => t.fields.title).slice(0,3);
 
   const callbackToChild = (index) => {
     setProjectShow(index);

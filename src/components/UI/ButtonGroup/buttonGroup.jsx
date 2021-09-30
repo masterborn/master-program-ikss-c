@@ -24,7 +24,7 @@ const Button = styled.button`
 const ButtonGroup = ({ titles, parentCallback, activeProjectId }) => {
   const btnGroup = titles.map((title, index) => (
     <Button
-      key={title}
+      key={index}
       type="button"
       isActive={index === activeProjectId}
       onClick={() => {
