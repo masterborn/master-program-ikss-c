@@ -1,6 +1,6 @@
 import { PrimaryButton } from '@root/components/UI/Button/Button';
 import { ModalContext } from '@root/contextProviders/modalContext';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import NavigationMenu from './NavigationMenu';
 import SocialButtons from './SocialButtons';
@@ -60,7 +60,14 @@ const styles = {
 
 function HamburgerMenu({ pathname, socialLinks }) {
   const { onOpenModal } = useContext(ModalContext);
+  const [browserWindow, setBrowserWindow] = useState({});
   const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+
+      setBrowserWindow(window);
+
+    }, []);
 
   const handleMenuOpen = () => {
     setMenuOpen(false);
@@ -71,7 +78,14 @@ function HamburgerMenu({ pathname, socialLinks }) {
 
   const openContactForm = () => {
     setMenuOpen(false);
-    onOpenModal();
+    if (pathname === '/') {
+      browserWindow.scrollTo({
+        top: 3300,
+        behavior: 'smooth',
+      });
+    } else {
+      onOpenModal();
+    }
   };
 
   return (
