@@ -38,7 +38,12 @@ function Headline({ content }) {
     .find((d) => d.content)
     .content.find((v) => v.value).value;
 
-  const clickHandler = () => {};
+  const clickHandler = () => {
+    window.scrollTo({
+      top: 3300,
+      behavior: 'smooth',
+    });
+  };
   return (
     <Div>
       <H1>{title}</H1>
