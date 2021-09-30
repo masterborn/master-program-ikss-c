@@ -42,9 +42,9 @@ const Wrapper = styled.div`
 
 const ButtonGroup = ({ titles, parentCallback, activeProjectId }) => {
   const btnGroup = titles.map((title, index) => (
-    <Wrapper key={title}>
+    <Wrapper key={Math.random()}>
       <Button
-        key={title}
+        key={Math.random()}
         type="button"
         isActive={index === activeProjectId}
         onClick={() => {

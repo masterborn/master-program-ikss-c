@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMedia } from 'react-use';
 import YoutubeEmbed from '../Banner/YoutubeEmbed/youtubeEmbed';
 import { FaPrimaryButton } from '../../../UI/Button/FaButton';
 
 const Div = styled.div`
   position: relative;
-  width: 950px;
-  height: 950px;
+  width: ${(props) => props.setWidth || '950px'};
+  height: ${(props) => props.setHeight || '950px'};
   display: block;
   border-radius: 25px 25px 0px 0px;
   box-shadow: 3.38443px 55.8976px 80px rgba(97, 121, 139, 0.07),
@@ -15,8 +16,8 @@ const Div = styled.div`
     0.148069px 2.44552px 4.625px rgba(97, 121, 139, 0.02275);
   margin-bottom: 56px;
   @media (max-width: 860px) {
-    width: 550px;
-    height: 550px;
+    width: 327px;
+    height: 750px;
   }
 `;
 
@@ -26,9 +27,7 @@ const Container = styled.div`
   display: inline-flex;
   width: 100%;
   height: 100%;
-  padding-bottom: 45%;
   @media (max-width: 860px) {
-    padding-bottom: 0;
   }
 `;
 
@@ -41,10 +40,10 @@ const ContentDiv = styled.div`
   align-items: flex-start;
   margin: 20px 0 20px 0;
   @media (max-width: 860px) {
-    background-color: white;
-    margin: -15px 0;
-    left: 0px;
-    border-radius: 0 0 20px 20px;
+    max-width: 375px;
+    height: 675px;
+    top: 220px;
+    left: 15px;
   }
 `;
 const TitleDiv = styled.div`
@@ -54,7 +53,8 @@ const TitleDiv = styled.div`
   align-items: baseline;
   margin: 20px 0 20px 0;
   @media (max-width: 860px) {
-    width: 95%;
+    margin: 0;
+    font-size: 12px;
   }
 `;
 const DescriptionDiv = styled.div`
@@ -63,7 +63,32 @@ const DescriptionDiv = styled.div`
 `;
 const H5 = styled.h5`
   margin-left: 30px;
+  @media (max-width: 860px) {
+    margin-left: 10px;
+    font-size: 16px;
+  }
 `;
+
+function YoutubeEmbed2({ url }) {
+  return (
+    <div>
+      <iframe
+        style={{
+          maxWidth: '327px',
+          with: '100%',
+          height: '185px',
+          aspectRatio: '16/9',
+          borderRadius: '10px 10px 0 0 ',
+        }}
+        src={`${url}`}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        controls
+      />
+    </div>
+  );
+}
 
 const Wrapper = styled.div`
   @media (max-width: 860px) {
@@ -87,6 +112,7 @@ function extractEmbededId(project) {
 }
 
 function ProjectToDisplay({ project }) {
+  const isMobile = useMedia('(max-width: 860px)');
   const { imageUrl, fields } = project;
   const { title, linkCaption, linkUrl, date } = fields;
   const description = fields.description.content
@@ -101,11 +127,15 @@ function ProjectToDisplay({ project }) {
   );
   return (
     <Div>
-      <Container>{renderVideoOrImage}</Container>
+      {isMobile ? (
+        <YoutubeEmbed2 url={combineUrlForIframe} />
+      ) : (
+        <Container>{renderVideoOrImage}</Container>
+      )}
       <ContentDiv>
         <Wrapper2>
           <TitleDiv>
-            <h4>{title}</h4> <H5>{date}</H5>
+            <h4 style={{ fontSize: '18px', margin: '0' }}>{title}</h4> <H5>{date}</H5>
           </TitleDiv>
           <DescriptionDiv>{description}</DescriptionDiv>
         </Wrapper2>
