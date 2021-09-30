@@ -10,10 +10,13 @@ const Div = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 180px;
+  @media (max-width: 860px) {
+    margin-top: 50px;
+  }
 `;
 const Wrapper = styled.div`
   @media (max-width: 860px) {
-    margin-top: 270px;
+    margin-top: 0px;
     z-index: 100;
   }
 `;
@@ -45,7 +48,7 @@ function MainPageProjectList({ projects, assets }) {
   const imageAssetId = imagesAsset.map((el) => el.fields.image.sys.id);
   const imagesUrl = extractHomeProjectImage(imageAssetId, assets);
   const projectsWithImages = mapProjectsWithImageUrl(homepageProjects, imagesUrl);
-  const titles = homepageProjects.map((t) => t.fields.title).slice(0,3);
+  const titles = homepageProjects.map((t) => t.fields.title).slice(0, 3);
 
   const callbackToChild = (index) => {
     setProjectShow(index);
